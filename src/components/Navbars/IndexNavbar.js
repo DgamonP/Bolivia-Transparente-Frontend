@@ -126,6 +126,14 @@ function IndexNavbar() {
               </NavLink>
             </NavItem>
             <NavItem>
+              <NavLink
+                href="https://www.google.com"
+                target="_blank"
+              >
+                <i className="nc-icon nc-book-bookmark" /> Login
+              </NavLink>
+            </NavItem>
+            <NavItem>
               <Button
                 className="btn-round"
                 color="danger"
@@ -133,7 +141,7 @@ function IndexNavbar() {
                 target="_blank"
                 disabled
               >
-                Denuncia Aqui
+                Denuncia
               </Button>
             </NavItem>
           </Nav>
