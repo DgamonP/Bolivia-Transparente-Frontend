@@ -29,7 +29,7 @@ function IndexHeader() {
               </div>
             </div>
             <h2 className="presentation-subtitle text-center">
-              Make your mark with a Free Bootstrap 4 (Reactstrap) UI Kit!
+              Realiza tus Denuncias en este Portal
             </h2>
           </Container>
         </div>
@@ -40,7 +40,7 @@ function IndexHeader() {
           }}
         />
         <h6 className="category category-absolute">
-          Designed and coded by{" "}
+          Diseñado por DeMS{" "}
           <a
             href="https://www.creative-tim.com?ref=pkr-index-page"
             target="_blank"
@@ -48,7 +48,7 @@ function IndexHeader() {
             <img
               alt="..."
               className="creative-tim-logo"
-              src={require("assets/img/creative-tim-white-slim2.png")}
+              /* src={require("assets/img/creative-tim-white-slim2.png")} */
             />
           </a>
         </h6>

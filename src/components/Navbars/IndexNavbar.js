@@ -53,7 +53,7 @@ function IndexNavbar() {
             target="_blank"
             title="Coded by Creative Tim"
           >
-            Paper Kit React
+            Bolivia Transparente
           </NavbarBrand>
           <button
             aria-expanded={navbarCollapse}
