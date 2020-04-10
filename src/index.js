@@ -9,9 +9,9 @@ import "assets/demo/demo.css";
 // pages
 import Index from "views/Index.js";
 import NucleoIcons from "views/NucleoIcons.js";
-import LandingPage from "views/examples/LandingPage.js";
-import ProfilePage from "views/examples/ProfilePage.js";
-import RegisterPage from "views/examples/RegisterPage.js";
+import LandingPage from "views/pages/LandingPage.js";
+import ProfilePage from "views/pages/ProfilePage.js";
+import RegisterPage from "views/pages/RegisterPage.js";
 // others
 
 ReactDOM.render(
