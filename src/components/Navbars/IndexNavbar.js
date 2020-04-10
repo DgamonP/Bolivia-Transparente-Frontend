@@ -65,6 +65,7 @@ function IndexNavbar() {
             <span className="navbar-toggler-bar bar1" />
             <span className="navbar-toggler-bar bar2" />
             <span className="navbar-toggler-bar bar3" />
+            button
           </button>
         </div>
         <Collapse
@@ -126,12 +127,17 @@ function IndexNavbar() {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink
-                href="https://www.google.com"
+              {/* <NavLink
+                href='/register-page'
+                /* to="/register-page" tag={register-page} 
                 target="_blank"
               >
-                <i className="nc-icon nc-book-bookmark" /> Login
-              </NavLink>
+                <i className="nc-icon nc-layout-11" /> Login
+              </NavLink> */}
+            <NavLink 
+                href="/register-page">
+                <i className="nc-icon nc-layout-11" /> Loging
+            </NavLink>
             </NavItem>
             <NavItem>
               <Button
