@@ -53,7 +53,7 @@ function IndexNavbar() {
             target="_blank"
             title="Coded by Creative Tim"
           >
-            Bolivia Transparente
+            Ministerio de Gobierno
           </NavbarBrand>
           <button
             aria-expanded={navbarCollapse}
@@ -122,7 +122,7 @@ function IndexNavbar() {
                 href="https://demos.creative-tim.com/paper-kit-react/#/documentation?ref=pkr-index-navbar"
                 target="_blank"
               >
-                <i className="nc-icon nc-book-bookmark" /> Documentation
+                <i className="nc-icon nc-book-bookmark" /> Registrate
               </NavLink>
             </NavItem>
             <NavItem>
@@ -133,7 +133,7 @@ function IndexNavbar() {
                 target="_blank"
                 disabled
               >
-                Upgrade to Pro
+                Denuncia Aqui
               </Button>
             </NavItem>
           </Nav>
