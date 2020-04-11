@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import {signIn} from '../../api/graphql';
 
 // reactstrap components
 import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
@@ -6,9 +7,38 @@ import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
 // core components
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 
-function LoginPage() {
+function useInputHandler(type, placeholder, name) {
+  const [value, setValue] = useState("")
+
+  const  input = <Input  placeholder={placeholder} 
+                      type={type}
+                      onChange    = {e => setValue(e.target.value)}
+                      className   = "form-control"
+                      name        = {name}
+                      value       = {value} />
+
+  return [value, input]
+
+      
+}
+
+
+
+
+
+
+
+export const  LoginPage = (props) => {
+
   document.documentElement.classList.remove("nav-open");
-  React.useEffect(() => {
+
+  const [user, setUser] = useState(null)
+  
+  const [passValue, inputPassword] = useInputHandler("password", "Password", "password")
+  const [userValue, inputUser] = useInputHandler("email", "Email", "email")
+
+  useEffect(() => {
+    console.log(passValue)
     document.body.classList.add("register-page");
     return function cleanup() {
       document.body.classList.remove("register-page");
@@ -16,7 +46,34 @@ function LoginPage() {
   });
 
 
+const login = (user, pass)=> {
+  console.log(user)
+  console.log(pass)
+   signIn(user, pass)
+      .then(results=>{
+          console.log("Signin results:");
+          console.log(results);
 
+          var token = results.data.data.login.token
+          if(token){
+              token = token;
+              console.log("Login successful, new token is:");
+              console.log(token);
+
+              props.redirect();
+          }
+      }).catch(error=>{
+          console.log(error);
+          if(error === "Network Error"){          //TODO not working by now
+              console.log("Problema de comunicación");
+              //this.setState({network:error, warning:false});
+          }else{                          // by now: Request failed with status code 500
+              console.log("Login error");
+              //this.setState({errorLogin:true, warning:false});
+          }
+      });
+  
+}
 
   
   return (
@@ -61,13 +118,18 @@ function LoginPage() {
                   </Button>
                 </div>
                 <Form className="register-form">
-                  <label>Email</label>
-                  <Input placeholder="Email" type="text" />
-                  <label>Password</label>
-                  <Input placeholder="Password" type="password" />
-                  <Button block className="btn-round" color="danger">
-                    Login
-                  </Button>
+                <label>Email</label>
+                  { inputUser }
+                  
+                <label>Password</label>
+                {inputPassword}
+                <Button block className="btn-round" onClick={() =>{
+
+                  login(userValue, passValue )
+
+                }} color="danger">
+                  login
+                </Button>
                 </Form>
                 <div className="forgot">
                   <Button
