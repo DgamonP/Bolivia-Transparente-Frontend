@@ -45,6 +45,7 @@ class SigninFormComponent extends React.Component{
                     var token = results.data.data.login.token
                     if(token){
                         state.token = token;
+                        window.localStorage.setItem('token',token)
                         console.log("Login successful, new token is:");
                         console.log(token);
                         this.setState({warning:false, error:null});

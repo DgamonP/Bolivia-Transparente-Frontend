@@ -4,7 +4,7 @@ import CreateForm from '../../components/comp-forms/createForm'
 
 class Create extends React.Component{
     redirect = () =>{
-        this.props.history.push("/init");
+        this.props.history.push("/index");
     }
 
     goToLogin = () =>{

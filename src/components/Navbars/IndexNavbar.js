@@ -107,7 +107,7 @@ function IndexNavbar() {
                 <p className="d-lg-none">Instagram</p>
               </NavLink>
             </NavItem>
-            <NavItem>
+            {/* <NavItem>
               <NavLink
                 data-placement="bottom"
                 href="https://www.github.com/CreativeTimOfficial/paper-kit-react?ref=creativetim"
@@ -117,27 +117,28 @@ function IndexNavbar() {
                 <i className="fa fa-github" />
                 <p className="d-lg-none">GitHub</p>
               </NavLink>
-            </NavItem>
+            </NavItem> */}
             <NavItem>
               <NavLink
-                href="https://demos.creative-tim.com/paper-kit-react/#/documentation?ref=pkr-index-navbar"
+                href="/index"
                 target="_blank"
               >
-                <i className="nc-icon nc-book-bookmark" /> Registrate
+                <i className="nc-icon nc-book-bookmark" /> Inicio
               </NavLink>
             </NavItem>
             <NavItem>
-              {/* <NavLink
-                href='/register-page'
-                /* to="/register-page" tag={register-page} 
-                target="_blank"
-              >
+              <NavLink 
+                /* href="/login-page"> */
+                href="/signin">
+                <i className="nc-icon nc-layout-11" /> Mis Denuncias
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink 
+                /* href="/login-page"> */
+                href="/signin">
                 <i className="nc-icon nc-layout-11" /> Login
-              </NavLink> */}
-            <NavLink 
-                href="/login-page">
-                <i className="nc-icon nc-layout-11" /> Loging
-            </NavLink>
+              </NavLink>
             </NavItem>
             <NavItem>
               <Button

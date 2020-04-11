@@ -28,7 +28,7 @@ export const  LoginPage = (props) => {
 
   document.documentElement.classList.remove("nav-open");
 
-  const [user, setUser] = useState(null)
+  //const [user, setUser] = useState(null)
   
   const [passValue, inputPassword] = useInputHandler("password", "Password", "password")
   const [userValue, inputUser] = useInputHandler("email", "Email", "email")
@@ -153,3 +153,4 @@ const login = (user, pass)=> {
 }
 
 export default LoginPage;
+//componente creado con stanley funcional
