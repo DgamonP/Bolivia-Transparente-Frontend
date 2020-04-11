@@ -20,7 +20,7 @@ function RegisterPage() {
       <div
         className="page-header"
         style={{
-          backgroundImage: "url(" + require("assets/img/login-image.jpg") + ")"
+          backgroundImage: "url(" + require("assets/img/The-Death-Road-Bolivia.jpg") + ")"
         }}
       >
         <div className="filter" />
@@ -71,7 +71,7 @@ function RegisterPage() {
                     href="#pablo"
                     onClick={e => e.preventDefault()}
                   >
-                    Forgot password?
+                    Olvidaste tu Contraseña?
                   </Button>
                 </div>
               </Card>
@@ -80,8 +80,8 @@ function RegisterPage() {
         </Container>
         <div className="footer register-footer text-center">
           <h6>
-            © {new Date().getFullYear()}, made with{" "}
-            <i className="fa fa-heart heart" /> by Creative Tim
+            © {new Date().getFullYear()}, Nosotros {" "}
+            <i className="fa fa-heart heart" /> te Cuidamos
           </h6>
         </div>
       </div>

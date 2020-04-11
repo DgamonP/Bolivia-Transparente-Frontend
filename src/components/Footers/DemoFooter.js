@@ -13,10 +13,10 @@ function DemoFooter() {
             <ul>
               <li>
                 <a
-                  href="https://www.creative-tim.com?ref=pkr-footer"
+                  href="http://deepmicrosystems.com/"
                   target="_blank"
                 >
-                  Creative Tim
+                  DeMS2020
                 </a>
               </li>
               <li>
@@ -32,7 +32,7 @@ function DemoFooter() {
                   href="https://www.creative-tim.com/license?ref=pkr-footer"
                   target="_blank"
                 >
-                  Licenses
+                  Licencia
                 </a>
               </li>
             </ul>
