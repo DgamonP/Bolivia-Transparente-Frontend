@@ -12,11 +12,16 @@ import NucleoIcons from "views/NucleoIcons.js";
 import LandingPage from "views/pages/LandingPage.js";
 import ProfilePage from "views/pages/ProfilePage.js";
 import RegisterPage from "views/pages/RegisterPage.js";
-// others
+// others pages alvaro
+import Create from './views/pages/create';
+import SignInPage from './views/pages/signinPage';
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
+      <Route exact path="/signin" component = {SignInPage}/>
+      <Route exact path="/create" component = {Create}/>
+
       <Route path="/index" render={props => <Index {...props} />} />
       <Route
         path="/nucleo-icons"

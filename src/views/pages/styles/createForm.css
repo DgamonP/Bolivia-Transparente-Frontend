@@ -1,0 +1,13 @@
+.flexcontainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.flexitem {
+    flex-grow: 1; /* default 0 */
+    text-align: center;
+    
+  }
+
+
