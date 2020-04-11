@@ -10,8 +10,8 @@ import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 function useInputHandler(type, placeholder, name) {
   const [value, setValue] = useState("")
 
-  const  input = <Input  placeholder={placeholder} 
-                      type={type}
+  const  input = <Input placeholder = {placeholder} 
+                      type =  {type}
                       onChange    = {e => setValue(e.target.value)}
                       className   = "form-control"
                       name        = {name}
@@ -21,10 +21,6 @@ function useInputHandler(type, placeholder, name) {
 
       
 }
-
-
-
-
 
 
 
