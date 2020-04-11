@@ -6,7 +6,7 @@ import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
 // core components
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 
-function RegisterPage() {
+function LoginPage() {
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
     document.body.classList.add("register-page");
@@ -28,7 +28,7 @@ function RegisterPage() {
           <Row>
             <Col className="ml-auto mr-auto" lg="4">
               <Card className="card-register ml-auto mr-auto">
-                <h3 className="title mx-auto">Welcome</h3>
+                <h3 className="title mx-auto">Bienvenido</h3>
                 <div className="social-line text-center">
                   <Button
                     className="btn-neutral btn-just-icon mr-1"
@@ -61,7 +61,7 @@ function RegisterPage() {
                   <label>Password</label>
                   <Input placeholder="Password" type="password" />
                   <Button block className="btn-round" color="danger">
-                    Register
+                    Login
                   </Button>
                 </Form>
                 <div className="forgot">
@@ -89,4 +89,4 @@ function RegisterPage() {
   );
 }
 
-export default RegisterPage;
+export default LoginPage;
