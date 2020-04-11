@@ -135,7 +135,7 @@ function IndexNavbar() {
                 <i className="nc-icon nc-layout-11" /> Login
               </NavLink> */}
             <NavLink 
-                href="/register-page">
+                href="/login-page">
                 <i className="nc-icon nc-layout-11" /> Loging
             </NavLink>
             </NavItem>

@@ -14,6 +14,11 @@ function LoginPage() {
       document.body.classList.remove("register-page");
     };
   });
+
+
+
+
+  
   return (
     <>
       <ExamplesNavbar />
