@@ -5,12 +5,12 @@ import CreateForm from '../../components/comp-forms/createForm'
 
 const DenunciaAnonima = () => {
     const [token, setToken] = useState(null)
-
+/* 
       useEffect(()=> {
         console.log("TOKEN BEFERO", token)
         setToken(window.localStorage.getItem('token'))
         console.log("TOKEN AFTER", token)
-        })
+        }) */
 
         var redirect = () => {
         if (token === 'null'){

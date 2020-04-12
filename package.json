@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.9.9",
     "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
     "classnames": "^2.2.6",
     "firebase": "^7.13.1",
     "moment": "2.24.0",
@@ -19,7 +20,9 @@
     "react-router": "5.0.1",
     "react-router-dom": "5.0.1",
     "react-scripts": "3.0.1",
-    "reactstrap": "8.0.0"
+    "react-service-worker": "^0.1.1",
+    "reactstrap": "8.0.0",
+    "serviceworker": "^0.1.7"
   },
   "scripts": {
     "start": "react-scripts start",
