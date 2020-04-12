@@ -52,7 +52,7 @@ const login = (user, pass)=> {
 
           var token = results.data.data.login.token
           if(token){
-              token = token;
+              //token = token;
               console.log("Login successful, new token is:");
               console.log(token);
 

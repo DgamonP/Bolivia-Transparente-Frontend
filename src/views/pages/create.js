@@ -1,10 +1,41 @@
-import React from 'react';
-import state from '../../model/state'
+import React, {useState, useEffect} from 'react';
+//import state from '../../model/state'
 import CreateForm from '../../components/comp-forms/createForm'
+//import AuthContext from './context/auth-context';
 
-class Create extends React.Component{
+const Create = () => {
+   /*  const [token, setToken] = useState("")
+    
+      useEffect(() => {
+        console.log("TOKEN en create", token)
+        setToken(window.localStorage.getItem('token'))
+        console.log("TOKEN despues de crate", token)
+        },);
+
+        var redirect = () => {
+            if (token === 'null'){
+                /* useEffect()  
+                //window.location.href='/singin';
+                } 
+                else {
+                console.log(token);
+                //window.location.href='/'
+                }
+        } */
+        const redirect = () =>{
+            window.location.href='/';
+        }
+
+    return(
+        <React.Fragment>
+            <CreateForm /* redirect={redirect} *//>  
+        </React.Fragment>
+    )
+}
+
+/* class Create extends React.Component{
     redirect = () =>{
-        this.props.history.push("/index");
+        this.props.history.push("/");
     }
 
     goToLogin = () =>{
@@ -22,5 +53,5 @@ class Create extends React.Component{
         );
     }
 }
-
-export default Create;
+*/
+export default Create; 

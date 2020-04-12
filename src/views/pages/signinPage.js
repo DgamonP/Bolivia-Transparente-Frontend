@@ -6,7 +6,7 @@ import SigninFormComponent from '../../components/comp-forms/signinFormComponent
 
 class SignInPage extends React.Component{
     redirect = () =>{
-        this.props.history.push("/create");
+        this.props.history.push("/");
     }
     
     redirectToSignup = ()=>{
