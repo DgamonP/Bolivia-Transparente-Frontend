@@ -1,5 +1,6 @@
 import React from "react";
 // nodejs library that concatenates strings
+import { Link } from "react-router-dom";
 import classnames from "classnames";
 import AuthContext from '../../context/auth-context';
 
@@ -54,12 +55,12 @@ function IndexNavbar() {
               <div className="navbar-translate">
                 <NavbarBrand
                   data-placement="bottom"
-                  href="/index"
+                  href="/"
                   target="_blank"
-                  title="Coded by Creative Tim"
-                >
-                  Ministerio de Gobierno
-                </NavbarBrand>
+                  title="Coded by DeMS2020"
+                  tag={Link}
+                > Ministerio de Gobierno
+                </NavbarBrand>                
                 <button
                   aria-expanded={navbarCollapse}
                   className={classnames("navbar-toggler navbar-toggler", {
@@ -111,52 +112,68 @@ function IndexNavbar() {
                       <i className="fa fa-instagram" />
                       <p className="d-lg-none">Instagram</p>
                     </NavLink>
-                  </NavItem>
-                  {/* <NavItem>
-                    <NavLink
-                      data-placement="bottom"
-                      href="https://www.github.com/CreativeTimOfficial/paper-kit-react?ref=creativetim"
-                      target="_blank"
-                      title="Star on GitHub"
-                    >
-                      <i className="fa fa-github" />
-                      <p className="d-lg-none">GitHub</p>
-                    </NavLink>
-                  </NavItem> */}
-                  <NavItem>
-                    <NavLink
-                      href="/"
-                      target="_blank">
-                      <i className="nc-icon nc-book-bookmark" /> Inicio
-                    </NavLink>
                   </NavItem>                
+                  
+                  <NavbarBrand
+                      data-placement="bottom"
+                      to="/"
+                      target="_blank"
+                      title="Coded by Creative Tim"
+                      tag={Link}
+                  >
+                    <i className="nc-icon nc-layout-11" />  Inicio
+                  </NavbarBrand>
+                
+                {/* {context.token === 'null' && */}
                   <NavItem>
-                    {
-                    context.token === 'null' &&
-                    <NavLink                      
-                      href="/viewDenuncias">
-                      <i className="nc-icon nc-layout-11" /> Ver Denuncias
-                    </NavLink>
-                    }
+                    <NavbarBrand
+                      data-placement="bottom"
+                      to="/viewDenuncias"
+                      target="_blank"
+                      title="Coded by Creative Tim"
+                      tag={Link}
+                  >
+                    <i className="nc-icon nc-book-bookmark" />  Ver Denuncias
+                  </NavbarBrand>
                   </NavItem>
-                  <NavItem>
-                    {
-                    context.token !== 'null' &&
-                    <NavLink                      
-                      href="/myDenuncias">
-                      <i className="nc-icon nc-layout-11" /> Mis Denuncias
-                    </NavLink>
-                    }
-                  </NavItem>
-                  <NavItem>
-                    {
-                    context.token === 'null' &&
-                    <NavLink                      
-                      href="/signin">
-                      <i className="nc-icon nc-layout-11" /> Login
-                    </NavLink>
-                    }
-                  </NavItem>
+                {/* }  */}
+                
+                {context.token !== 'null' &&
+                  <NavbarBrand
+                      data-placement="bottom"
+                      to="/myDenuncias"
+                      target="_blank"
+                      title="Coded by Creative Tim"
+                      tag={Link}
+                  >
+                    <i className="nc-icon nc-book-bookmark" />  Mis Denuncias
+                  </NavbarBrand>
+                }
+                {context.token === 'null' &&
+                  <NavbarBrand
+                      data-placement="bottom"
+                      to="/signin"
+                      target="_blank"
+                      title="Coded by Creative Tim"
+                      tag={Link}
+                  >
+                    <i className="nc-icon nc-layout-11" />  Iniciar Sesión
+                  </NavbarBrand>
+                }
+                {context.token !== 'null' &&
+                  <NavbarBrand
+                      data-placement="bottom"
+                      to="/"
+                      target="_blank"
+                      title="Coded by Creative Tim"
+                      onClick={ () => {
+                        context.logout()
+                        }}
+                      tag={Link}
+                  >
+                    <i className="nc-icon nc-layout-11" />  Cerrar Sesión
+                  </NavbarBrand>
+                }                  
                   <NavItem>
                     {
                     context.token !== 'null' &&
@@ -174,11 +191,11 @@ function IndexNavbar() {
                   <NavItem>                    
                     {
                     context.token === 'null' &&
-                    <a href=" ">
+                    <a href="/anonymousDenuncia">
                     <Button                      
                       className="btn-round"
                       color="warning"
-                      href="/anonymousDenuncia"
+                      href=" "
                       target="_blank"
                       disabled
                     > Denuncia Anonima
