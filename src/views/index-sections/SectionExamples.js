@@ -1,21 +1,3 @@
-/*!
-
-=========================================================
-* Paper Kit React - v1.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-kit-react
-
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/paper-kit-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
 
 // reactstrap components
@@ -28,13 +10,14 @@ function SectionExamples() {
     <>
       <div className="section section-dark">
         <Container>
+          <h3 className="title">Utiliza Nuestra Aplicacion y Portal Web</h3>
           <Row className="example-page">
             <Col className="text-center" md="6">
               <a href="examples/landing.html" target="_blank">
                 <img
                   alt="..."
                   className="img-rounded img-responsive"
-                  src={require("assets/img/examples/webBoliviaTransparente.png")}
+                  src={require("assets/img/examples/app.png")}
                   style={{ width: "100%" }}
                 />
               </a>
@@ -44,7 +27,7 @@ function SectionExamples() {
                 href="/landing-page"
                 target="_blank"
               >
-                Web Bolivia Transparente
+                Aplicacion Telefono Inteligente
               </Button>
             </Col>
             <Col className="text-center" md="6">
@@ -52,7 +35,7 @@ function SectionExamples() {
                 <img
                   alt="..."
                   className="img-rounded img-responsive"
-                  src={require("assets/img/examples/profile-page.png")}
+                  src={require("assets/img/examples/web1.png")}
                   style={{ width: "100%" }}
                 />
               </a>
@@ -62,7 +45,7 @@ function SectionExamples() {
                 href="/profile-page"
                 target="_blank"
               >
-                Profile Page
+                Web Bolivia Transparente
               </Button>
             </Col>
           </Row>
