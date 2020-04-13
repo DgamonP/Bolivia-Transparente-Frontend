@@ -134,8 +134,8 @@ function IndexNavbar() {
                     {
                     context.token === 'null' &&
                     <NavLink                      
-                      href="/signin">
-                      <i className="nc-icon nc-layout-11" /> Denuncias
+                      href="/viewDenuncias">
+                      <i className="nc-icon nc-layout-11" /> Ver Denuncias
                     </NavLink>
                     }
                   </NavItem>
@@ -143,7 +143,7 @@ function IndexNavbar() {
                     {
                     context.token !== 'null' &&
                     <NavLink                      
-                      href="/signin">
+                      href="/myDenuncias">
                       <i className="nc-icon nc-layout-11" /> Mis Denuncias
                     </NavLink>
                     }
@@ -178,7 +178,7 @@ function IndexNavbar() {
                     <Button                      
                       className="btn-round"
                       color="warning"
-                      href="/anonima"
+                      href="/anonymousDenuncia"
                       target="_blank"
                       disabled
                     > Denuncia Anonima
@@ -188,7 +188,7 @@ function IndexNavbar() {
                   <NavItem>                    
                     {
                     context.token !== 'null' &&
-                    <a href="/create">
+                    <a href="/createDenuncia">
                     <Button
                       className="btn-round"
                       color="success"

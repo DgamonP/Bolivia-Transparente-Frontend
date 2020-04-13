@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import CreateForm from '../../components/comp-forms/createForm'
 //import AuthContext from './context/auth-context';
 
-const DenunciaAnonima = () => {
+const AnonymousDenuncia = () => {
     const [token, setToken] = useState(null)
 /* 
       useEffect(()=> {
@@ -12,7 +12,7 @@ const DenunciaAnonima = () => {
         console.log("TOKEN AFTER", token)
         }) */
 
-        var redirect = () => {
+       /*  var redirect = () => {
         if (token === 'null'){
             window.location.href='/singin';
             } 
@@ -20,15 +20,15 @@ const DenunciaAnonima = () => {
             console.log(token);
             window.location.href='/'
             }    
-        }
+        } */
     
 
     return(        
         <React.Fragment>
           <h1>Quieres efectuar una denuncia anonima??</h1>
-            <CreateForm redirect={redirect}/>  
+            {/* <CreateForm redirect={redirect}/>  */} 
         </React.Fragment>
     )
 }
 
-export default DenunciaAnonima;
+export default AnonymousDenuncia;

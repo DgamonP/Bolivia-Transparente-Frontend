@@ -11,7 +11,8 @@ import Index from "views/Index.js";
 import LandingPage from "views/pages/LandingPage";
 import LoginPage from "views/pages/LoginPage.js";
 // others pages alvaro
-import CreateDenuncia from './views/pages/createDenuncia';
+import AnonymousDenuncia from './views/pages/anonymousDenuncia';
+import OfficialDenuncia from './views/pages/officialDenuncia';
 import MyDenuncias from './views/pages/myDenuncias';
 import ViewDenuncias from './views/pages/viewDenuncias';
 import SignUpPage from './views/pages/signupPage';
@@ -37,15 +38,16 @@ const App = () => {
         value={{ logout, token }}>
         <React.Fragment>
           <Switch>
-              {console.log("TOKEN EXIST?", token)}
-              {(token === "null") && (<Redirect from="/crearteDenuncia" to="/" /> )}
+              {console.log("TOKEN EXIST?", token)}              
               {(token === "null") && (<Redirect from="/myDenuncias" to="/" /> )}
+              {(token === "null") && (<Redirect from="/createDenuncia" to="/" /> )}
                 <Route  path="/" exact component={Index} />
                 <Route  path="/signup" exact component = {SignUpPage}/>
                 <Route  path="/signin" exact component = {SignInPage}/>
                 <Route  path="/viewDenuncias" exact component = {ViewDenuncias}/>
-              {(token !== "null") && <Route  path="/createDenuncia" exact component = {CreateDenuncia}/>}
-              {(token !== "null") && <Route  path="/myDenuncias" exact component = {MyDenuncias}/>}                
+                <Route  path="/anonymousDenuncia" exact component = {AnonymousDenuncia}/>
+              {(token !== "null") && <Route  path="/officialDenuncia" exact component = {OfficialDenuncia}/>}
+              {(token !== "null") && <Route  path="/myDenuncias" exact component = {MyDenuncias}/>}               
                 <Route path = "/" render={() => <h1>404</h1>}/>
             </Switch>
           </React.Fragment>
