@@ -13,7 +13,7 @@ import LandingPage from "views/pages/LandingPage.js";
 import ProfilePage from "views/pages/ProfilePage.js";
 import LoginPage from "views/pages/LoginPage.js";
 // others pages alvaro
-import Create from './views/pages/create';
+import Create from './views/pages/createDenuncia';
 import SignInPage from './views/pages/signinPage';
 import AuthContext from './context/auth-context';
 

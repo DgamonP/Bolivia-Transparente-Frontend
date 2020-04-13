@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import CreateForm from '../../components/comp-forms/createForm'
 //import AuthContext from './context/auth-context';
 
-const Create = () => {
+const CreateDenuncia = () => {
    /*  const [token, setToken] = useState("")
     
       useEffect(() => {
@@ -54,4 +54,4 @@ const Create = () => {
     }
 }
 */
-export default Create; 
+export default CreateDenuncia; 

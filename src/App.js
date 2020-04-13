@@ -13,27 +13,12 @@ import LandingPage from "views/pages/LandingPage";
 import LoginPage from "views/pages/LoginPage.js";
 import DenunciaAnonima from "views/pages/denunciaAnonima.js";
 // others pages alvaro
-import Create from './views/pages/create';
+import CreateDenuncia from './views/pages/createDenuncia';
+import MyDenuncias from './views/pages/myDenuncias';
+import ViewDenuncias from './views/pages/viewDenuncias';
+import SignUpPage from './views/pages/signupPage';
 import SignInPage from './views/pages/signinPage';
 import AuthContext from './context/auth-context';
-
-const PrivateRoute = ({ component: Component, token, ...rest }) => {
-  return (
-    <Route {...rest} render={(props) => {
-  
-      if (token !== "null"){
-        return <Component {...props} />
-      }
-
-      return <Redirect to='/' /> 
-      
-    }
-    }/>
-  )
-}
-
-
-
 
 const App = () => { 
   const [token, setToken] = useState(window.localStorage.getItem('token'))
@@ -55,23 +40,17 @@ const App = () => {
         <React.Fragment>
           <Switch>
               {console.log("TOKEN EXIST?", token)}
-
-                {(token === "null") && (<Redirect from="/init" to="/" /> )}
-
+              {(token === "null") && (<Redirect from="/crearteDenuncia" to="/" /> )}
+              {(token === "null") && (<Redirect from="/myDenuncias" to="/" /> )}
                 <Route  path="/" exact component={Index} />
-                <Route  path="/signin" exact component = {SignInPage}/>
-                <Route  path="/create" exact component = {Create}/>
-                <Route  path="/landing" exact component = {LandingPage}/>
-
-                {/* <PrivateRoute path="/init" token={token} component={InitPage} /> */}
-                {(token !== "null") && <Route  path="/init" exact component = {InitPage}/>}
-
-                
+                <Route  path="/viewDenuncias" exact component = {ViewDenuncias}/>
+                <Route  path="/signin" exact component = {SignInPage}/>            
+                <Route  path="/singup" exact component = {SignUpPage}/>               
+              {(token !== "null") && <Route  path="/createDenuncia" exact component = {CreateDenuncia}/>}
+              {(token !== "null") && <Route  path="/myDenuncias" exact component = {MyDenuncias}/>}                
                 <Route path = "/" render={() => <h1>404</h1>}/>
-
             </Switch>
           </React.Fragment>
-
       </AuthContext.Provider>
   </BrowserRouter>);
 }
