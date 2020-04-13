@@ -1,6 +1,9 @@
 import React from "react";
 // nodejs library that concatenates strings
-//import logo from '../'
+//import { logo } from '..'
+//import logo from './'
+import './logo.css'
+import logo from './logoHomeEB.png'
 import { Link } from "react-router-dom";
 import classnames from "classnames";
 import AuthContext from '../../context/auth-context';
@@ -51,9 +54,24 @@ function IndexNavbar() {
     <AuthContext.Consumer>{
       (context) => {
         return (
-          <Navbar className={classnames("fixed-top", navbarColor)} expand="lg">
+          <Navbar className={classnames("fixed-top", navbarColor)} expand="lg"> 
             <Container>
-              <div className="navbar-translate">
+              <div className="logo">
+              <a href = "/">
+                  <img className="logo" src={logo} alt="Ministerio de Gobierno" height="60"/>
+              </a>
+              <div/>              
+              {/* <Navbar bg="dark">
+                <NavbarBrand href="/">
+                  <img
+                    src={logo}
+                    width="30"
+                    height="30"
+                    className="d-inline-block align-top"
+                    alt="React Bootstrap logo"
+                  />
+                </NavbarBrand>
+              </Navbar> */}
                 {/* <NavbarBrand
                   data-placement="bottom"
                   href="/"
@@ -62,26 +80,30 @@ function IndexNavbar() {
                   tag={Link}
                  > Ministerio de Gobierno
                 </NavbarBrand> */}
-               <NavbarBrand href="/">
+               {/* <NavbarBrand href="/">
                   <img
                     alt=""
-                    src="/assets/img/logoSinFondo.png"
+                    src="assets/img/logoSinFondo.png"
                     width="30"
                     height="30"
                     className="d-inline-block align-top"
-                  />
-                  React Bootstrap
+                  /> LOGO
                 </NavbarBrand>
-                <NavbarBrand>
+                <NavbarBrand> */}
 {/*                   <a class="navbar-brand" href="/">
-                    <img id="logo" class="d-inline-block mr-1" alt="Logo" src="assets/img/logo-jetze-kunnen.png"> 
+                    <img id="logo" class="d-inline-block mr-1" alt="Logo" src="assets/img/logoSinFondo.png"> 
                       <div class="d-inline-block mr-1">Jetze Kunnen<span>hoveniersbedrijf</span></div>
                   </a>
+                  <nav className="navbar navbar-light bg-light">
+                <a className="navbar-brand" href="#!">
+                <img id="logo" className="d-inline-block mr-1" alt="Logo" src="assets/img/logoSinFondo.png">
+                  Navbar</a>
+              </nav>
  */}                  
                   {/* <a class="navbar-brand" href="/">
                     <img src={logo} width="128" height="48" alt="Gobierno de México">
                   </a> */}
-                </NavbarBrand>                
+                              
                 <button
                   aria-expanded={navbarCollapse}
                   className={classnames("navbar-toggler navbar-toggler", {
