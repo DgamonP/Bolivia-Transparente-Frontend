@@ -113,81 +113,45 @@ function IndexNavbar() {
                       <p className="d-lg-none">Instagram</p>
                     </NavLink>
                   </NavItem>                
-                  
-                  <NavbarBrand
-                      data-placement="bottom"
-                      to="/"
-                      target="_blank"
-                      title="Coded by Creative Tim"
-                      tag={Link}
-                  >
-                    <i className="nc-icon nc-layout-11" />  Inicio
-                  </NavbarBrand>
-                
-                {/* {context.token === 'null' && */}
                   <NavItem>
-                    <NavbarBrand
-                      data-placement="bottom"
-                      to="/viewDenuncias"
-                      target="_blank"
-                      title="Coded by Creative Tim"
-                      tag={Link}
-                  >
-                    <i className="nc-icon nc-book-bookmark" />  Ver Denuncias
-                  </NavbarBrand>
-                  </NavItem>
-                {/* }  */}
-                
-                {context.token !== 'null' &&
-                  <NavbarBrand
-                      data-placement="bottom"
-                      to="/myDenuncias"
-                      target="_blank"
-                      title="Coded by Creative Tim"
-                      tag={Link}
-                  >
-                    <i className="nc-icon nc-book-bookmark" />  Mis Denuncias
-                  </NavbarBrand>
-                }
-                {context.token === 'null' &&
-                  <NavbarBrand
-                      data-placement="bottom"
-                      to="/signin"
-                      target="_blank"
-                      title="Coded by Creative Tim"
-                      tag={Link}
-                  >
-                    <i className="nc-icon nc-layout-11" />  Iniciar Sesión
-                  </NavbarBrand>
-                }
-                {context.token !== 'null' &&
-                  <NavbarBrand
-                      data-placement="bottom"
-                      to="/"
-                      target="_blank"
-                      title="Coded by Creative Tim"
-                      onClick={ () => {
-                        context.logout()
-                        }}
-                      tag={Link}
-                  >
-                    <i className="nc-icon nc-layout-11" />  Cerrar Sesión
-                  </NavbarBrand>
-                }                  
-                  <NavItem>
-                    {
-                    context.token !== 'null' &&
-                      <NavLink 
-                        href=" "
-                        onClick={ () => {
-                        context.logout()
-                        context.token= null
-                        window.location.href='/'
-                      }}>
-                      <i className="nc-icon nc-layout-11" /> Logout
+                      <NavLink to="/" tag={Link}>
+                        <i className="nc-icon nc-layout-11" /> Inicio
                       </NavLink>
-                    }
-                  </NavItem>
+                    </NavItem>                               
+                 {context.token === 'null' &&
+                    <NavItem>
+                      <NavLink to="/viewDenuncias" tag={Link}>
+                        <i className="nc-icon nc-book-bookmark" /> Ver Denuncias
+                      </NavLink>
+                    </NavItem>                  
+                 }
+                 {context.token !== 'null' &&
+                    <NavItem>
+                      <NavLink to="/myDenuncias" tag={Link}>
+                        <i className="nc-icon nc-book-bookmark" /> Mis Denuncias
+                      </NavLink>
+                    </NavItem>                  
+                 }
+                 {context.token === 'null' &&
+                    <NavItem>
+                      <NavLink to="/signin" tag={Link}>
+                        <i className="nc-icon nc-layout-11" /> Iniciar Sesión
+                      </NavLink>
+                    </NavItem>                  
+                 }
+                 {context.token !== 'null' &&
+                    <NavItem>
+                      <NavLink data-placement="bottom"
+                              to="/"                              
+                              onClick={ () => {
+                                context.logout()
+                                window.location.href='/'}
+                              }
+                              tag={Link}>
+                        <i className="nc-icon nc-layout-11" /> Cerrar Sesión
+                      </NavLink>
+                    </NavItem>                  
+                 }          
                   <NavItem>                    
                     {
                     context.token === 'null' &&
@@ -195,8 +159,7 @@ function IndexNavbar() {
                     <Button                      
                       className="btn-round"
                       color="warning"
-                      href=" "
-                      target="_blank"
+                      href=" "                      
                       disabled
                     > Denuncia Anonima
                     </Button>
@@ -204,18 +167,23 @@ function IndexNavbar() {
                   </NavItem>
                   <NavItem>                    
                     {
-                    context.token !== 'null' &&
-                    <a href="/createDenuncia">
+                    context.token !== 'null' &&                  
+                    <a href="/officialDenuncia">
                     <Button
                       className="btn-round"
                       color="success"
-                      href=" "
-                      target="_blank"
-                      disabled
-                    > Denuncia Oficial
+                      href=" /"                      
+                      disabled                      
+                    > 
+                      Denuncia Oficial 
                     </Button>
-                    </a>}  
+                    </a>  }
                   </NavItem>
+                  {/* <NavItem>
+                  <Button type="button" class="btn btn-outline-success and-all-other-classes"> 
+                    <a href="signin" style="color:inherit"> Button  </a>
+                  </Button>
+                  </NavItem> */}
                 </Nav>
               </Collapse>
             </Container>
