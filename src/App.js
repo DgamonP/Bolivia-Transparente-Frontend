@@ -8,10 +8,8 @@ import "assets/demo/demo.css";
 // pages
 import Index from "views/Index.js";
 //import LandingPage from "views/pages/LandingPage.js";
-import InitPage from "views/pages/init.js";
 import LandingPage from "views/pages/LandingPage";
 import LoginPage from "views/pages/LoginPage.js";
-import DenunciaAnonima from "views/pages/denunciaAnonima.js";
 // others pages alvaro
 import CreateDenuncia from './views/pages/createDenuncia';
 import MyDenuncias from './views/pages/myDenuncias';
@@ -43,9 +41,9 @@ const App = () => {
               {(token === "null") && (<Redirect from="/crearteDenuncia" to="/" /> )}
               {(token === "null") && (<Redirect from="/myDenuncias" to="/" /> )}
                 <Route  path="/" exact component={Index} />
+                <Route  path="/signup" exact component = {SignUpPage}/>
+                <Route  path="/signin" exact component = {SignInPage}/>
                 <Route  path="/viewDenuncias" exact component = {ViewDenuncias}/>
-                <Route  path="/signin" exact component = {SignInPage}/>            
-                <Route  path="/singup" exact component = {SignUpPage}/>               
               {(token !== "null") && <Route  path="/createDenuncia" exact component = {CreateDenuncia}/>}
               {(token !== "null") && <Route  path="/myDenuncias" exact component = {MyDenuncias}/>}                
                 <Route path = "/" render={() => <h1>404</h1>}/>

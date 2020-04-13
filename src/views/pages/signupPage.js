@@ -23,7 +23,7 @@ class SignUpPage extends React.Component{
     // }
 
     redirect = ()=>{
-        this.props.history.push("/create");
+        this.props.history.push("/CreateDenuncia");
     }
 
     redirectToSignin = ()=>{

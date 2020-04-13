@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
-//import state from '../../model/state'
+import state from '../../model/state'
 import CreateForm from '../../components/comp-forms/createForm'
 //import AuthContext from './context/auth-context';
 
-const CreateDenuncia = () => {
+/* const CreateDenuncia = () => {
    /*  const [token, setToken] = useState("")
     
       useEffect(() => {
@@ -21,19 +21,19 @@ const CreateDenuncia = () => {
                 console.log(token);
                 //window.location.href='/'
                 }
-        } */
+        } 
         const redirect = () =>{
             window.location.href='/';
         }
 
     return(
         <React.Fragment>
-            <CreateForm /* redirect={redirect} *//>  
+            <CreateForm  redirect={redirect} />  
         </React.Fragment>
     )
-}
+} */
 
-/* class Create extends React.Component{
+ class CreateDenuncia extends React.Component{
     redirect = () =>{
         this.props.history.push("/");
     }
@@ -53,5 +53,5 @@ const CreateDenuncia = () => {
         );
     }
 }
-*/
+
 export default CreateDenuncia; 

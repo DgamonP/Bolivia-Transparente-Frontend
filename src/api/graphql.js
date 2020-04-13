@@ -105,7 +105,7 @@ async function createUser(emailIn, firstNameIn, lastName1In, lastName2In, age, p
   let myResult;
   const ADD_USER = `
   mutation{
-    createUserEmail(userInput:{email:"${emailIn}",firstName:"${firstNameIn}",lastName1:"${lastName1In}",lastName2:"${lastName2In}",age:${age},phoneNumber:"${phoneNumberIn}",CI:"${CIIn}",CIExp:"${CIExpIn}",gender:"${genderIn}",password:"${passwordIn}"}){
+    createUser(userInput:{email:"${emailIn}",firstName:"${firstNameIn}",lastName1:"${lastName1In}",lastName2:"${lastName2In}",age:"${age}",phoneNumber:"${phoneNumberIn}",CI:"${CIIn}",CIExp:"${CIExpIn}",gender:"${genderIn}",password:"${passwordIn}"}){
       _id,
       email,
       firstName
