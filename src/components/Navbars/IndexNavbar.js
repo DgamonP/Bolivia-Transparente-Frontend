@@ -1,5 +1,6 @@
 import React from "react";
 // nodejs library that concatenates strings
+//import logo from '../'
 import { Link } from "react-router-dom";
 import classnames from "classnames";
 import AuthContext from '../../context/auth-context';
@@ -53,13 +54,33 @@ function IndexNavbar() {
           <Navbar className={classnames("fixed-top", navbarColor)} expand="lg">
             <Container>
               <div className="navbar-translate">
-                <NavbarBrand
+                {/* <NavbarBrand
                   data-placement="bottom"
                   href="/"
                   target="_blank"
                   title="Coded by DeMS2020"
                   tag={Link}
-                > Ministerio de Gobierno
+                 > Ministerio de Gobierno
+                </NavbarBrand> */}
+               <NavbarBrand href="/">
+                  <img
+                    alt=""
+                    src="/assets/img/logoSinFondo.png"
+                    width="30"
+                    height="30"
+                    className="d-inline-block align-top"
+                  />
+                  React Bootstrap
+                </NavbarBrand>
+                <NavbarBrand>
+{/*                   <a class="navbar-brand" href="/">
+                    <img id="logo" class="d-inline-block mr-1" alt="Logo" src="assets/img/logo-jetze-kunnen.png"> 
+                      <div class="d-inline-block mr-1">Jetze Kunnen<span>hoveniersbedrijf</span></div>
+                  </a>
+ */}                  
+                  {/* <a class="navbar-brand" href="/">
+                    <img src={logo} width="128" height="48" alt="Gobierno de México">
+                  </a> */}
                 </NavbarBrand>                
                 <button
                   aria-expanded={navbarCollapse}
