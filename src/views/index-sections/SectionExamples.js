@@ -34,7 +34,7 @@ function SectionExamples() {
                 <img
                   alt="..."
                   className="img-rounded img-responsive"
-                  src={require("assets/img/examples/landing-page.png")}
+                  src={require("assets/img/examples/webBoliviaTransparente.png")}
                   style={{ width: "100%" }}
                 />
               </a>
@@ -44,7 +44,7 @@ function SectionExamples() {
                 href="/landing-page"
                 target="_blank"
               >
-                Landing Page
+                Web Bolivia Transparente
               </Button>
             </Col>
             <Col className="text-center" md="6">

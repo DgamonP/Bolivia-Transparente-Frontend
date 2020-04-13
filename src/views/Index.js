@@ -42,11 +42,11 @@ function Index() {
         <SectionNotifications />
         <SectionTypography />
         <SectionJavaScript /> */}
-        <SectionCarousel />
+        <SectionExamples />
         <SectionNucleoIcons />
         {/* <SectionDark />
         <SectionLogin /> */}
-        <SectionExamples />
+        <SectionCarousel />
         <SectionDownload />
         <DemoFooter />
       </div>
