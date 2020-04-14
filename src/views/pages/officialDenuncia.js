@@ -1,20 +1,27 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 //import state from '../../model/state'
-import CreateForm from '../../components/comp-forms/createForm'
-import AuthContext from '../../context/auth-context';
+import CreateForm from "../../components/comp-forms/createForm";
+import AuthContext from "../../context/auth-context";
 
 const OfficialDenuncia = () => {
-   const [token, setToken] = useState(window.localStorage.getItem('token'))
-    
-    return(
-        <AuthContext.Provider
-        value={{ token }}>
-            <React.Fragment>
-                <CreateForm /* redirect={redirect} *//>  
-        </React.Fragment>
-        </AuthContext.Provider>
-    )
-}
+  const [token, setToken] = useState(window.localStorage.getItem("token"));
+
+  return (
+    <AuthContext.Provider value={{ token }}>
+      <React.Fragment>
+        <div
+            className="page-header"
+            style={{
+            backgroundImage:
+              "url(" + require("assets/img/backgroundForm.png") + ")",
+            }}
+        >
+        <CreateForm /* redirect={redirect} */ />
+        </div>
+      </React.Fragment>
+    </AuthContext.Provider>
+  );
+};
 
 /* class Create extends React.Component{
     redirect = () =>{
@@ -37,4 +44,4 @@ const OfficialDenuncia = () => {
     }
 }
 */
-export default OfficialDenuncia; 
+export default OfficialDenuncia;

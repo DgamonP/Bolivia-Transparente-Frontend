@@ -169,7 +169,8 @@ class CreateForm extends React.Component{
     render(){
         return(
         <div>
-            <h1 style={{padding:24}}> Nueva Denuncia</h1>
+            <br/><br/><br/>
+            <h2 style={{padding:12}}> Nueva Denuncia</h2>
             <form onSubmit = {this.handleSubmit}>
                 <div>
                     <div className="row">

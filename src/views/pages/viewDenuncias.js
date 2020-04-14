@@ -1,12 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+
+import CreateForm from "../../components/comp-forms/createForm";
+//import AuthContext from './context/auth-context';
+import IndexNavbar from "../../components/Navbars/IndexNavbar.js";
+import Form from "react-bootstrap/Form";
 
 const ViewDenuncias = () => {
-  return(
+  const [token, setToken] = useState(null);
+
+  return (
     <React.Fragment>
-    <h1>Lista de Mis Denuncias</h1>
-    <h2>Introduzca su codigo de Denuncia</h2>
+      <IndexNavbar />
+      <div
+        className="page-header"
+        style={{
+          backgroundImage:
+            "url(" + require("assets/img/backgroundForm.png") + ")",
+        }}
+      >
+        <div>
+          <Form>
+            <Form.File
+              id="custom-file-translate-scss"
+              label="Custom file input"
+              lang="en"
+              custom
+            />
+          </Form>
+        </div>
+      </div>    
+      <h5>Ministerio de Tranparencia</h5>
     </React.Fragment>
-  )
-}
+  );
+};
 
 export default ViewDenuncias;

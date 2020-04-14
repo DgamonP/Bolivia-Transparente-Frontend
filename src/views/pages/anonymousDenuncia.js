@@ -1,37 +1,44 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 
-import CreateForm from '../../components/comp-forms/createForm'
+import CreateForm from "../../components/comp-forms/createForm";
 //import AuthContext from './context/auth-context';
-import IndexNavbar from "../";
-
+import IndexNavbar from "../../components/Navbars/IndexNavbar.js";
+import Form from "react-bootstrap/Form";
 
 const AnonymousDenuncia = () => {
-    const [token, setToken] = useState(null)
-/* 
-      useEffect(()=> {
-        console.log("TOKEN BEFERO", token)
-        setToken(window.localStorage.getItem('token'))
-        console.log("TOKEN AFTER", token)
-        }) */
+  const [token, setToken] = useState(null);
 
-       /*  var redirect = () => {
-        if (token === 'null'){
-            window.location.href='/singin';
-            } 
-            else {
-            console.log(token);
-            window.location.href='/'
-            }    
-        } */
-    
-
-    return(
-        <IndexNavbar />        
-        <React.Fragment>
-          <h1>Quieres efectuar una denuncia anonima??</h1>
-            {/* <CreateForm redirect={redirect}/>  */} 
-        </React.Fragment>
-    )
-}
+  return (
+    <React.Fragment>
+      <IndexNavbar />
+      <div
+        className="page-header"
+        style={{
+          backgroundImage:
+            "url(" + require("assets/img/backgroundForm.png") + ")",
+        }}
+      >
+        <div>
+          <Form>
+            <Form.File
+              id="custom-file-translate-scss"
+              label="Custom file input"
+              lang="en"
+              custom
+            />
+          </Form>
+          <Form>
+            <Form.Check
+              type="switch"
+              id="custom-switch"
+              label="Realizar denuncia anonima"
+            />
+          </Form>
+        </div>
+      </div>    
+      <h5>Ministerio de Tranparencia</h5>
+    </React.Fragment>
+  );
+};
 
 export default AnonymousDenuncia;

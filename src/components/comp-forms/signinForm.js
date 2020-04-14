@@ -47,7 +47,7 @@ function SigninForm(props){
                 {props.network && <div className="alert alert-danger"> Fallo de comunicación, inténtelo más tarde </div>}
             </div>
             <div align="center" width="100%">
-                <Button style={{padding: 24}} onClick={props.login} type="button" size="small" color="primary" target="_blank">
+                <Button variant="secondary" style={{padding: 14}} onClick={props.login} type="button" size="small" color="primary" target="_blank">
                     Ingresar
                 </Button>
             </div>

@@ -6,6 +6,7 @@ import "assets/css/bootstrap.min.css";
 import "assets/scss/paper-kit.scss";
 import "assets/demo/demo.css";
 // pages
+import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Index from "views/Index.js";
 //import LandingPage from "views/pages/LandingPage.js";
 import LandingPage from "views/pages/LandingPage";
@@ -37,6 +38,7 @@ const App = () => {
       <AuthContext.Provider
         value={{ logout, token }}>
         <React.Fragment>
+        <IndexNavbar />
           <Switch>
               {console.log("TOKEN EXIST?", token)}              
               {(token === "null") && (<Redirect from="/myDenuncias" to="/" /> )}
