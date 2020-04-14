@@ -1,21 +1,3 @@
-/*!
-
-=========================================================
-* Paper Kit React - v1.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-kit-react
-
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/paper-kit-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
 
 // reactstrap components
@@ -26,9 +8,9 @@ import { Button, Container, Row, Col, UncontrolledTooltip } from "reactstrap";
 function SectionDownload() {
   return (
     <>
-      <div className="section">
+       <div className="section">
         <Container className="text-center">
-          <Row>
+         {/* <Row>
             <Col className="ml-auto mr-auto text-center" md="8">
               <h2 className="title">Do you like what you see?</h2>
               <p className="description">
@@ -66,18 +48,18 @@ function SectionDownload() {
                 Upgrade to PRO
               </Button>
             </Col>
-          </Row>
+          </Row> */}
           <Row className="justify-content-md-center sharing-area text-center">
             <Col className="text-center" lg="8" md="12">
-              <h3>Thank you for supporting us!</h3>
+              <h3>Siguenos en Nuestras Redes Sociales</h3>
             </Col>
             <Col className="text-center" lg="8" md="12">
               <Button
                 className="twitter-sharrre btn-round"
                 color="twitter-bg"
-                href="#pablo"
+                href="https://twitter.com/MindeGobierno"
                 id="tooltip3373767"
-                onClick={e => e.preventDefault()}
+                //onClick={e => e.preventDefault()}
               >
                 <i className="fa fa-twitter" /> Twitter
               </Button>
@@ -87,11 +69,11 @@ function SectionDownload() {
               <Button
                 className="linkedin-sharrre btn-round  ml-2"
                 color="google-bg"
-                href="#pablo"
+                href="https://www.youtube.com/user/1248973"
                 id="tooltip840791273"
-                onClick={e => e.preventDefault()}
+                //onClick={e => e.preventDefault()}
               >
-                <i className="fa fa-google-plus" /> Google
+                <i className="fa fa-youtube" /> Youtube
               </Button>
               <UncontrolledTooltip delay={0} target="tooltip840791273">
                 Share!
@@ -99,9 +81,9 @@ function SectionDownload() {
               <Button
                 className="facebook-sharrre btn-round ml-2"
                 color="facebook-bg"
-                href="#pablo"
+                href="https://www.facebook.com/MindeGobierno/"
                 id="tooltip68961360"
-                onClick={e => e.preventDefault()}
+                //onClick={e => e.preventDefault()}
               >
                 <i className="fa fa-facebook-square" /> Facebook
               </Button>
@@ -111,14 +93,14 @@ function SectionDownload() {
               <Button
                 className="sharrre btn-round ml-2"
                 color="github-bg"
-                href="https://github.com/creativetimofficial/paper-kit-react?ref=creativetim"
+                href=""
                 target="_blank"
                 id="tooltip864353654"
               >
-                <i className="fa fa-github" /> Star
+                <i className="fa fa-instagram" /> Instagram
               </Button>
               <UncontrolledTooltip delay={0} target="tooltip864353654">
-                Star on Github
+                Instagram
               </UncontrolledTooltip>
             </Col>
           </Row>

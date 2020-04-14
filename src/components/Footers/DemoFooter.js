@@ -39,8 +39,8 @@ function DemoFooter() {
           </nav>
           <div className="credits ml-auto">
             <span className="copyright">
-              © {new Date().getFullYear()}, made with{" "}
-              <i className="fa fa-heart heart" /> by Creative Tim
+              © {new Date().getFullYear()}, Hecho con {" "}
+              <i className="fa fa-heart heart" /> Ministerio de Transparencia
             </span>
           </div>
         </Row>

@@ -42,13 +42,13 @@ function IndexHeader() {
         <h6 className="category category-absolute">
           Diseñado por DeMS{" "}
           <a
-            href="https://www.creative-tim.com?ref=pkr-index-page"
+            href="http://deepmicrosystems.com/"
             target="_blank"
           >
             <img
               alt="..."
               className="creative-tim-logo"
-              /* src={require("assets/img/creative-tim-white-slim2.png")} */
+             src={require("assets/img/logoDeMS.png")}
             />
           </a>
         </h6>

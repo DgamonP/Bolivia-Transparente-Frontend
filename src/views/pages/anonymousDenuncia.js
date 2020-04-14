@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 
 import CreateForm from '../../components/comp-forms/createForm'
 //import AuthContext from './context/auth-context';
+import IndexNavbar from "../";
+
 
 const AnonymousDenuncia = () => {
     const [token, setToken] = useState(null)
@@ -23,7 +25,8 @@ const AnonymousDenuncia = () => {
         } */
     
 
-    return(        
+    return(
+        <IndexNavbar />        
         <React.Fragment>
           <h1>Quieres efectuar una denuncia anonima??</h1>
             {/* <CreateForm redirect={redirect}/>  */} 
