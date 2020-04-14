@@ -19,7 +19,7 @@ const items = [
   {
     src: require("assets/img/pasosWeb.png"),
     altText: "Somewhere",
-    caption: "Somewhere"
+    caption: ""
   },
   {
     src: require("assets/img/transparencia.png"),
@@ -29,7 +29,7 @@ const items = [
   {
     src: require("assets/img/pasosApp.png"),
     altText: "Here it is",
-    caption: "Here it is"
+    caption: ""
   }
 ];
 
@@ -92,7 +92,7 @@ function SectionCarousel() {
                   <a
                     className="left carousel-control carousel-control-prev"
                     data-slide="prev"
-                    href="#pablo"
+                    href="#david"
                     onClick={e => {
                       e.preventDefault();
                       previous();
@@ -105,7 +105,7 @@ function SectionCarousel() {
                   <a
                     className="right carousel-control carousel-control-next"
                     data-slide="next"
-                    href="#pablo"
+                    href="#david"
                     onClick={e => {
                       e.preventDefault();
                       next();
