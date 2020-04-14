@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 
 // reactstrap components
 
@@ -31,7 +31,7 @@ function Index() {
     };
   });
   return (
-    <>
+    <Fragment>
       <IndexNavbar />
       <IndexHeader />
       <div className="main">
@@ -42,15 +42,15 @@ function Index() {
         <SectionNotifications />
         <SectionTypography />
         <SectionJavaScript /> */}
-        <SectionCarousel />
         <SectionNucleoIcons />
         {/* <SectionDark />
-        <SectionLogin /> */}
+        <SectionLogin /> */}        
+        <SectionCarousel />
         <SectionExamples />
         <SectionDownload />
         <DemoFooter />
       </div>
-    </>
+    </Fragment>
   );
 }
 

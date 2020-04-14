@@ -21,12 +21,12 @@ function IndexHeader() {
           <Container>
             <div className="title-brand">
               <h1 className="presentation-title">Bolivia Transparente</h1>
-              <div className="fog-low">
+              {/* <div className="fog-low">
                 <img alt="..." src={require("assets/img/fog-low.png")} />
               </div>
               <div className="fog-low right">
                 <img alt="..." src={require("assets/img/fog-low.png")} />
-              </div>
+              </div> */}
             </div>
             <h2 className="presentation-subtitle text-center">
               Realiza tus Denuncias en este Portal
@@ -42,13 +42,13 @@ function IndexHeader() {
         <h6 className="category category-absolute">
           Diseñado por DeMS{" "}
           <a
-            href="https://www.creative-tim.com?ref=pkr-index-page"
+            href="http://deepmicrosystems.com/"
             target="_blank"
           >
             <img
               alt="..."
               className="creative-tim-logo"
-              /* src={require("assets/img/creative-tim-white-slim2.png")} */
+             src={require("assets/img/logoDeMS.png")}
             />
           </a>
         </h6>

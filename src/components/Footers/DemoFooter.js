@@ -13,10 +13,10 @@ function DemoFooter() {
             <ul>
               <li>
                 <a
-                  href="https://www.creative-tim.com?ref=pkr-footer"
+                  href="http://deepmicrosystems.com/"
                   target="_blank"
                 >
-                  Creative Tim
+                  DeMS2020
                 </a>
               </li>
               <li>
@@ -32,15 +32,15 @@ function DemoFooter() {
                   href="https://www.creative-tim.com/license?ref=pkr-footer"
                   target="_blank"
                 >
-                  Licenses
+                  Licencia
                 </a>
               </li>
             </ul>
           </nav>
           <div className="credits ml-auto">
             <span className="copyright">
-              © {new Date().getFullYear()}, made with{" "}
-              <i className="fa fa-heart heart" /> by Creative Tim
+              © {new Date().getFullYear()}, Hecho con {" "}
+              <i className="fa fa-heart heart" /> Ministerio de Transparencia
             </span>
           </div>
         </Row>
