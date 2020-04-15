@@ -49,7 +49,8 @@ class SigninFormComponent extends React.Component{
                         console.log("Login successful, new token is:");
                         console.log(token);
                         this.setState({warning:false, error:null});
-                        this.props.redirect();
+                        window.location.href='/';
+                        //this.props.redirect();
                     }
                 }).catch(error=>{
                     console.log(error);
