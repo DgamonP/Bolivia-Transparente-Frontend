@@ -10,8 +10,6 @@ import FileUploader from "react-firebase-file-uploader";
 import videoPlaceholder from '../../images/videoPlaceholder.jpeg'
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-// import {SingleDatePicker} from 'react-dates';
-
 const config = {
     apiKey: "AIzaSyCb2RE1ifVk5Atyy48Jgs0LIZx6H3wLBWs",
     authDomain: "ministerio-gob-app.firebaseapp.com",
@@ -277,7 +275,6 @@ class CreateForm extends React.Component{
                 </div>
                 <div className="flexcontainer">
                     {this.state.form.imagesURL.map(currentUrl=>{
-                        // Not working: onClick={() => {this._removeImage(currentUrl)}} 
                         return(<div onClick={() => {this._removeImage(currentUrl)}} className="flexitem" key={currentUrl}>
                             {currentUrl && <img src={currentUrl} style={{padding: 24}} width="320px"/>}
                             {false && currentUrl && <p className="legend">currentUrl</p>}

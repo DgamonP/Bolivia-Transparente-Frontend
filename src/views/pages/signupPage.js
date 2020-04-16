@@ -39,9 +39,6 @@ class SignUpPage extends React.Component {
           }}
         >
           <div>
-            {/* <div className="BadgeNew__hero">
-                        <img className="Navbar__brand-logo" src={logo} alt="Ministerio de Gobierno" height="160"/>
-                    </div> */}
             <div className="container">
               <div className="row">
                 <div className="col-6" align="center">

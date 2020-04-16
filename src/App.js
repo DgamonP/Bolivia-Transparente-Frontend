@@ -1,4 +1,4 @@
-import React,  {useState, useEffect} from "react";
+import React,  { useState, useEffect } from "react";
 //import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 // styles
@@ -8,9 +8,7 @@ import "assets/demo/demo.css";
 // pages
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Index from "views/Index.js";
-//import LandingPage from "views/pages/LandingPage.js";
-import LandingPage from "views/pages/LandingPage";
-import LoginPage from "views/pages/LoginPage.js";
+//import LoginPage from "views/pages/LoginPage.js";
 // others pages alvaro
 import AnonymousDenuncia from './views/pages/anonymousDenuncia';
 import OfficialDenuncia from './views/pages/officialDenuncia';
@@ -27,7 +25,7 @@ const App = () => {
     console.log("TOKEN BEFERO", token)
     setToken(window.localStorage.getItem('token'))
     console.log("TOKEN AFTER", token)
-  },[])
+  },)
 
   const logout = () => {
     window.localStorage.setItem("token", null)

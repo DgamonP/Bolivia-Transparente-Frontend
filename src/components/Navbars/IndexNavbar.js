@@ -1,7 +1,4 @@
 import React from "react";
-// nodejs library that concatenates strings
-//import { logo } from '..'
-//import logo from './'
 import './logo.css'
 import logo from './logoHomeEB.png'
 import { Link } from "react-router-dom";
@@ -12,7 +9,6 @@ import AuthContext from '../../context/auth-context';
 import {
   Button,
   Collapse,
-  NavbarBrand,
   Navbar,
   NavItem,
   NavLink,

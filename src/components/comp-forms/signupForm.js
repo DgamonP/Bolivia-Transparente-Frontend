@@ -66,10 +66,12 @@ class SignupForm extends React.Component{
                                 let token = results.data.data.login.token
                                 if(token){
                                     state.token = token;
+                                    window.localStorage.setItem('token',token)
                                     console.log("Signup successful, new token is:");
                                     console.log(token);
                                     this.setState({warning:false, error:null});
-                                    this.props.redirect();
+                                    window.location.href='/officialDenuncia';
+                                    /* this.props.redirect(); */
                                 }
                             }).catch(error=>{
                                 this.setState({couldNotConnect: true})
@@ -280,9 +282,18 @@ class SignupForm extends React.Component{
                     {this.state.userAlreadyExist && <div className="alert alert-warning"> El usuario ya está registrado </div>}
                 </div>
                 <div align="center" width="100%">
-                    <Button style={{padding: 24}} type="button" onClick={this.signupAndLogin} size="small" color="primary" target="_blank">
-                        Registrarse
+                    <Button
+                    className="btn-round mr-1"
+                    color="warning"
+                    outline
+                    onClick={this.signupAndLogin}
+                    type="button"
+                    >
+                    Registrarse
                     </Button>
+                    {/* <Button style={{padding: 24}} type="button" onClick={this.signupAndLogin} size="small" color="primary" target="_blank">
+                        Registrarse
+                    </Button> */}
                 </div>
             </form>
         </div>);
