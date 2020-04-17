@@ -19,7 +19,11 @@ const items = [
   {
     src: require("assets/img/denunciaFormal.png"),
     altText: "Somewhere",
+<<<<<<< HEAD:src/views/index-sections/sectionCarousel.js
     caption: " "
+=======
+    caption: ""
+>>>>>>> a910646d305226d7e830a20874a13efa76b1a070:src/views/index-sections/SectionCarousel.js
   },
   {
     src: require("assets/img/transparencia.png"),
@@ -29,7 +33,11 @@ const items = [
   {
     src: require("assets/img/denunciaAnonima.png"),
     altText: "Here it is",
+<<<<<<< HEAD:src/views/index-sections/sectionCarousel.js
     caption: " "
+=======
+    caption: ""
+>>>>>>> a910646d305226d7e830a20874a13efa76b1a070:src/views/index-sections/SectionCarousel.js
   }
 ];
 
@@ -92,7 +100,7 @@ function SectionCarousel() {
                   <a
                     className="left carousel-control carousel-control-prev"
                     data-slide="prev"
-                    href="#pablo"
+                    href="#david"
                     onClick={e => {
                       e.preventDefault();
                       previous();
@@ -105,7 +113,7 @@ function SectionCarousel() {
                   <a
                     className="right carousel-control carousel-control-next"
                     data-slide="next"
-                    href="#pablo"
+                    href="#david"
                     onClick={e => {
                       e.preventDefault();
                       next();
