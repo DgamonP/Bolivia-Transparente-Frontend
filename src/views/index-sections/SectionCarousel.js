@@ -17,7 +17,7 @@ import {
 
 const items = [
   {
-    src: require("assets/img/pasosWeb.png"),
+    src: require("assets/img/denunciaFormal.png"),
     altText: "Somewhere",
     caption: "Somewhere"
   },
@@ -27,7 +27,7 @@ const items = [
     caption: " "
   },
   {
-    src: require("assets/img/pasosApp.png"),
+    src: require("assets/img/denunciaAnonima.png"),
     altText: "Here it is",
     caption: "Here it is"
   }
