@@ -7,10 +7,10 @@ import IndexHeader from "components/Headers/IndexHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 
 // index sections
-import SectionCarousel from "views/index-sections/SectionCarousel.js";
-import SectionNucleoIcons from "views/index-sections/SectionNucleoIcons.js";
-import SectionExamples from "views/index-sections/SectionExamples.js";
-import SectionDownload from "views/index-sections/SectionDownload.js";
+import SectionCarousel from "views/index-sections/sectionCarousel.js";
+import SectionNucleoIcons from "views/index-sections/sectionNucleoIcons.js";
+import SectionExamples from "views/index-sections/sectionExamples.js";
+import SectionDownload from "views/index-sections/sectionDownload.js";
 
 function Index() {
   document.documentElement.classList.remove("nav-open");
