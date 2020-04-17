@@ -19,11 +19,7 @@ const items = [
   {
     src: require("assets/img/denunciaFormal.png"),
     altText: "Somewhere",
-<<<<<<< HEAD:src/views/index-sections/sectionCarousel.js
     caption: " "
-=======
-    caption: ""
->>>>>>> a910646d305226d7e830a20874a13efa76b1a070:src/views/index-sections/SectionCarousel.js
   },
   {
     src: require("assets/img/transparencia.png"),
@@ -33,11 +29,7 @@ const items = [
   {
     src: require("assets/img/denunciaAnonima.png"),
     altText: "Here it is",
-<<<<<<< HEAD:src/views/index-sections/sectionCarousel.js
     caption: " "
-=======
-    caption: ""
->>>>>>> a910646d305226d7e830a20874a13efa76b1a070:src/views/index-sections/SectionCarousel.js
   }
 ];
 
