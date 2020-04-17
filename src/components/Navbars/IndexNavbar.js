@@ -52,11 +52,10 @@ function IndexNavbar() {
         return (
           <Navbar className={classnames("fixed-top", navbarColor)} expand="lg"> 
             <Container>
-              <div className="logo">
+              <div className="navbar-translate">
               <a href = "/">
                   <img className="logo" src={logo} alt="Ministerio de Gobierno" height="60"/>
               </a>
-              <div/>
                 <button
                   aria-expanded={navbarCollapse}
                   className={classnames("navbar-toggler navbar-toggler", {
@@ -97,23 +96,12 @@ function IndexNavbar() {
                       <i className="fa fa-facebook-square" />
                       <p className="d-lg-none">Facebook</p>
                     </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink
-                      data-placement="bottom"
-                      href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
-                      target="_blank"
-                      title="Follow us on Instagram"
-                    >
-                      <i className="fa fa-instagram" />
-                      <p className="d-lg-none">Instagram</p>
-                    </NavLink>
-                  </NavItem>                
-                  <NavItem>
+                  </NavItem>              
+                  {/* <NavItem>
                       <NavLink to="/" tag={Link}>
                         <i className="nc-icon nc-layout-11" /> Inicio
                       </NavLink>
-                    </NavItem>                               
+                  </NavItem> */}                               
                  {context.token === 'null' &&
                     <NavItem>
                       <NavLink to="/viewDenuncias" tag={Link}>
@@ -124,14 +112,14 @@ function IndexNavbar() {
                  {context.token !== 'null' &&
                     <NavItem>
                       <NavLink to="/myDenuncias" tag={Link}>
-                        <i className="nc-icon nc-book-bookmark" /> Mis Denuncias
+                        <i className="nc-icon nc-single-copy-04" /> Mis Denuncias
                       </NavLink>
                     </NavItem>                  
                  }
                  {context.token === 'null' &&
                     <NavItem>
                       <NavLink to="/signin" tag={Link}>
-                        <i className="nc-icon nc-layout-11" /> Iniciar Sesión
+                        <i className="nc-icon nc-single-02" /> Iniciar Sesión
                       </NavLink>
                     </NavItem>                  
                  }
@@ -144,7 +132,7 @@ function IndexNavbar() {
                                 window.location.href='/'}
                               }
                               tag={Link}>
-                        <i className="nc-icon nc-layout-11" /> Cerrar Sesión
+                        <i className="nc-icon nc-user-run" /> Cerrar Sesión
                       </NavLink>
                     </NavItem>                  
                  }          
@@ -157,7 +145,8 @@ function IndexNavbar() {
                       color="warning"
                       href=" "                      
                       disabled
-                    > Denuncia Anonima
+                    ><i className="nc-icon nc-tap-01" />
+                       Denuncia Anonima
                     </Button>
                     </a>}  
                   </NavItem>
@@ -170,16 +159,12 @@ function IndexNavbar() {
                       color="success"
                       href=" /"                      
                       disabled                      
-                    > 
-                      Denuncia Oficial 
+                    ><i className="nc-icon nc-tap-01" />
+                       Denuncia Oficial 
                     </Button>
-                    </a>  }
+                    </a>  
+                    }
                   </NavItem>
-                  {/* <NavItem>
-                  <Button type="button" class="btn btn-outline-success and-all-other-classes"> 
-                    <a href="signin" style="color:inherit"> Button  </a>
-                  </Button>
-                  </NavItem> */}
                 </Nav>
               </Collapse>
             </Container>
@@ -190,6 +175,5 @@ function IndexNavbar() {
     </AuthContext.Consumer>
   );
 }
-
 
 export default IndexNavbar;
