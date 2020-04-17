@@ -19,7 +19,7 @@ const items = [
   {
     src: require("assets/img/denunciaFormal.png"),
     altText: "Somewhere",
-    caption: "Somewhere"
+    caption: " "
   },
   {
     src: require("assets/img/transparencia.png"),
@@ -29,7 +29,7 @@ const items = [
   {
     src: require("assets/img/denunciaAnonima.png"),
     altText: "Here it is",
-    caption: "Here it is"
+    caption: " "
   }
 ];
 
@@ -62,7 +62,7 @@ function SectionCarousel() {
         <Container>
         <h3 className="title">Como Crear una Denuncia</h3>
           <Row>
-            <Col className="ml-auto mr-auto" md="8">
+            <Col className="ml-auto mr-auto" md="10">
               <Card className="page-carousel">
                 <Carousel
                   activeIndex={activeIndex}
