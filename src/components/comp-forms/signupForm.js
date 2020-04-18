@@ -63,7 +63,7 @@ class SignupForm extends React.Component{
                             .then(results=>{
                                 console.log("Login Result Login");
                                 console.log(results);
-                                let token = results.data.data.login.token
+                                let token = results.login.token
                                 if(token){
                                     state.token = token;
                                     console.log("Signup successful, new token is:");
@@ -84,7 +84,7 @@ class SignupForm extends React.Component{
     
     render(){
         return(
-        <div>
+        <React.Fragment>
             <h1 style={{padding:24}}> Nuevo Denunciante</h1>
             <form onSubmit = {this.handleSubmit}>
                 <div className = "form-group">
@@ -280,12 +280,18 @@ class SignupForm extends React.Component{
                     {this.state.userAlreadyExist && <div className="alert alert-warning"> El usuario ya está registrado </div>}
                 </div>
                 <div align="center" width="100%">
-                    <Button style={{padding: 24}} type="button" onClick={this.signupAndLogin} size="small" color="primary" target="_blank">
+                    <Button
+                        style   = {{padding: 24}}
+                        type    = "button"
+                        onClick = {this.signupAndLogin}
+                        size    = "small"
+                        color   = "primary"
+                        target  = "_blank">
                         Registrarse
                     </Button>
                 </div>
             </form>
-        </div>);
+        </React.Fragment>);
     }
 }
 
