@@ -10,31 +10,37 @@ async function fetchToJson(callQuery, currentToken, order= "request"){
   // call query must be in the same form of a graphiql query
   // current token can be "" in case of Un authenticated cal
   // order is used to decode the final string that uses to come in the form result.data.<order>, seems to be the same as the graphql order, be careful detecting this one
-  console.log("Comment", order);
+
+  //console.log("Comment", order);
   let momentResult;
-  await fetch(url, {
-    method: 'POST',
-    body: JSON.stringify({ query: callQuery}),
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${
-        currentToken
-      }`
+  try{
+    let result = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({ query: callQuery}),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${
+          currentToken
+        }`
+      }
+    });
+    let jsonResult = await result.json();
+    //console.log("Decoded json result:", jsonResult);
+    if(jsonResult.errors){
+      //console.log("Throwing backend error: ", jsonResult.errors[0].message);
+      throw Error(jsonResult.errors[0].message);
     }
-  }).then(async result =>{
-    // console.log("Got fetch result", result);
-    await result.json()
-      .then(myResult=>{
-        momentResult = myResult.data[order];
-        // return myResult;
-      })
-      .catch((error)=>{
-        console.log(error)
-        throw Error(`Could not decode JSON for ${order}`);});
-  }).catch((error)=>{
-    console.log(error)
+    else{
+      if(!jsonResult.data){
+        throw Error("Empty results received");
+      }
+      momentResult = jsonResult.data[order];
+    }
+  }
+  catch(error){
+    //console.log(error)
     throw error;
-  }); 
+  }; 
   console.log("Fetch result", momentResult);
   return momentResult;
 }
@@ -165,9 +171,9 @@ async function createUser(emailIn, firstNameIn, lastName1In, lastName2In, age, p
   console.log("Create user...");
   console.log(ADD_USER);
 
-  let myResult = await fetchToJson(ADD_USER, "", "createUser");
+  let createUserResult = await fetchToJson(ADD_USER, "", "createUser");
 
-  return myResult;
+  return createUserResult;
 }
 
 export {createUser, getEvent, signIn, createReport};

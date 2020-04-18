@@ -38,13 +38,13 @@ function SigninForm(props){
                     />
             </div>
             <div align="center" style={{paddingLeft: 24, paddingRigth: 24}}>
-                {props.warning && <div className="alert alert-warning"> Por favor introduzca sus credenciales </div>}
+                {props.warning && <div className="alert alert-warning"> Por favor introduzca su correo y contraseña. </div>}
             </div>
             <div align="center" style={{paddingLeft: 24, paddingRigth: 24}}>
-                {props.errorLogin && <div className="alert alert-warning"> El usuario ingresado no existe </div>}
+                {props.errorLogin && <div className="alert alert-warning"> El usuario ingresado no existe. </div>}
             </div>
             <div align="center" style={{paddingLeft: 24, paddingRigth: 24}}>
-                {props.network && <div className="alert alert-danger"> Fallo de comunicación, inténtelo más tarde </div>}
+                {props.network && <div className="alert alert-danger"> Fallo de comunicación, inténtelo más tarde. </div>}
             </div>
             <div align="center" width="100%">
                 <Button style={{padding: 24}} onClick={props.login} type="button" size="small" color="primary" target="_blank">

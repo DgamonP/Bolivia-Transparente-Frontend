@@ -55,13 +55,15 @@ class SigninFormComponent extends React.Component{
                         // window.location.href='/';
                     }
                 }).catch(error=>{
-                    console.log(error);
-                    if(error === "Network Error"){          //TODO not working by now
+                    console.log("Message: ", error.message);
+                    if(error.message === "NetworkError when attempting to fetch resource."){
                         console.log("Problema de comunicación");
                         this.setState({network:error, warning:false});
-                    }else{                          // by now: Request failed with status code 500
-                        console.log("Login error");
-                        this.setState({errorLogin:true, warning:false});
+                    }else{                         // by now: Request failed with status code 500
+                        if(error.message==="The provided EMAIL does not exist!"){
+                            console.log("Login error");
+                            this.setState({errorLogin: true, warning: false});
+                        }
                     }
                 });
         }
