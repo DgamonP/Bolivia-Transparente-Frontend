@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+// { useState, useEffect }
 
-import CreateForm from "../../components/comp-forms/createForm";
-//import AuthContext from './context/auth-context';
+// import CreateForm from "../../components/comp-forms/createForm";
+// import AuthContext from './context/auth-context';
 import IndexNavbar from "../../components/Navbars/IndexNavbar.js";
 import Form from "react-bootstrap/Form";
 
 const MyDenuncias = () => {
-  const [token, setToken] = useState(null);
+  // const [token, setToken] = useState(null);
 
   return (
     <React.Fragment>

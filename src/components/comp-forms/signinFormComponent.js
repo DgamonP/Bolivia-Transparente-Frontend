@@ -42,15 +42,22 @@ class SigninFormComponent extends React.Component{
                     console.log("Signin results:");
                     console.log(results);
 
-                    var token = results.data.data.login.token
+                    var token = results.token
                     if(token){
                         state.token = token;
-                        window.localStorage.setItem('token',token)
+                        window.localStorage.setItem('token',token);
+                        console.log("Saving user Id:",results.userId);
+                        window.localStorage.setItem('id', results.userId);
                         console.log("Login successful, new token is:");
                         console.log(token);
                         this.setState({warning:false, error:null});
+<<<<<<< HEAD
                         window.location.href='/';
                         //this.props.redirect();
+=======
+                        // this.props.redirect();
+                        // window.location.href='/';
+>>>>>>> e69511dc3698969ae32ee2c073f6e444adc637ae
                     }
                 }).catch(error=>{
                     console.log(error);

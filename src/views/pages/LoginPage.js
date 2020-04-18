@@ -50,7 +50,7 @@ const login = (user, pass)=> {
           console.log("Signin results:");
           console.log(results);
 
-          var token = results.data.data.login.token
+          var token = results.token
           if(token){
               //token = token;
               console.log("Login successful, new token is:");

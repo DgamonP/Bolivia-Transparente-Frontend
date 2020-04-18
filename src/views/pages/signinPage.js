@@ -1,55 +1,35 @@
 import React from 'react';
-import './styles/button.css';
-//import Button from '@material-ui/core/Button';
-import noViolencia from '../../images/noviolencia.jpeg';
+import "./styles/pages.css"
+import Button from '@material-ui/core/Button';
+import IndexNavbar from "../../components/Navbars/IndexNavbar.js";
 import SigninFormComponent from '../../components/comp-forms/signinFormComponent';
-import Button from 'react-bootstrap/Button'
 
 class SignInPage extends React.Component{
     redirect = () =>{
-        this.props.history.push("/");
+        this.props.history.push("/denunciar");
     }
     
     redirectToSignup = ()=>{
-        this.props.history.push("/signup");
+        this.props.history.push("/registro");
     }
 
     render(){
         return(
-         <React.Fragment>
-            <div
-                className="page-header"
-                style={{
-                backgroundImage:
-                    "url(" + require("assets/img/backgroundForm.png") + ")",
-                }}
-            >              
-                <div>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-6" align="center">
-                                <img style={{padding: 20}} className="Navbar__brand-logo" src={noViolencia} alt="Llamado a no violencia" width="100%"/>
-                                <div className="Badges__container">
-                                <Button variant="secondary" style={{padding: 12}} type="button" onClick={this.redirectToSignup} size="small" color="primary" target="_blank">
-                                    Registrarse
-                                </Button>
-                                    {/* <div className="Badges__buttons">
-                                        <Link to="/signup" className="btn btn-primary">
-                                            
-                                        </Link>
-                                    </div> */}
-                                </div>
-                            </div>
-                            <div className="col-6">
-                                <SigninFormComponent
-                                    onChange = {this.handleChange}
-                                    redirect = {this.redirect}/>
-                            </div>
-                        </div>
+            <React.Fragment>
+            <IndexNavbar />
+                <div className="init-container">
+                    <div className="init-item-background-2">
+                        <Button style={{padding: 24}} type="button" onClick={this.redirectToSignup} size="small" variant="contained" target="_blank">
+                            Registrarse
+                        </Button>
+                    </div>
+                    <div className="init-item">
+                        <SigninFormComponent
+                            onChange = {this.handleChange}
+                            redirect = {this.redirect}/>
                     </div>
                 </div>
-            </div>
-        </React.Fragment>
+            </React.Fragment>
         );
     }
 }

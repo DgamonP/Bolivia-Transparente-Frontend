@@ -63,7 +63,7 @@ class SignupForm extends React.Component{
                             .then(results=>{
                                 console.log("Login Result Login");
                                 console.log(results);
-                                let token = results.data.data.login.token
+                                let token = results.login.token
                                 if(token){
                                     state.token = token;
                                     window.localStorage.setItem('token',token)
@@ -86,7 +86,7 @@ class SignupForm extends React.Component{
     
     render(){
         return(
-        <div>
+        <React.Fragment>
             <h1 style={{padding:24}}> Nuevo Denunciante</h1>
             <form onSubmit = {this.handleSubmit}>
                 <div className = "form-group">
@@ -283,6 +283,7 @@ class SignupForm extends React.Component{
                 </div>
                 <div align="center" width="100%">
                     <Button
+<<<<<<< HEAD
                     className="btn-round mr-1"
                     color="warning"
                     outline
@@ -290,13 +291,22 @@ class SignupForm extends React.Component{
                     type="button"
                     >
                     Registrarse
+=======
+                        style   = {{padding: 24}}
+                        type    = "button"
+                        onClick = {this.signupAndLogin}
+                        size    = "small"
+                        color   = "primary"
+                        target  = "_blank">
+                        Registrarse
+>>>>>>> e69511dc3698969ae32ee2c073f6e444adc637ae
                     </Button>
                     {/* <Button style={{padding: 24}} type="button" onClick={this.signupAndLogin} size="small" color="primary" target="_blank">
                         Registrarse
                     </Button> */}
                 </div>
             </form>
-        </div>);
+        </React.Fragment>);
     }
 }
 

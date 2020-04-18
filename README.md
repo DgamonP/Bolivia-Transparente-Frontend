@@ -1,4 +1,4 @@
-# [Paper Kit React - Free Bootstrap 4, React, React Hooks and Reactstrap UI Kit](https://demos.creative-tim.com/paper-kit-react/#/index?ref=pkr-github-readme) ![version](https://img.shields.io/badge/version-1.0.0-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/material-kit.svg?maxAge=2592000)](https://github.com/creativetimofficial/paper-kit-react/issues?q=is%3Aopen+is%3Aissue) [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/paper-kit-react.svg?maxAge=2592000)](https://github.com/creativetimofficial/paper-kit-react/issues?q=is%3Aissue+is%3Aclosed) [![Join the chat at https://gitter.im/NIT-dgp/General](https://badges.gitter.im/NIT-dgp/General.svg)](https://gitter.im/creative-tim-general/Lobby) [![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/E4aHAQy)
+# [Bootstrap 4, React, React Hooks and Reactstrap UI Kit]![version](https://img.shields.io/badge/version-1.0.0-blue.svg) [![GitHub issues open] [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/paper-kit-react.svg?maxAge=2592000)](https://github.com/creativetimofficial/paper-kit-react/issues?q=is%3Aissue+is%3Aclosed) [![Join the chat at https://gitter.im/NIT-dgp/General](https://badges.gitter.im/NIT-dgp/General.svg)](https://gitter.im/creative-tim-general/Lobby) [![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/E4aHAQy)
 
 
 ### React Hooks support
@@ -33,9 +33,9 @@ Once you download the archive, you will be able find a tutorial page inside it e
 
 1.  Download the project's zip
 2.  Make sure you have node.js (<https://nodejs.org/en/>) installed
-3.  Type `npm install` in terminal/console in the source folder where `package.json` is located
+3.  Type `yarn install` in terminal/console in the source folder where `package.json` is located
 4.  You will find all the branding colors inside `src/assets/scss/paper-kit/_variables.scss`. You can change them with a `HEX` value or with other predefined variables.
-5.  Run in terminal `npm start`.
+5.  Run in terminal `yarn start`.
 
 ## Documentation
 
@@ -125,13 +125,8 @@ At present, we officially aim to support the last two versions of the following 
 
 - [Tutorials](https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w)
 - [Affiliate Program](https://www.creative-tim.com/affiliates/new?ref=pkr-github-readme) (earn money)
-- [Blog Creative Tim](http://blog.creative-tim.com/?ref=pkr-github-readme)
-- [Free Products](https://www.creative-tim.com/bootstrap-themes/free?ref=pkr-github-readme) from Creative Tim
-- [Premium Products](https://www.creative-tim.com/bootstrap-themes/premium?ref=pkr-github-readme) from Creative Tim
 - [React Products](https://www.creative-tim.com/bootstrap-themes/react-themes?ref=pkr-github-readme) from Creative Tim
 - [Angular Products](https://www.creative-tim.com/bootstrap-themes/angular-themes?ref=pkr-github-readme) from Creative Tim
 - [VueJS Products](https://www.creative-tim.com/bootstrap-themes/vuejs-themes?ref=pkr-github-readme) from Creative Tim
-- [More products](https://www.creative-tim.com/bootstrap-themes?ref=pkr-github-readme) from Creative Tim
-- Check our Bundles [here](https://www.creative-tim.com/bundles?ref=pkr-github-readme)
 
 ### Social Media

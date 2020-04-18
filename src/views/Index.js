@@ -4,7 +4,6 @@ import React, { Fragment } from "react";
 // core components
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import IndexHeader from "components/Headers/IndexHeader.js";
-import DemoFooter from "components/Footers/DemoFooter.js";
 
 // index sections
 import SectionCarousel from "views/index-sections/sectionCarousel.js";
@@ -29,7 +28,6 @@ function Index() {
         <SectionCarousel />
         <SectionExamples />
         <SectionDownload />
-        <DemoFooter />
       </div>
     </Fragment>
   );

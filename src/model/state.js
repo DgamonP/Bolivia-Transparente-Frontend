@@ -3,7 +3,8 @@ var state = {
     token : "",
     id : "",
     firstName: "",
-    lastName: "",
+    lastName1: "",
+    lastName2: "",
     email: "",
 };
 

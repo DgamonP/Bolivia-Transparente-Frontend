@@ -4,8 +4,8 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
 function SigninForm(props){
-    console.log("Arriving props.vars:");
-    console.log(props.vars);
+    // console.log("Arriving props.vars:");
+    // console.log(props.vars);
     return (<div>
         <h1 style={{padding:24}}> Ingresar </h1>
         <form>
@@ -47,7 +47,7 @@ function SigninForm(props){
                 {props.network && <div className="alert alert-danger"> Fallo de comunicación, inténtelo más tarde </div>}
             </div>
             <div align="center" width="100%">
-                <Button variant="secondary" style={{padding: 14}} onClick={props.login} type="button" size="small" color="primary" target="_blank">
+                <Button style={{padding: 24}} onClick={props.login} type="button" size="small" color="primary" target="_blank">
                     Ingresar
                 </Button>
             </div>
