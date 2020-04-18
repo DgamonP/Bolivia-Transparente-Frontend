@@ -471,16 +471,10 @@ class CreateForm extends React.Component{
                         </label>
                     </div>
                 </div>
-<<<<<<< HEAD
-                <div className="flexcontainer">
-                    {this.state.form.imagesURL.map(currentUrl=>{
-                        return(<div onClick={() => {this._removeImage(currentUrl)}} className="flexitem" key={currentUrl}>
-=======
                 <div className="flex-container" hidden={!this.props.display && this.state.currentPage!==3}>
                     {this.state.form.imagePath.map(currentUrl=>{
                         // Not working: onClick={() => {this._removeImage(currentUrl)}} 
                         return(<div onClick={() => {this._removeImage(currentUrl)}} className="flex-item" key={currentUrl}>
->>>>>>> e69511dc3698969ae32ee2c073f6e444adc637ae
                             {currentUrl && <img src={currentUrl} style={{padding: 24}} width="320px"/>}
                             {false && currentUrl && <p className="legend">currentUrl</p>}
                             

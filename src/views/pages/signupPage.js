@@ -26,41 +26,6 @@ class SignUpPage extends React.Component{
         this.props.history.push("/denunciar");
     }
 
-<<<<<<< HEAD
-  render() {
-    return (
-      <React.Fragment>
-        <div
-          className="page-header"
-          style={{
-            backgroundImage:
-              "url(" + require("assets/img/backgroundForm.png") + ")",
-          }}
-        >
-          <div>
-            <div className="container">
-              <div className="row">
-                <div className="col-6" align="center">
-                  <img
-                    style={{ padding: 20 }}
-                    className="Navbar__brand-logo"
-                    src={denuncia}
-                    alt="Llamado a no violencia"
-                    width="100%"
-                  />
-                  <div className="Badges__container">
-                    <Button
-                      style={{ padding: 24 }}
-                      type="button"
-                      onClick={this.redirectToSignin}
-                      size="small"
-                      color="primary"
-                      target="_blank"
-                    >
-                      Ingresar
-                    </Button>
-                  </div>
-=======
     redirectToSignin = ()=>{
         this.props.history.push("/ingreso");
     }
@@ -82,7 +47,6 @@ class SignUpPage extends React.Component{
                             onChange = {this.handleChange}
                             redirect = {this.redirect}/>
                     </div>
->>>>>>> e69511dc3698969ae32ee2c073f6e444adc637ae
                 </div>
             </React.Fragment>
         );

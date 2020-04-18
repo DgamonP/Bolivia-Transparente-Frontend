@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-import React,  { useState, useEffect } from "react";
-//import ReactDOM from "react-dom";
-=======
 import React,  {useState, useEffect} from "react";
->>>>>>> e69511dc3698969ae32ee2c073f6e444adc637ae
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
 // styles
@@ -16,21 +11,12 @@ import "assets/css/bootstrap.min.css";
 // import LandingPage from "views/pages/LandingPage";
 // import LoginPage from "views/pages/LoginPage.js";
 import Index from "views/Index.js";
-<<<<<<< HEAD
-//import LoginPage from "views/pages/LoginPage.js";
-// others pages alvaro
-import AnonymousDenuncia from './views/pages/anonymousDenuncia';
-import OfficialDenuncia from './views/pages/officialDenuncia';
-import MyDenuncias from './views/pages/myDenuncias';
-import ViewDenuncias from './views/pages/viewDenuncias';
-=======
 import InitPage from './views/pages/init';
 import Create from './views/pages/create';
 import NotFound from './views/pages/notFound';
 import AuthContext from './context/auth-context';
 import Footer from './components/Footers/footer';
 import SearchPage from './views/pages/searchPage';
->>>>>>> e69511dc3698969ae32ee2c073f6e444adc637ae
 import SignUpPage from './views/pages/signupPage';
 import SignInPage from './views/pages/signinPage';
 import MyDenuncias from './views/pages/myDenuncias';

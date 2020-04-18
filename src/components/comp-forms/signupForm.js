@@ -283,15 +283,6 @@ class SignupForm extends React.Component{
                 </div>
                 <div align="center" width="100%">
                     <Button
-<<<<<<< HEAD
-                    className="btn-round mr-1"
-                    color="warning"
-                    outline
-                    onClick={this.signupAndLogin}
-                    type="button"
-                    >
-                    Registrarse
-=======
                         style   = {{padding: 24}}
                         type    = "button"
                         onClick = {this.signupAndLogin}
@@ -299,7 +290,6 @@ class SignupForm extends React.Component{
                         color   = "primary"
                         target  = "_blank">
                         Registrarse
->>>>>>> e69511dc3698969ae32ee2c073f6e444adc637ae
                     </Button>
                     {/* <Button style={{padding: 24}} type="button" onClick={this.signupAndLogin} size="small" color="primary" target="_blank">
                         Registrarse
