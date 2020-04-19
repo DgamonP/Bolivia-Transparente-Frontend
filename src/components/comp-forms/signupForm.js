@@ -9,24 +9,25 @@ import TextField from '@material-ui/core/TextField';
 class SignupForm extends React.Component{
     state = {
         form: {
-            firstName:      "",
-            lastName1:      "",
-            lastName2:      "",
-            age:            "",
-            email:          "",
-            phone:          "",
-            identityCard:   "",
-            ext:            "Other",
-            password:       "",
-            repeatPassword: "",
-            gender:         "Other",
-        } ,
-        loading: false,
-        passwordDoNotMatch : false,
-        userAlreadyExist : false,
-        couldNotConnect : false,
-        emptyFields : false,
-        error : null,
+            firstName       : "",
+            lastName1       : "",
+            lastName2       : "",
+            age             : "",
+            email           : "",
+            phone           : "",
+            identityCard    : "",
+            ext             : "Other",
+            password        : "",
+            repeatPassword  : "",
+            gender          : "Other",
+        },
+        loading             : false,
+        passwordDoNotMatch  : false,
+        emailAlreadyExists  : false,
+        CIAlreadyExists     : false,
+        couldNotConnect     : false,
+        emptyFields         : false,
+        error               : null,
     };
 
     handleChange = e => {
@@ -36,11 +37,12 @@ class SignupForm extends React.Component{
                 [e.target.name]: e.target.value,
             },
             loading: false,
-            passwordDoNotMatch : false,
-            userAlreadyExist : false,
-            couldNotConnect : false,
-            emptyFields : false,
-            error : null,
+            passwordDoNotMatch  : false,
+            emailAlreadyExists  : false,
+            CIAlreadyExists     : false,
+            couldNotConnect     : false,
+            emptyFields         : false,
+            error               : null,
         });
         // console.log("Updated state to:");
         // console.log(this.state.form);
@@ -55,31 +57,48 @@ class SignupForm extends React.Component{
                 this.setState({passwordDoNotMatch : true})
             }
             else{
-                createUser(this.state.form.email,this.state.form.firstName,this.state.form.lastName1,this.state.form.lastName2,this.state.form.age,this.state.form.phone,this.state.form.identityCard,this.state.form.ext,this.state.form.gender,this.state.form.password)
-                    .then(result=>{
-                        console.log("Create user result:");
-                        console.log(result);
-                        signIn(this.state.form.email,this.state.form.password)
-                            .then(results=>{
-                                console.log("Login Result Login");
-                                console.log(results);
-                                let token = results.login.token
-                                if(token){
-                                    state.token = token;
-                                    window.localStorage.setItem('token',token)
-                                    console.log("Signup successful, new token is:");
-                                    console.log(token);
-                                    this.setState({warning:false, error:null});
-                                    window.location.href='/officialDenuncia';
-                                    /* this.props.redirect(); */
-                                }
-                            }).catch(error=>{
-                                this.setState({couldNotConnect: true})
-                            });
-                        
+                let signupResult
+                try{
+                    signupResult = await createUser(this.state.form.email,this.state.form.firstName,this.state.form.lastName1,this.state.form.lastName2,this.state.form.age,this.state.form.phone,this.state.form.identityCard,this.state.form.ext,this.state.form.gender,this.state.form.password);
+                    console.log("Create user result:");
+                    console.log(signupResult);
+                }catch(error){
+                    console.log("Error found", error)
+                    switch(error.message){
+                        case "Already registered email":
+                            this.setState({emailAlreadyExists: true, CIAlreadyExists: false, couldNotConnect: false});
+                            break;
+                        case "Already registered identity card":
+                            this.setState({CIAlreadyExists: true, emailAlreadyExists: false, couldNotConnect: false});
+                            break;
+                        default:
+                            this.setState({couldNotConnect: true, emailAlreadyExists: false, CIAlreadyExists: false});
+                            break;
+                    }
+                }
+
+                //console.log("Signup result", signupResult);  // Undefined when Error thrown
+                if(signupResult){
+                    await signIn(this.state.form.email, this.state.form.password)
+                    .then(results => {
+                        console.log("Login Result Login");
+                        console.log(results);
+                        let token = results.token
+                        if(token){
+                            state.token = token;
+                            window.localStorage.setItem('token',token)
+                            window.localStorage.setItem('id', results.userId);
+                            console.log("Signup successful, new token is:");
+                            console.log(token);
+                            this.setState({warning: false, error: null});
+                            window.location.href='/';
+                            /* this.props.redirect(); */
+                        }
                     }).catch(error=>{
-                        this.setState({userAlreadyExist: true})
+                        console.log("Error in signin after signup: ", error.message);
+                        this.setState({couldNotConnect: true, emailAlreadyExists: false, CIAlreadyExists: false})
                     });
+                }
             }
         }
     };
@@ -269,17 +288,20 @@ class SignupForm extends React.Component{
                         </div>
                     </div>
                 </div>
-                <div align="center" style={{paddingLeft: 24, paddingRigth: 24}}>
+                <div align="center" style = {{paddingLeft: 24, paddingRigth: 24}}>
                     {this.state.emptyFields && <div className="alert alert-warning"> Por favor complete todos los campos </div>}
                 </div>
-                <div align="center" style={{paddingLeft: 24, paddingRigth: 24}}>
+                <div align="center" style = {{paddingLeft: 24, paddingRigth: 24}}>
                     {this.state.couldNotConnect && <div className="alert alert-danger"> No se pudo establecer la conexión, inténtelo más tarde </div>}
                 </div>
-                <div align="center" style={{paddingLeft: 24, paddingRigth: 24}}>
+                <div align="center" style = {{paddingLeft: 24, paddingRigth: 24}}>
                     {this.state.passwordDoNotMatch && <div className="alert alert-danger"> Las contraseñas no coinciden </div>}
                 </div>
-                <div align="center" style={{paddingLeft: 24, paddingRigth: 24}}>
-                    {this.state.userAlreadyExist && <div className="alert alert-warning"> El usuario ya está registrado </div>}
+                <div align="center" style = {{paddingLeft: 24, paddingRigth: 24}}>
+                    {this.state.emailAlreadyExists && <div className="alert alert-warning"> El correo introducido ya está registrado </div>}
+                </div>
+                <div align="center" style = {{paddingLeft: 24, paddingRigth: 24}}>
+                    {this.state.CIAlreadyExists && <div className="alert alert-warning"> El carnet de identidad ya está registrado </div>}
                 </div>
                 <div align="center" width="100%">
                     <Button

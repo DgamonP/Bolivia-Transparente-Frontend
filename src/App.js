@@ -20,22 +20,20 @@ import SearchPage from './views/pages/searchPage';
 import SignUpPage from './views/pages/signupPage';
 import SignInPage from './views/pages/signinPage';
 import MyDenuncias from './views/pages/myDenuncias';
-import ViewDenuncias from './views/pages/viewDenuncias';
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
-import OfficialDenuncia from './views/pages/officialDenuncia';
-import AnonymousDenuncia from './views/pages/anonymousDenuncia';
 
 const App = () => { 
   const [token, setToken] = useState(window.localStorage.getItem('token'))
 
   useEffect(()=> {
-    console.log("TOKEN BEFORE", token)
-    setToken(window.localStorage.getItem('token'))
-    console.log("TOKEN AFTER", token)
+    console.log("TOKEN BEFORE", token);
+    setToken(window.localStorage.getItem('token'));
+    console.log("TOKEN AFTER", token);
   },)
 
   const logout = () => {
-    window.localStorage.setItem("token", null)
+    window.localStorage.removeItem("token");
+    window.localStorage.removeItem("id");
   };
 
   return (
@@ -46,13 +44,11 @@ const App = () => {
         <IndexNavbar />
         <Switch>
             {console.log("TOKEN EXIST?", token)}              
-            {(token === "null") && (<Redirect from="/myDenuncias" to="/" /> )}
-            {(token === "null") && (<Redirect from="/createDenuncia" to="/" /> )}
+            {(token === null) && (<Redirect from="/myDenuncias" to="/" /> )}
+            {(token === null) && (<Redirect from="/createDenuncia" to="/" /> )}
               <Route exact path = "/"                   component={Index} />
               {/* <Route  path="/signup" exact component = {SignUpPage}/>
               <Route  path="/signin" exact component = {SignInPage}/> */}
-              <Route exact path = "/viewDenuncias"      component = {ViewDenuncias}/>
-              <Route exact path = "/anonymousDenuncia"  component = {AnonymousDenuncia}/>
               <Route exact path = "/inicio"             component = {InitPage}/>
               <Route exact path = "/ingreso"            component = {SignInPage}/>
               <Route exact path = "/registro"           component = {SignUpPage}/>
@@ -60,8 +56,7 @@ const App = () => {
               <Route exact path = "/ver/:id"            component = {Create}/>
               <Route exact path = "/buscar"             component = {SearchPage}/>
               <Route exact path = "*"                   component = {NotFound}/>
-            {(token !== "null") && <Route exact path="/officialDenuncia" component = {OfficialDenuncia}/>}
-            {(token !== "null") && <Route exact path="/myDenuncias" component = {MyDenuncias}/>}               
+            {(token !== null) && <Route exact path="/myDenuncias" component = {MyDenuncias}/>}               
               <Route path = "/" render={() => <h1>404</h1>}/>
         </Switch>
         <Footer/>

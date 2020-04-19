@@ -46,6 +46,9 @@ function SigninForm(props){
             <div align="center" style={{paddingLeft: 24, paddingRigth: 24}}>
                 {props.network && <div className="alert alert-danger"> Fallo de comunicación, inténtelo más tarde. </div>}
             </div>
+            <div align="center" style={{paddingLeft: 24, paddingRigth: 24}}>
+                {props.password && <div className="alert alert-danger"> Contraseña incorrecta. </div>}
+            </div>
             <div align="center" width="100%">
                 <Button style={{padding: 24}} onClick={props.login} type="button" size="small" color="primary" target="_blank">
                     Ingresar

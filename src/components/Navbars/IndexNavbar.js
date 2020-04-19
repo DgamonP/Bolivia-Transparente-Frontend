@@ -53,9 +53,9 @@ function IndexNavbar() {
           <Navbar className={classnames("fixed-top", navbarColor)} expand="lg"> 
             <Container>
               <div className="navbar-translate">
-              <a href = "/">
+              <Link to= "/">
                   <img className="logo" src={logo} alt="Ministerio de Gobierno" height="60"/>
-              </a>
+              </Link>
                 <button
                   aria-expanded={navbarCollapse}
                   className={classnames("navbar-toggler navbar-toggler", {
@@ -78,9 +78,10 @@ function IndexNavbar() {
                   <NavItem>
                     <NavLink
                       data-placement="bottom"
-                      href="https://twitter.com/CreativeTim?ref=creativetim"
+                      // href="https://twitter.com/CreativeTim?ref=creativetim"
+                      href="https://www.facebook.com/MindeGobierno"
                       target="_blank"
-                      title="Follow us on Twitter"
+                      title="Síguenos en twitter"
                     >
                       <i className="fa fa-twitter" />
                       <p className="d-lg-none">Twitter</p>
@@ -89,9 +90,9 @@ function IndexNavbar() {
                   <NavItem>
                     <NavLink
                       data-placement="bottom"
-                      href="https://www.facebook.com/CreativeTim?ref=creativetim"
+                      href="https://www.facebook.com/MindeGobierno"
                       target="_blank"
-                      title="Like us on Facebook"
+                      title="Síguenos en Facebook"
                     >
                       <i className="fa fa-facebook-square" />
                       <p className="d-lg-none">Facebook</p>
@@ -102,28 +103,13 @@ function IndexNavbar() {
                         <i className="nc-icon nc-layout-11" /> Inicio
                       </NavLink>
                   </NavItem> */}                               
-                 {context.token === 'null' &&
-                    <NavItem>
-                      <NavLink to="/viewDenuncias" tag={Link}>
-                        <i className="nc-icon nc-book-bookmark" /> Ver Denuncias
-                      </NavLink>
-                    </NavItem>                  
-                 }
-                 {context.token !== 'null' &&
-                    <NavItem>
-                      <NavLink to="/myDenuncias" tag={Link}>
-                        <i className="nc-icon nc-single-copy-04" /> Mis Denuncias
-                      </NavLink>
-                    </NavItem>                  
-                 }
-                 {context.token === 'null' &&
-                    <NavItem>
-                      <NavLink to="/signin" tag={Link}>
-                        <i className="nc-icon nc-single-02" /> Iniciar Sesión
-                      </NavLink>
-                    </NavItem>                  
-                 }
-                 {context.token !== 'null' &&
+
+                  <NavItem>
+                    <NavLink to="/buscar" tag={Link}>
+                      <i className="nc-icon nc-single-copy-04" /> Buscar Denuncia
+                    </NavLink>
+                  </NavItem> 
+                 {context.token?
                     <NavItem>
                       <NavLink data-placement="bottom"
                               to="/"                              
@@ -134,36 +120,34 @@ function IndexNavbar() {
                               tag={Link}>
                         <i className="nc-icon nc-user-run" /> Cerrar Sesión
                       </NavLink>
+                    </NavItem>:
+                    <NavItem>
+                      <NavLink to="/ingreso" tag={Link}>
+                        <i className="nc-icon nc-single-02" /> Iniciar Sesión
+                      </NavLink>
                     </NavItem>                  
-                 }          
-                  <NavItem>                    
-                    {
-                    context.token === 'null' &&
-                    <a href="/anonymousDenuncia">
-                    <Button                      
-                      className="btn-round"
-                      color="warning"
-                      href=" "                      
-                      disabled
-                    ><i className="nc-icon nc-tap-01" />
-                       Denuncia Anonima
-                    </Button>
-                    </a>}  
-                  </NavItem>
-                  <NavItem>                    
-                    {
-                    context.token !== 'null' &&                  
-                    <a href="/officialDenuncia">
+                  }        
+                  <NavItem>
+                  <Link to="/denunciar">
+                  {context.token?
                     <Button
-                      className="btn-round"
-                      color="success"
-                      href=" /"                      
-                      disabled                      
+                      className   ="btn-round"
+                      color       ="success"
+                      // href     ="/denunciar"                      
+                      // disabled                      
                     ><i className="nc-icon nc-tap-01" />
-                       Denuncia Oficial 
+                      Denuncia Oficial 
+                    </Button>:
+                    <Button                      
+                      className   ="btn-round"
+                      color       ="warning"
+                      // href     ="/denunciar"                      
+                      // disabled
+                    ><i className="nc-icon nc-tap-01" />
+                      Denuncia Anonima
                     </Button>
-                    </a>  
-                    }
+                  }
+                  </Link>
                   </NavItem>
                 </Nav>
               </Collapse>

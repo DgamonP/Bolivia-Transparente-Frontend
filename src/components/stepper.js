@@ -72,29 +72,24 @@ export default function HorizontalLabelPositionBelowStepper(props) {
           </Step>
         ))}
       </Stepper>
-      <div>
-        {activeStep === steps.length ? (
-          <div className="centered-component">
-            <Typography className={classes.instructions}>Todos los pasos fueron completados</Typography>
-            <Button onClick={handleReset}>Reset</Button>
-          </div>
-        ) : (
-          <div className="centered-component">
-            <Typography className="centered-component">{getStepContent(activeStep)}</Typography>
-            <div className="centered-component">
-              <Button
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                className={classes.backButton}
-              >
-                Anterior
-              </Button>
-              <Button variant="contained" color="primary" onClick={handleNext}>
-                {activeStep === steps.length - 1 ? 'Terminar' : 'Siguiente'}
-              </Button>
-            </div>
-          </div>
-        )}
+      <div className="centered-component">
+        <Typography className="centered-component">{getStepContent(activeStep)}</Typography>
+        <div className="centered-component">
+          <Button
+            disabled  = {activeStep === 0}
+            onClick   = {handleBack}
+            className = {classes.backButton}
+          >
+            Anterior
+          </Button>
+          <Button
+            variant   = "contained"
+            color     = "primary"
+            disabled  = {activeStep === steps.length-1}
+            onClick   = {handleNext}>
+            Siguiente
+          </Button>
+        </div>
       </div>
     </div>
   );

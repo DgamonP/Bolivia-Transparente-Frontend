@@ -1,17 +1,56 @@
 import React from 'react';
 import firebase from "firebase";
 import 'react-dates/initialize';
+import Step from '@material-ui/core/Step';
 import 'react-dates/lib/css/_datepicker.css';
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
-import Stepper from '../../components/stepper';
+import Stepper from '@material-ui/core/Stepper';
+// import Stepper from '../../components/stepper';
 import '../../views/pages/styles/createForm.css';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import StepLabel from '@material-ui/core/StepLabel';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 import FileUploader from "react-firebase-file-uploader";
 import {createReport, getEvent} from '../../api/graphql';
 import videoPlaceholder from '../../images/videoPlaceholder.jpeg';
 import CircularProgress from '@material-ui/core/CircularProgress';
+
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     width: '100%',
+//   },
+//   backButton: {
+//     marginRight: theme.spacing(1),
+//   },
+//   instructions: {
+//     marginTop: theme.spacing(1),
+//     marginBottom: theme.spacing(1),
+//   },
+// }));
+
+function getSteps() {
+  return ['Información de los hechos', '¿Donde sucedió el incidente? (Opcional)', 'Personal involucrado (Opcional)', 'Adjuntar evidencia (Opcional)', 'Envio de denuncia'];
+}
+
+function getStepContent(stepIndex) {
+    switch (stepIndex) {
+      case 0:
+        return 'Por favor cuéntenos que sucedió';
+      case 1:
+        return 'Opcionalmente indique donde sucedió el incidente';
+      case 2:
+        return 'Opcionalmente indique que ministerio y/o personal estuvo involucrado';
+      case 3:
+          return 'Si fuese el caso, adjunte evidencia, imágenes, videos y audios son formatos válidos';
+      case 4:
+          return 'Condiciones de uso';
+      default:
+        return 'Índice desconocido';
+    }
+  }
 
 const config = {
     apiKey: "AIzaSyCb2RE1ifVk5Atyy48Jgs0LIZx6H3wLBWs",
@@ -34,7 +73,7 @@ class CreateForm extends React.Component{
             state                   : "Other",
             city                    : "",
             municipio               : "",
-            placeName         : "",
+            placeName               : "",
             entity                  : "",
             denounced               : "",
             denouncedCharge         : "",
@@ -42,7 +81,10 @@ class CreateForm extends React.Component{
             imagePath               : [],
             videoPath               : [],
             audioPath               : [],
+            anonymousPhone          : "",
+            anonymousEmail          : "",
         },
+        userId          : null,
         currentPage     : 0,
         readOnly        : false,
         isUploading     : false,
@@ -55,13 +97,33 @@ class CreateForm extends React.Component{
         displayForm     : undefined
     };
 
-    constructor(props){
-        super(props);
-        console.log("Constructor has videos");
-        console.log(this.state.form.videoPath);
-    }
+    // classes = useStyles();
+    steps = getSteps();
+
+    handleNext = () => {
+        let newStep = this.state.currentPage + 1;
+        console.log("Setting to new step",newStep);
+        this.setState({currentPage: newStep});
+    };
+
+    handleBack = () => {
+        let newStep = this.state.currentPage - 1;
+        console.log("Setting to new step",newStep);
+        this.setState({currentPage: newStep});
+    };
+
+    handleReset = () => {
+        this.setState({currentPage: 0});
+    };
+
+    // constructor(props){
+    //     super(props);
+    //     console.log("Constructor has videos");
+    //     console.log(this.state.form.videoPath);
+    // }
 
     async componentDidMount(){
+        let auxiliarUserId = window.localStorage.getItem('id');
         if(this.props.display){
             // console.log("Setting display to: ", this.props.display);
             this.setState({displayForm: this.props.display});
@@ -76,14 +138,17 @@ class CreateForm extends React.Component{
             myEvent.date=formatedDate;
             myEvent.time=formatedTime;
             console.log("Final result json:",myEvent)
-            this.setState({form:myEvent});
+            this.setState({form:myEvent, userId: auxiliarUserId});
+        }
+        else{
+            this.setState({userId: auxiliarUserId});
         }
     }
 
-    updatePage = newPage => {
-        // console.log("Setting step to", newPage)
-        this.setState({currentPage: newPage});
-    }
+    // updatePage = newPage => {
+    //     // console.log("Setting step to", newPage)
+    //     this.setState({currentPage: newPage});
+    // }
 
     handleChange = e => {
         this.setState({
@@ -109,26 +174,33 @@ class CreateForm extends React.Component{
         else{
             console.log('Title');
             console.log(this.state.form.title);
+            let isAnonymous = "";
+            if(!this.state.userId){
+                isAnonymous = "true";
+            }
             createReport(this.state.form.date,
-                            this.state.form.time,
-                            this.state.form.title,
-                            this.state.form.description,
-                            this.state.form.category,
-                            this.state.form.country,
-                            this.state.form.state,
-                            this.state.form.city,
-                            this.state.form.municipio,
-                            this.state.form.placeName,
-                            0.0,
-                            0.0,
-                            this.state.form.entity,
-                            this.state.form.denounced,
-                            this.state.form.denouncedCharge,
-                            this.state.form.denouncedDescription,
-                            this.state.form.imagePath,
-                            this.state.form.videoPath,
-                            this.state.form.audioPath,
-                            )
+                        this.state.form.time,
+                        this.state.form.title,
+                        this.state.form.description,
+                        this.state.form.category,
+                        this.state.form.country,
+                        this.state.form.state,
+                        this.state.form.city,
+                        this.state.form.municipio,
+                        this.state.form.placeName,
+                        0.0,
+                        0.0,
+                        this.state.form.entity,
+                        this.state.form.denounced,
+                        this.state.form.denouncedCharge,
+                        this.state.form.denouncedDescription,
+                        this.state.form.imagePath,
+                        this.state.form.videoPath,
+                        this.state.form.audioPath,
+                        isAnonymous,
+                        this.state.form.anonymousPhone,
+                        this.state.form.anonymousEmail,
+                        )
             .then(result=>{
                 console.log("Create Event result:");
                 console.log(result);
@@ -250,11 +322,18 @@ class CreateForm extends React.Component{
     }
 
     render(){
-        // console.log("Building for page", this.state.currentPage);
+        console.log("Building for page", this.state.currentPage);
         return(
         <React.Fragment>
             <h1 style={{padding:24}}> Nueva Denuncia</h1>
-            <Stepper udpatePage={this.updatePage} hidden={this.props.display}/>
+            {/* <Stepper udpatePage={this.updatePage} hidden={this.props.display}/> */}
+            <Stepper activeStep={this.state.currentPage} alternativeLabel style={{backgroundColor:"transparent"}}>
+                {this.steps.map((label) => (
+                <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                </Step>
+                ))}
+            </Stepper>
             <form onSubmit = {this.handleSubmit}>
                 <div>
                     <div className="flex-container">
@@ -502,6 +581,37 @@ class CreateForm extends React.Component{
                         </div>);
                     })}
                 </div>
+                <div className = "form-group">
+                    <label style={{paddingRight: 24, paddingLeft: 24}} hidden={(!this.props.display && this.state.currentPage!==4) || this.state.userId}>Teléfono de contacto</label>
+                    <TextField
+                        hidden      = {(!this.props.display && this.state.currentPage!==4) || this.state.userId}
+                        style       = {{paddingBottom:24, paddingRight: 24, paddingLeft: 24}}
+                        id          = "anonymousPhone"
+                        placeholder = "Introduzca un telefono para contactarlo"
+                        margin      = "normal"
+                        onChange    = {this.handleChange}
+                        className   = "form-control"
+                        type        = "text"
+                        name        = "anonymousPhone"
+                        value       = {this.state.form.anonymousPhone}
+                        />
+                </div>
+                <div className = "form-group">
+                    <label style={{paddingRight: 24, paddingLeft: 24}} hidden={(!this.props.display && this.state.currentPage!==4) || this.state.userId}>Correo de contacto</label>
+                    <TextField
+                        hidden      = {(!this.props.display && this.state.currentPage!==4) || this.state.userId}
+                        style       = {{paddingBottom:24, paddingRight: 24, paddingLeft: 24}}
+                        id          = "anonymousEmail"
+                        placeholder = "Introduzca un correo electrónico para contactarlo"
+                        margin      = "normal"
+                        onChange    = {this.handleChange}
+                        className   = "form-control"
+                        type        = "text"
+                        name        = "anonymousEmail"
+                        value       = {this.state.form.anonymousEmail}
+                        />
+                </div>
+                <p className="init-item" hidden={!this.props.display && this.state.currentPage!==4}> Al hacer utilizar el sistema usted acepta las condiciones de uso del mismo. <br/> Su información será utilizada de forma estrictamente confidencial.</p>
                 <div align="center" hidden={!this.props.display && this.state.currentPage!==3}>
                     {!this.state.noMedia && <Button style={{padding: 12}} type="button" onClick={this.deleteAll} size="small" color="secondary" target="_blank">
                         Eliminar todo
@@ -518,7 +628,25 @@ class CreateForm extends React.Component{
                         Enviar Denuncia
                     </Button>
                 </div>
-                
+                <div className="centered-component">
+                    <Typography className="centered-component">{getStepContent(this.state.currentPage)}</Typography>
+                    <div className="centered-component">
+                    <Button
+                        disabled  = {this.state.currentPage === 0}
+                        onClick   = {this.handleBack}
+                        // className = {this.classes.backButton}
+                    >
+                        Anterior
+                    </Button>
+                    <Button
+                        variant   = "contained"
+                        color     = "primary"
+                        disabled  = {this.state.currentPage === this.steps.length-1}
+                        onClick   = {this.handleNext}>
+                        Siguiente
+                    </Button>
+                    </div>
+                </div>
                 
                 {/* type="button" */}
                 {/* <button  className="btn btn-primary" style={{backgroundColor: 'steelblue', color: 'white', padding: 10, borderRadius: 4, cursor: 'pointer'}}></button> */}
