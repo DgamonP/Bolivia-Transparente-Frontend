@@ -1,6 +1,7 @@
 import React from 'react';
+import "./styles/pages.css";
+import { getEvent } from "../../api/graphql";
 import Button from '@material-ui/core/Button';
-import { verifyEvent } from "../../api/graphql";
 import Checkbox from '@material-ui/core/Checkbox';
 import TextField from '@material-ui/core/TextField';
 import IndexNavbar from "../../components/Navbars/IndexNavbar.js";
@@ -16,15 +17,19 @@ class SearchPage extends React.Component{
         networkError        : false,
         folioNotFound       : false,
         notLoggedWarning    : false,
+        showCheckbox        : false
     }
 
     componentDidMount(){
         this.userId = window.localStorage.getItem('id');
-        console.log("User id is: ", this.userId, " updating checkbox state to");
-        this.setState({form: {...this.state.form, anonymous: !Boolean(this.userId)}})
+        let auxAnonymous = !Boolean(this.userId);
+        console.log("User id is: ", this.userId, " updating checkbox state to:", auxAnonymous);
+        this.setState({form: {anonymous: auxAnonymous}, showCheckbox: !auxAnonymous});
+        console.log("Set anonymous state to:", this.state.form.anonymous);
     }
 
     handleChange = e =>{
+        console.log("Setting anonymous to:", this.state.form.anonymous);
         this.setState({
             form:{
                 ...this.state.form,
@@ -34,6 +39,7 @@ class SearchPage extends React.Component{
             networkError            : false,
             folioNotFound           : false,
             notLoggedWarning        : false,
+            anonymous               : !Boolean(this.userId)
         });
         console.log(this.state);
     }
@@ -48,14 +54,16 @@ class SearchPage extends React.Component{
             networkError            : false,
             folioNotFound           : false,
             notLoggedWarning        : !this.userId,
+            anonymous               : !Boolean(this.userId)
         });
         console.log(this.state);
     }
 
     search = async e => {
-        console.log("Testing folio: ", this.state.form.folio)
+        // console.log("Testing folio: ", this.state.form.folio);
+        // console.log("Setting anonymous to:",!Boolean(this.userId))
         if(!this.state.form.folio || this.state.form.folio===""){
-            this.setState({emptyField: true});
+            this.setState({emptyField: true, anonymous: !Boolean(this.userId)});
         }
         else{
             let eventTitle;
@@ -67,26 +75,29 @@ class SearchPage extends React.Component{
                 console.log("Not anonymous request");
             }
 
-            verifyEvent(this.userId, this.state.form.folio)
-            .then(title =>{
-                eventTitle = title;
+            getEvent(this.userId, this.state.form.folio)
+            .then(event =>{
+                eventTitle = event.title;
+                console.log("Received event with title",eventTitle);
+                window.localStorage.setItem("event",JSON.stringify(event));
                 if(eventTitle){
-                    this.props.history.push(`/ver/${this.state.form.folio}`);
+                    this.props.history.push(`/ver`);
                 }
             })
             .catch(error=>{
                 console.log("Handling error: ", error.message);
                 if(error.message=="No event found with that folio"){
-                    this.setState({folioNotFound: true});
+                    this.setState({folioNotFound: true, anonymous: !Boolean(this.userId)});
                 }
                 else{
-                    this.setState({networkError: true});
+                    this.setState({networkError: true, anonymous: !Boolean(this.userId)});
                 }
             });
         }
     }
 
     render(){
+        console.log("Rebuilding with anonymous state:", this.state.form.anonymous);
         return (
             <React.Fragment>
                 <IndexNavbar />
@@ -109,13 +120,13 @@ class SearchPage extends React.Component{
                                 value       = {this.state.form.folio}
                                 onChange    = {this.handleChange}
                             />
-                            {this.userId?
+                            {this.state.showCheckbox?
                             <div>
                                 <label>Es una denuncia Anónima</label>
                                 <Checkbox
                                     color       = "default"
                                     name        = "anonymous"
-                                    value       = {this.state.form.anonymous}
+                                    value       = {this.state.showCheckbox}
                                     onChange    = {this.handleCheckbox}
                                     inputProps  = {{ 'aria-label': 'checkbox with default color' }}
                                 />

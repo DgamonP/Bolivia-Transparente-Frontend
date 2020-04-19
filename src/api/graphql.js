@@ -169,7 +169,9 @@ async function getEvent(userId, folioCode){
         denouncedDescription, 
         imagePath, 
         videoPath, 
-        audioPath
+        audioPath,
+        anonymousPhone,
+        anonymousEmail,
       }
     }
   `
