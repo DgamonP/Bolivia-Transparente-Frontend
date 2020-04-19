@@ -118,7 +118,7 @@ function IndexNavbar() {
                  }
                  {context.token === 'null' &&
                     <NavItem>
-                      <NavLink to="/signin" tag={Link}>
+                      <NavLink to="/ingreso" tag={Link}>
                         <i className="nc-icon nc-single-02" /> Iniciar Sesión
                       </NavLink>
                     </NavItem>                  
@@ -137,7 +137,7 @@ function IndexNavbar() {
                     </NavItem>                  
                  }          
                   <NavItem>                    
-                    {
+                    {/* {
                     context.token === 'null' &&
                     <a href="/anonymousDenuncia">
                     <Button                      
@@ -163,7 +163,7 @@ function IndexNavbar() {
                        Denuncia Oficial 
                     </Button>
                     </a>  
-                    }
+                    } */}
                   </NavItem>
                 </Nav>
               </Collapse>

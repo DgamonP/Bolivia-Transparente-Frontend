@@ -22,7 +22,6 @@ import SignInPage from './views/pages/signinPage';
 import MyDenuncias from './views/pages/myDenuncias';
 import ViewDenuncias from './views/pages/viewDenuncias';
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
-import OfficialDenuncia from './views/pages/officialDenuncia';
 import AnonymousDenuncia from './views/pages/anonymousDenuncia';
 
 const App = () => { 
@@ -46,26 +45,21 @@ const App = () => {
         <IndexNavbar />
         <Switch>
             {console.log("TOKEN EXIST?", token)}              
-            {(token === "null") && (<Redirect from="/myDenuncias" to="/" /> )}
+            {(token === "null") && (<Redirect from="/denunciar" to="/" /> )}
             {(token === "null") && (<Redirect from="/createDenuncia" to="/" /> )}
               <Route exact path = "/"                   component={Index} />
-              {/* <Route  path="/signup" exact component = {SignUpPage}/>
-              <Route  path="/signin" exact component = {SignInPage}/> */}
               <Route exact path = "/viewDenuncias"      component = {ViewDenuncias}/>
               <Route exact path = "/anonymousDenuncia"  component = {AnonymousDenuncia}/>
               <Route exact path = "/inicio"             component = {InitPage}/>
               <Route exact path = "/ingreso"            component = {SignInPage}/>
               <Route exact path = "/registro"           component = {SignUpPage}/>
-              <Route exact path = "/denunciar"          component = {Create}/>
               <Route exact path = "/ver/:id"            component = {Create}/>
               <Route exact path = "/buscar"             component = {SearchPage}/>
               <Route exact path = "*"                   component = {NotFound}/>
-            {(token !== "null") && <Route exact path="/officialDenuncia" component = {OfficialDenuncia}/>}
-            {(token !== "null") && <Route exact path="/myDenuncias" component = {MyDenuncias}/>}               
+            {(token !== "null") && <Route exact path="/denunciar" component = {MyDenuncias}/>}               
               <Route path = "/" render={() => <h1>404</h1>}/>
         </Switch>
         <Footer/>
-
       </React.Fragment>
     </AuthContext.Provider>
   </BrowserRouter>);
