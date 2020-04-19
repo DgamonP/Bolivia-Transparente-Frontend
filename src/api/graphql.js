@@ -10,32 +10,38 @@ async function fetchToJson(callQuery, currentToken, order= "request"){
   // call query must be in the same form of a graphiql query
   // current token can be "" in case of Un authenticated cal
   // order is used to decode the final string that uses to come in the form result.data.<order>, seems to be the same as the graphql order, be careful detecting this one
-  console.log("Comment", order);
+
+  //console.log("Comment", order);
   let momentResult;
-  await fetch(url, {
-    method: 'POST',
-    body: JSON.stringify({ query: callQuery}),
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${
-        currentToken
-      }`
+  try{
+    let result = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({ query: callQuery}),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${
+          currentToken
+        }`
+      }
+    });
+    let jsonResult = await result.json();
+    //console.log("Decoded json result:", jsonResult);
+    if(jsonResult.errors){
+      console.log("Throwing backend error: ", jsonResult.errors[0].message);
+      throw Error(jsonResult.errors[0].message);
     }
-  }).then(async result =>{
-    // console.log("Got fetch result", result);
-    await result.json()
-      .then(myResult=>{
-        momentResult = myResult.data[order];
-        // return myResult;
-      })
-      .catch((error)=>{
-        console.log(error)
-        throw Error(`Could not decode JSON for ${order}`);});
-  }).catch((error)=>{
-    console.log(error)
+    else{
+      if(!jsonResult.data){
+        throw Error("Empty results received");
+      }
+      momentResult = jsonResult.data[order];
+    }
+  }
+  catch(error){
+    //console.log(error)
     throw error;
-  }); 
-  console.log("Fetch result", momentResult);
+  }; 
+  console.log(`Fetch for ${order} result: ${momentResult}`);
   return momentResult;
 }
 
@@ -57,16 +63,12 @@ async function signIn(email, password){
   console.log(SIGNIN);
 
   let result = await fetchToJson(SIGNIN, "", "login")
-  console.log("Signing in result");
-  console.log(result);
   let token = result.token;
   state.token = token;
   state.firstName = result.firstName;
   state.lastName1 = result.lastName1;
   state.lastName2 = result.lastName2;
-  console.log("New State:");
-  console.log(state);
-  
+  console.log("New State: ", state);
   return result
 }
 
@@ -95,10 +97,13 @@ async function createReport(date,
                             denouncedDescription, 
                             imagesUrl, 
                             videosUrl, 
-                            audiosUrl){
+                            audiosUrl,
+                            isAnonymous    ="",
+                            anonymousPhone ="",
+                            anonymousEmail =""){
   const CREATE_EVENT = `
     mutation{
-      createEvent(eventInput:{date:"${date+"T"+time+":00.000Z"}",title:"${title}",description:"${description}",category:"${category}",country:"${country}",state:"${mystate}",city:"${city}",municipio:"${municipio}",placeName:"${literalLocation}",latitude:"${latitude}",longitude:"${longitude}",entity:"${entity}",denounced:"${denounced}",denouncedCharge:"${denouncedCharge}",denouncedDescription:"${denouncedDescription}",imagePath:["${imagesUrl.join("\",\"")}"],videoPath:["${videosUrl.join("\",\"")}"],audioPath:["${audiosUrl.join("\",\"")}"],platform:"Web",status:"PENDING"}){
+      createEvent(eventInput:{date:"${date+"T"+time+":00.000Z"}",title:"${title}",description:"${description}",category:"${category}",country:"${country}",state:"${mystate}",city:"${city}",municipio:"${municipio}",placeName:"${literalLocation}",latitude:"${latitude}",longitude:"${longitude}",entity:"${entity}",denounced:"${denounced}",denouncedCharge:"${denouncedCharge}",denouncedDescription:"${denouncedDescription}",imagePath:["${imagesUrl.join("\",\"")}"],videoPath:["${videosUrl.join("\",\"")}"],audioPath:["${audiosUrl.join("\",\"")}"],platform:"Web",status:"PENDING",isAnonymous:"${isAnonymous}",anonymousPhone:"${anonymousPhone}",anonymousEmail:"${anonymousEmail}"}){
         _id,
         title,
         date,
@@ -114,6 +119,31 @@ async function createReport(date,
   let event = await fetchToJson(CREATE_EVENT, window.localStorage.getItem('token'), "createEvent");
   console.log("Response event", event);
   return event;
+}
+
+async function verifyEvent(userId, folioCode){
+  // Returns true or false if the event exist
+  const VERIFY_EVENT = `
+    query{
+      event(userId:"${userId}",eventFolio:"${folioCode}"){
+        _id,
+        title,
+      }
+    }
+  `
+  console.log("Verifying folio: ",folioCode, " for user id: ", userId);
+  console.log(VERIFY_EVENT);
+  let event;
+
+  event = await fetchToJson(VERIFY_EVENT, window.localStorage.getItem('token'), "event");
+
+  if(event.title){
+    console.log("Verified event: ", event.title);
+    return event.title;
+  }
+  else{
+    return null;
+  }
 }
 
 async function getEvent(userId, folioCode){
@@ -139,7 +169,9 @@ async function getEvent(userId, folioCode){
         denouncedDescription, 
         imagePath, 
         videoPath, 
-        audioPath
+        audioPath,
+        anonymousPhone,
+        anonymousEmail,
       }
     }
   `
@@ -165,9 +197,9 @@ async function createUser(emailIn, firstNameIn, lastName1In, lastName2In, age, p
   console.log("Create user...");
   console.log(ADD_USER);
 
-  let myResult = await fetchToJson(ADD_USER, "", "createUser");
+  let createUserResult = await fetchToJson(ADD_USER, "", "createUser");
 
-  return myResult;
+  return createUserResult;
 }
 
-export {createUser, getEvent, signIn, createReport};
+export {createUser, verifyEvent, getEvent, signIn, createReport};

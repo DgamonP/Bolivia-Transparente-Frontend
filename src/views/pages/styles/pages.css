@@ -32,6 +32,13 @@
     /* padding: 24px; */
 }
 
+.center-item{
+    width: 50%;
+    min-width: 500px;
+    text-align: center;
+    /* padding: 24px; */
+}
+
 .init-item-background{
     display: flex;
     background: url('../../../images/gobiernoDigital.jpeg') center no-repeat;
