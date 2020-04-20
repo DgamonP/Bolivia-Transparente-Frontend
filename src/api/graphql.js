@@ -3,7 +3,7 @@
 //import mgql from 'graphql-tag';
 import state from '../model/state'
 
-var url = 'http://localhost:3002/graphql';
+var url = 'http://192.168.1.9:3002/graphql';
 
 async function fetchToJson(callQuery, currentToken, order= "request"){
   // This function takes a query and a token and the excecute order and returns the response object from the backend

@@ -58,21 +58,19 @@ function IndexNavbar() {
               </Link>
                 <button
                   aria-expanded={navbarCollapse}
-                  className={classnames("navbar-toggler navbar-toggler", {
-                    toggled: navbarCollapse
-                  })}
+                  className= "navbar-toggler" 
                   onClick={toggleNavbarCollapse}
                 >
                   <span className="navbar-toggler-bar bar1" />
                   <span className="navbar-toggler-bar bar2" />
                   <span className="navbar-toggler-bar bar3" />
-                  button
+                  {/* button */}
                 </button>
               </div>
               <Collapse
                 className="justify-content-end"
                 navbar
-                isOpen={navbarCollapse}
+               /*  isOpen={navbarCollapse} */
               >
                 <Nav navbar>
                   <NavItem>

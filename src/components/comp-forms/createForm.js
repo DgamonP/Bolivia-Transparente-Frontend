@@ -117,7 +117,7 @@ class CreateForm extends React.Component{
             myEvent.time        = formatedTime;
             console.log("Final result json:",myEvent)
             this.setState({form:myEvent, userId: auxiliarUserId, viewOnly: true});
-            //stringEvent     = window.localStorage.removeItem("event");
+            stringEvent     = window.localStorage.removeItem("event");
         }
         else{
             // If not, we set the parameters to the default values
