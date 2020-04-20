@@ -4,11 +4,6 @@ import {signIn} from '../../api/graphql';
 import SigninForm from './signinForm';
 
 class SigninFormComponent extends React.Component{
-    // constructor(props, context) {
-    //     super(props, context);
-    //     //do something...
-    // }
-    
     state = {
         warning         : false,
         errorLogin      : false,

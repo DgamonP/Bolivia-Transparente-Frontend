@@ -70,7 +70,6 @@ function IndexNavbar() {
               <Collapse
                 className="justify-content-end"
                 navbar
-               /*  isOpen={navbarCollapse} */
               >
                 <Nav navbar>
                   <NavItem>
