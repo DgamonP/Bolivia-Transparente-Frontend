@@ -323,7 +323,7 @@ class CreateForm extends React.Component{
         // console.log("Building for page", this.state.currentPage);
         return(
         <React.Fragment>
-            <h1 style={{padding:24}}> Nueva Denuncia</h1>
+            <h1 style={{padding:8}}> Nueva Denuncia</h1>
             <Stepper hidden={this.state.viewOnly} activeStep={this.state.currentPage} alternativeLabel style={{backgroundColor:"transparent"}}>
                 {this.steps.map((label) => (
                 <Step key={label}>

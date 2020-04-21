@@ -56,7 +56,7 @@ const App = () => {
               <Route exact path = "/exito"      component = {SuccessPage}/> 
               <Route exact path = "*"           component = {NotFound}/>
         </Switch>
-        <Footer/>
+        {/* <Footer/> */}
       </React.Fragment>
     </AuthContext.Provider>
   </BrowserRouter>);
