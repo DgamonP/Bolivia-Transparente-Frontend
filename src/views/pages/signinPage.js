@@ -4,7 +4,7 @@ import SigninFormComponent from "../../components/comp-forms/signinFormComponent
 
 class SignInPage extends React.Component {
     
-  componentDidMount (){
+/*   componentDidMount (){
     this.init();
     console.log("init exect");
     this.clean();
@@ -24,11 +24,7 @@ class SignInPage extends React.Component {
       console.log("remove register-page");
     };  
   };  
-  /* 
-  componentWillMount (){
-    this.init();      
-  } */
-  
+ */  
   redirect = () => {
     this.props.history.push("/denunciar");
   };
