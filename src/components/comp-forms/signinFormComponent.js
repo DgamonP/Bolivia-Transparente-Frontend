@@ -14,6 +14,26 @@ class SigninFormComponent extends React.Component{
             password : ""
         }
     }
+    componentDidMount (){
+        this.init();
+        console.log("init exect");
+        this.clean();
+        console.log("clean exect");
+      }
+      
+      init = () => {
+        document.documentElement.classList.remove("nav-open");
+        console.log('borrar nav-open');
+      }; 
+    
+      clean = () => {
+        document.body.classList.add("register-page");
+        console.log("add register-page");
+        return function cleanup() {
+          document.body.classList.remove("register-page");
+          console.log("remove register-page");
+        };  
+      }; 
 
     handleChange = e =>{
         this.setState({

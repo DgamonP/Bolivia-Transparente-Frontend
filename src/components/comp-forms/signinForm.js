@@ -1,16 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 // reactstrap components
 import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
 
 function SigninForm(props) {
+  
+  useEffect(() => {
+    document.getElementById("login").classList.remove('card')
+    document.getElementById("login").classList.add('card-register');
+    console.log('remove and add card')
+    return () => {
+      document.getElementById("login").classList.remove('card-register');
+    }
+  },)
+   
 
   return (
     <>
+    <div
+        className="page-header"
+        style={{
+          backgroundImage: "url(" + require("assets/img/backgroundForm.png") + ")",
+        }}
+     >
       <Container>
         <Row>
           <Col className="ml-auto mr-auto" lg="6">
-            <Card className="card-register ml-auto mr-auto">
+            <Card id = "login" className="card-register ml-auto mr-auto">
               <h3 className="title mx-auto">Iniciar Sesión</h3>
               <Form className="register-form">
                 <label>Email</label>
@@ -103,6 +119,7 @@ function SigninForm(props) {
           </Col>
         </Row>
       </Container>
+    </div>
     </>
   );
 }

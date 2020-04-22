@@ -24,6 +24,7 @@ import IndexNavbar from "components/Navbars/IndexNavbar.js";
 //import AnonymousDenuncia from './views/pages/anonymousDenuncia';
 
 const App = () => { 
+  
   const [token, setToken] = useState(window.localStorage.getItem('token'))
 
   useEffect(()=> {
