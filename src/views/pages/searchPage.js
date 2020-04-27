@@ -134,7 +134,7 @@ class SearchPage extends React.Component {
     console.log("Rebuilding with anonymous state:", this.state.form.anonymous);
     return (
       <React.Fragment>
-        <IndexNavbar />
+        {/* <IndexNavbar /> debugeando */}
         <div
           className="page-header"
           style={{
@@ -143,10 +143,10 @@ class SearchPage extends React.Component {
           }}
         >
             
-          <div class="card mb-3">
-            <img class="card-img-top" src={img1} alt="Card image cap" />
-            <div class="card-body">
-              <h4 class="card-title">Buscar Folio de Denuncia</h4>
+          <div className="card mb-3">
+            <img className="card-img-top" src={img1} alt="Card image cap" />
+            <div className="card-body">
+              <h4 className="init-item">Buscar Folio de Denuncia</h4>
               {this.userId ? (
                 <p className="init-item">
                   {" "}
@@ -160,15 +160,20 @@ class SearchPage extends React.Component {
                   sistem para ver denuncias personales.
                 </p>
               )}
-              <div class="input-group">
+              <div className="input-group">
                 <input
-                  type="text"
-                  placeholder="Group Addon"
-                  class="form-control"
+                  id          = "folio_input"
+                  name        = "folio"
+                  placeholder = "Introduzca el código de folio de la denuncia que busca"
+                  margin      = "normal"
+                  className   = "form-control"
+                  type        = "text"
+                  value       = {this.state.form.folio}
+                  onChange    = {this.handleChange}                                                                                                                                                                                                                                                                                                                                                                                                                                                   
                 />
-                <div class="input-group-append">
-                  <span class="input-group-text">
-                    <i class="fa fa-group"></i>
+                <div className="input-group-append">
+                  <span className="input-group-text">
+                    <i className="fa fa-group"></i>
                   </span>
                 </div>
               </div>
@@ -188,6 +193,17 @@ class SearchPage extends React.Component {
               ) : (
                 <div></div>
               )}
+              <div className="text-center">
+                <br/>
+                <Button className="btn-round ml-1"  
+                        type="button"
+                        onClick={this.search}
+                        size="large"
+                        color="info"
+                        target="_blank">
+                  Buscar
+                </Button>
+              </div>
               <div align="center">
                 {this.state.emptyField && (
                   <div
@@ -221,12 +237,7 @@ class SearchPage extends React.Component {
                   </div>
                 )}
               </div>
-              <div className="text-center">
-                <br/>
-                <Button className="btn-round ml-1" color="info" type="button">
-                  Buscar
-                </Button>
-              </div>
+              
             </div>
           </div>
         </div>

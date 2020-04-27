@@ -25,7 +25,10 @@ function SigninForm(props) {
         <Container>
           <Row>
             <Col className="ml-auto mr-auto" lg="6">
-              <Card id="login" className="card-register ml-auto mr-auto">
+              <Card id="login" className="card-register ml-auto mr-auto" 
+                    style={{
+                    backgroundImage:"url(" + require("assets/img/login-image.jpg") + ")",
+                    }}>
                 <h3 className="title mx-auto">Iniciar Sesión</h3>
                 <Form className="register-form">
                   <label>Email</label>

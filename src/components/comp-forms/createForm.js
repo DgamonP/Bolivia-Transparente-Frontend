@@ -635,7 +635,7 @@ class CreateForm extends React.Component{
                         </Col>
                     </Row>
                     <p className="init-item" hidden={this.state.viewOnly || this.state.currentPage!==4}> Al utilizar el sistema usted acepta las condiciones de uso del mismo. <br/> Su información será utilizada de forma estrictamente confidencial.</p>
-                <div align="center" hidden={this.state.viewOnly || this.state.currentPage!==3}>
+                <div align="center" hidden={this.state.viewOnly || this.state.currentPage!==4}>
                     {!this.state.noMedia && <Button color="danger" type="button" onClick={this.deleteAll} size="small" target="_blank">
                         Eliminar todo
                     </Button>}
