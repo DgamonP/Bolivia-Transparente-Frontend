@@ -12,8 +12,8 @@ export class DirectionMap extends Component {
            }} 
            zoom={15}
            onClick={this.onMapClicked}
-       >
-      <Marker onClick={this.onMarkerClick}
+        >
+        <Marker onClick={this.onMarkerClick}
               name={'current location'}/>
       <InfoWindow onClose={this.onInfoWindowClose}>
       </InfoWindow>
