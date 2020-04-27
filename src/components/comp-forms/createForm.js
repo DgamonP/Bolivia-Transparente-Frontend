@@ -3,7 +3,7 @@ import firebase from "firebase";
 import 'react-dates/initialize';
 import Step from '@material-ui/core/Step';
 import 'react-dates/lib/css/_datepicker.css';
-import Button from '@material-ui/core/Button';
+//import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import Stepper from '@material-ui/core/Stepper';
 import '../../views/pages/styles/createForm.css';
@@ -15,6 +15,8 @@ import FileUploader from "react-firebase-file-uploader";
 import {createReport, getEvent} from '../../api/graphql';
 import videoPlaceholder from '../../images/videoPlaceholder.jpeg';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { Container, Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+
 
 function getSteps() {
   return ['Información de los hechos', '¿Donde sucedió el incidente? (Opcional)', 'Personal involucrado (Opcional)', 'Adjuntar evidencia (Opcional)', 'Envio de denuncia'];
@@ -323,7 +325,16 @@ class CreateForm extends React.Component{
         // console.log("Building for page", this.state.currentPage);
         return(
         <React.Fragment>
-            <h1 style={{padding:8}}> Nueva Denuncia</h1>
+            <div className="text-center"
+                className="page-header"
+                style={{
+                backgroundImage:
+                    "url(" + require("assets/img/backgroundForm.png") + ")",
+                }}
+            >
+            <div>
+                <br/><br/><br/><br/>
+            <h1 className="text-center text-light" style={{padding:8}}> Nueva Denuncia</h1>
             <Stepper hidden={this.state.viewOnly} activeStep={this.state.currentPage} alternativeLabel style={{backgroundColor:"transparent"}}>
                 {this.steps.map((label) => (
                 <Step key={label}>
@@ -331,28 +342,31 @@ class CreateForm extends React.Component{
                 </Step>
                 ))}
             </Stepper>
-            <form onSubmit = {this.handleSubmit}>
-                <div>
-                    <div className="flex-container">
-                        <div className="flex-item-two-row">
-                            <label hidden={!this.state.viewOnly && this.state.currentPage!==0}>Fecha del incidente *</label>
-                            <TextField
-                                disabled    = {this.state.viewOnly}
-                                hidden      = {!this.state.viewOnly && this.state.currentPage!==0}
-                                id          = "date_input"
-                                placeholder = "Ingrese la fecha del incidente"   
-                                margin      = "normal"
-                                onChange    = {this.handleChange}
-                                className   = "form-control"
-                                type        = "date"
-                                name        = "date"
-                                value       = {this.state.form.date}
-                                />
-                        </div>
-                        <div className="flex-item-two-row">
-                            <label hidden={!this.state.viewOnly && this.state.currentPage!==0}>Hora del incidente (opcional)</label>
-                            <TextField
-                                disabled    = {this.state.viewOnly}
+            
+            {/* <form >
+                <div > 
+                <Container >*/}
+                <Form className ="text-white" onSubmit = {this.handleSubmit}> 
+                    <Row>   
+                        <Col md={6}>
+                        <FormGroup>
+                            <Label hidden={!this.state.viewOnly && this.state.currentPage!==0}>Fecha del incidente </Label>
+                            <Input disabled    = {this.state.viewOnly}
+                                    hidden      = {!this.state.viewOnly && this.state.currentPage!==0}
+                                    id          = "date_input"
+                                    placeholder = "Ingrese la fecha del incidente"   
+                                    margin      = "normal"
+                                    onChange    = {this.handleChange}
+                                    className   = "form-control"
+                                    type        = "date"
+                                    name        = "date"
+                                    value       = {this.state.form.date} />
+                        </FormGroup>
+                        </Col>
+                        <Col md={6}>
+                        <FormGroup>
+                            <Label hidden={!this.state.viewOnly && this.state.currentPage!==0}>Hora del incidente (opcional) </Label>
+                            <Input disabled    = {this.state.viewOnly}
                                 hidden      = {!this.state.viewOnly && this.state.currentPage!==0}
                                 id          = "time_input"
                                 placeholder = "Ingrese la fecha del incidente"   
@@ -361,271 +375,268 @@ class CreateForm extends React.Component{
                                 className   = "form-control"
                                 type        = "time"
                                 name        = "time"
-                                value       = {this.state.form.time}
+                                value       = {this.state.form.time} />
+                        </FormGroup>
+                        </Col>
+                    </Row>                   
+                        <FormGroup>
+                                <Label hidden={!this.state.viewOnly && this.state.currentPage!==0}>Titulo </Label>
+                                <Input disabled    = {this.state.viewOnly}
+                                        hidden      = {!this.state.viewOnly && this.state.currentPage!==0}
+                                        id          = "title_input"
+                                        placeholder = "En pocas palabras ingrese un título para el hecho"   
+                                        margin      = "normal"
+                                        onChange    = {this.handleChange}
+                                        className   = "form-control"
+                                        type        = "text"
+                                        name        = "title"
+                                        value       = {this.state.form.title}/>
+                        </FormGroup>
+                        <FormGroup>
+                            <Label hidden={!this.state.viewOnly && this.state.currentPage!==0}>Descripción </Label>
+                                <Input disabled    = {this.state.viewOnly}
+                                    hidden      = {!this.state.viewOnly && this.state.currentPage!==0}
+                                    style       = {{paddingBottom:24, paddingRight: 24, paddingLeft: 24}}
+                                    id          = "description_id"
+                                    placeholder = "De la forma más detallada posible cuéntenos que sucedió"   
+                                    margin      = "normal"
+                                    onChange    = {this.handleChange}
+                                    className   = "form-control"
+                                    type        = "textarea"
+                                    name        = "description"
+                                    value       = {this.state.form.description}/>
+                        </FormGroup>  
+                    <Row>   
+                        <Col md={6}>
+                        <FormGroup>
+                            <Label hidden={!this.state.viewOnly && this.state.currentPage!==1}>Departamento </Label>
+                            <Input type="select" 
+                                    disabled    = {this.state.viewOnly}
+                                    hidden      = {!this.state.viewOnly && this.state.currentPage!==1}
+                                    value       = {this.state.form.state}
+                                    name        = "state"
+                                    onChange    = {this.handleChange}>
+                                    <option value="Other">Otro</option>
+                                    <option value="La Paz">La Paz</option>
+                                    <option value="Cochabamba">Cochabamba</option>
+                                    <option value="Santa Cruz">Santa Cruz</option>
+                                    <option value="Oruro">Oruro</option>
+                                    <option value="Potosí">Potosí</option>
+                                    <option value="Tarija">Tarija</option>
+                                    <option value="Chuquisaca">Chuquisaca</option>
+                                    <option value="Beni">Beni</option>
+                                    <option value="Pando">Pando</option>
+                                    </Input>
+                        </FormGroup>
+                        </Col>
+                        <Col md={6}>
+                        <FormGroup>
+                            <Label hidden={!this.state.viewOnly && this.state.currentPage!==1}>Ciudad </Label>
+                            <Input disabled    = {this.state.viewOnly}
+                                    hidden      = {!this.state.viewOnly && this.state.currentPage!==1}
+                                    id          = "city"
+                                    placeholder = "¿En que ciudad sucedió el evento?. Ejemplo, El Alto, Quillacollo, Montero, etc"
+                                    margin      = "normal"
+                                    onChange    = {this.handleChange}
+                                    className   = "form-control"
+                                    type        = "text"
+                                    name        = "city"
+                                    value       = {this.state.form.city}/>
+                        </FormGroup>
+                        </Col>
+                    </Row>    
+                    <Row>   
+                        <Col md={6}>
+                        <FormGroup>
+                            <Label hidden={!this.state.viewOnly && this.state.currentPage!==1}>Municipio </Label>
+                            <Input disabled    = {this.state.viewOnly}
+                                    hidden      = {!this.state.viewOnly && this.state.currentPage!==1}
+                                    id          = "municipio"
+                                    placeholder = "¿En que municipio sucedió el evento?. Ejemplo, Cercado, etc"
+                                    margin      = "normal"
+                                    onChange    = {this.handleChange}
+                                    className   = "form-control"
+                                    type        = "text"
+                                    name        = "municipio"
+                                    value       = {this.state.form.municipio}/>
+                        </FormGroup>
+                        </Col>
+                        <Col md={6}>
+                        <FormGroup>
+                            <Label hidden={!this.state.viewOnly && this.state.currentPage!==1}>Dirección del incidente </Label>
+                            <Input disabled    = {this.state.viewOnly}
+                                    hidden      = {!this.state.viewOnly && this.state.currentPage!==1}
+                                    id          = "location_id"
+                                    placeholder = "Dónde sucedió el acontecimiento, por favor sea lo más descriptivo posible"
+                                    margin      = "normal"
+                                    onChange    = {this.handleChange}
+                                    className   = "form-control"
+                                    type        = "text"
+                                    name        = "placeName"
+                                    value       = {this.state.form.placeName}
+                                    />
+                        </FormGroup>
+                        </Col>
+                    </Row>
+                    <Row>   
+                        <Col md={12}>
+                        <FormGroup>
+                            <Label hidden={!this.state.viewOnly && this.state.currentPage!==1}>Entidad u organización involucrada</Label>
+                            <Input disabled    = {this.state.viewOnly}
+                                    hidden      = {!this.state.viewOnly && this.state.currentPage!==1}
+                                    id          = "entity"
+                                    placeholder = "Indique en que organización o entidad ocurrió el acto denunciado"
+                                    margin      = "normal"
+                                    onChange    = {this.handleChange}
+                                    className   = "form-control"
+                                    type        = "text"
+                                    name        = "entity"
+                                    value       = {this.state.form.entity}
+                                    />
+                        </FormGroup>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={6}>
+                        <FormGroup>
+                            <Label hidden={!this.state.viewOnly && this.state.currentPage!==2}>Nombre de la persona denunciada </Label>
+                            <Input disabled    = {this.state.viewOnly}
+                                    hidden      = {!this.state.viewOnly && this.state.currentPage!==2}
+                                    id          = "denounced"
+                                    placeholder = "Si cuenta con los nombres de la(s) persona(s) o funcionario(s) denunciado(s), introdúzcalo(s)"
+                                    margin      = "normal"
+                                    onChange    = {this.handleChange}
+                                    className   = "form-control"
+                                    type        = "text"
+                                    name        = "denounced"
+                                    value       = {this.state.form.denounced}
+                                    />
+                        </FormGroup>
+                        </Col>
+                        <Col md={6}>
+                        <FormGroup>
+                            <Label hidden={!this.state.viewOnly && this.state.currentPage!==2}>Cargo de la persona denunciada</Label>
+                            <Input disabled    = {this.state.viewOnly}
+                                    hidden      = {!this.state.viewOnly && this.state.currentPage!==2}
+                                    id          = "denouncedCharge"
+                                    placeholder = "Si conoce el cargo de la(s) persona(s) o funcionario(s) denunciado(s), introdúzcalo(s)"
+                                    margin      = "normal"
+                                    onChange    = {this.handleChange}
+                                    className   = "form-control"
+                                    type        = "text"
+                                    name        = "denouncedCharge"
+                                    value       = {this.state.form.denouncedCharge}
+                                    />
+                        </FormGroup>
+                        </Col>
+                    </Row>
+                    <Row>
+                    <Col md={12}> 
+                        <FormGroup>
+                            <Label hidden={!this.state.viewOnly && this.state.currentPage!==2}>Descripción de la persona denunciada </Label>
+                            <Input disabled    = {this.state.viewOnly}
+                                    hidden      = {!this.state.viewOnly && this.state.currentPage!==2}
+                                    id          = "denouncedDescription"
+                                    placeholder = "De no contar con el nombre o cargo puede proceder a describir a la persona o personas denunciadas"
+                                    margin      = "normal"
+                                    onChange    = {this.handleChange}
+                                    className   = "form-control"
+                                    type        = "textarea"
+                                    name        = "denouncedDescription"
+                                    value       = {this.state.form.denouncedDescription}
+                                    />
+                        </FormGroup>
+                    </Col>
+                    </Row> 
+                    <div align="center" style={{paddingLeft: 24, paddingRigth: 24}}  hidden={!this.state.viewOnly && this.state.currentPage!==3}>
+                        {this.state.isUploading && <CircularProgress variant="determinate" value={this.state.progress} />}
+                    </div>
+                    <div className = "form-group" align="center" hidden={this.state.viewOnly || this.state.currentPage!==3}>
+                        <label style={{paddingRight: 24, paddingLeft: 24}}> Si desea adjuntar evidencia puede realizarlo a continuación:</label>
+                        <br/>
+                        <div style={{paddingTop: 24, paddingRight: 24, paddingLeft: 24}}>
+                            <label style={{backgroundColor: 'steelblue', color: 'white', padding: 10, borderRadius: 4, cursor: 'pointer'}}>
+                                Seleccione un archivo 
+                                <FileUploader
+                                    hidden
+                                    accept          = "image/video/audio"
+                                    storageRef      = {firebase.storage().ref('images')}
+                                    onUploadStart   = {this.handleUploadStart}
+                                    onUploadError   = {this.handleUploadError}
+                                    onUploadSuccess = {this.handleUploadSuccess}
+                                    onProgress      = {this.handleProgress}
                                 />
+                            </label>
                         </div>
                     </div>
-                </div>
-                <div className = "form-group">
-                    <label style={{paddingRight: 24, paddingLeft: 24}} hidden={!this.state.viewOnly && this.state.currentPage!==0}>Título</label>
-                    <TextField
-                        disabled    = {this.state.viewOnly}
-                        hidden      = {!this.state.viewOnly && this.state.currentPage!==0}
-                        style       = {{paddingBottom:24, paddingRight: 24, paddingLeft: 24}}
-                        id          = "title_input"
-                        placeholder = "En pocas palabras ingrese un título para el hecho"   
-                        margin      = "normal"
-                        onChange    = {this.handleChange}
-                        className   = "form-control"
-                        type        = "text"
-                        name        = "title"
-                        value       = {this.state.form.title}
-                        />
-                </div>
-                <div className = "form-group">
-                    <label style={{paddingRight: 24, paddingLeft: 24}} hidden={!this.state.viewOnly && this.state.currentPage!==0}>Descripción</label>
-                    <TextField
-                        disabled    = {this.state.viewOnly}
-                        hidden      = {!this.state.viewOnly && this.state.currentPage!==0}
-                        style       = {{paddingBottom:24, paddingRight: 24, paddingLeft: 24}}
-                        id          = "description_id"
-                        placeholder = "De la forma más detallada posible cuéntenos que sucedió"   
-                        margin      = "normal"
-                        onChange    = {this.handleChange}
-                        className   = "form-control"
-                        type        = "text"
-                        name        = "description"
-                        value       = {this.state.form.description}
-                        />
-                </div>
-                <div className          = "form-group">
-                    <label style        = {{paddingRight: 24, paddingLeft: 24}} hidden      = {!this.state.viewOnly && this.state.currentPage!==1}>Departamento</label>
-                    <Select 
-                            disabled    = {this.state.viewOnly}
-                            hidden      = {!this.state.viewOnly && this.state.currentPage!==1}
-                            style       = {{paddingBottom:16, paddingRight: 16, paddingLeft: 16}}
-                            value       = {this.state.form.state}
-                            name        = "state"
-                            onChange    = {this.handleChange}>
-                        <MenuItem value="Other">Otro</MenuItem>
-                        <MenuItem value="La Paz">La Paz</MenuItem>
-                        <MenuItem value="Cochabamba">Cochabamba</MenuItem>
-                        <MenuItem value="Santa Cruz">Santa Cruz</MenuItem>
-                        <MenuItem value="Oruro">Oruro</MenuItem>
-                        <MenuItem value="Potosí">Potosí</MenuItem>
-                        <MenuItem value="Tarija">Tarija</MenuItem>
-                        <MenuItem value="Chuquisaca">Chuquisaca</MenuItem>
-                        <MenuItem value="Beni">Beni</MenuItem>
-                        <MenuItem value="Pando">Pando</MenuItem>
-                    </Select>
-                </div>
-                <div className = "form-group">
-                    <label style={{paddingRight: 24, paddingLeft: 24}} hidden={!this.state.viewOnly && this.state.currentPage!==1}>Ciudad</label>
-                    <TextField
-                        disabled    = {this.state.viewOnly}
-                        hidden      = {!this.state.viewOnly && this.state.currentPage!==1}
-                        style       = {{paddingBottom:24, paddingRight: 24, paddingLeft: 24}}
-                        id          = "city"
-                        placeholder = "¿En que ciudad sucedió el evento?. Ejemplo, El Alto, Quillacollo, Montero, etc"
-                        margin      = "normal"
-                        onChange    = {this.handleChange}
-                        className   = "form-control"
-                        type        = "text"
-                        name        = "city"
-                        value       = {this.state.form.city}
-                        />
-                </div>
-                <div className = "form-group">
-                    <label style={{paddingRight: 24, paddingLeft: 24}} hidden={!this.state.viewOnly && this.state.currentPage!==1}>Municipio</label>
-                    <TextField
-                        disabled    = {this.state.viewOnly}
-                        hidden      = {!this.state.viewOnly && this.state.currentPage!==1}
-                        style       = {{paddingBottom:24, paddingRight: 24, paddingLeft: 24}}
-                        id          = "municipio"
-                        placeholder = "¿En que municipio sucedió el evento?. Ejemplo, Cercado, etc"
-                        margin      = "normal"
-                        onChange    = {this.handleChange}
-                        className   = "form-control"
-                        type        = "text"
-                        name        = "municipio"
-                        value       = {this.state.form.municipio}
-                        />
-                </div>
-                <div className = "form-group">
-                    <label style={{paddingRight: 24, paddingLeft: 24}} hidden={!this.state.viewOnly && this.state.currentPage!==1}>Dirección del incidente</label>
-                    <TextField
-                        disabled    = {this.state.viewOnly}
-                        hidden      = {!this.state.viewOnly && this.state.currentPage!==1}
-                        style       = {{paddingBottom:24, paddingRight: 24, paddingLeft: 24}}
-                        id          = "location_id"
-                        placeholder = "Dónde sucedió el acontecimiento, por favor sea lo más descriptivo posible"
-                        margin      = "normal"
-                        onChange    = {this.handleChange}
-                        className   = "form-control"
-                        type        = "text"
-                        name        = "placeName"
-                        value       = {this.state.form.placeName}
-                        />
-                </div>
-
-                <div className = "form-group">
-                    <label style={{paddingRight: 24, paddingLeft: 24}} hidden={!this.state.viewOnly && this.state.currentPage!==2}>Entidad u organización involucrada</label>
-                    <TextField
-                        disabled    = {this.state.viewOnly}
-                        hidden      = {!this.state.viewOnly && this.state.currentPage!==2}
-                        style       = {{paddingBottom:24, paddingRight: 24, paddingLeft: 24}}
-                        id          = "entity"
-                        placeholder = "Indique en que organización o entidad ocurrió el acto denunciado"
-                        margin      = "normal"
-                        onChange    = {this.handleChange}
-                        className   = "form-control"
-                        type        = "text"
-                        name        = "entity"
-                        value       = {this.state.form.entity}
-                        />
-                </div>
-
-                <div className = "form-group">
-                    <label style={{paddingRight: 24, paddingLeft: 24}} hidden={!this.state.viewOnly && this.state.currentPage!==2}>Nombre de la persona denunciada</label>
-                    <TextField
-                        disabled    = {this.state.viewOnly}
-                        hidden      = {!this.state.viewOnly && this.state.currentPage!==2}
-                        style       = {{paddingBottom:24, paddingRight: 24, paddingLeft: 24}}
-                        id          = "denounced"
-                        placeholder = "Si cuenta con los nombres de la(s) persona(s) o funcionario(s) denunciado(s), introdúzcalo(s)"
-                        margin      = "normal"
-                        onChange    = {this.handleChange}
-                        className   = "form-control"
-                        type        = "text"
-                        name        = "denounced"
-                        value       = {this.state.form.denounced}
-                        />
-                </div>
-
-                <div className = "form-group">
-                    <label style={{paddingRight: 24, paddingLeft: 24}} hidden={!this.state.viewOnly && this.state.currentPage!==2}>Cargo de la persona denunciada</label>
-                    <TextField
-                        disabled    = {this.state.viewOnly}
-                        hidden      = {!this.state.viewOnly && this.state.currentPage!==2}
-                        style       = {{paddingBottom:24, paddingRight: 24, paddingLeft: 24}}
-                        id          = "denouncedCharge"
-                        placeholder = "Si conoce el cargo de la(s) persona(s) o funcionario(s) denunciado(s), introdúzcalo(s)"
-                        margin      = "normal"
-                        onChange    = {this.handleChange}
-                        className   = "form-control"
-                        type        = "text"
-                        name        = "denouncedCharge"
-                        value       = {this.state.form.denouncedCharge}
-                        />
-                </div>
-
-                <div className = "form-group">
-                    <label style={{paddingRight: 24, paddingLeft: 24}} hidden={!this.state.viewOnly && this.state.currentPage!==2}>Descripción de la persona denunciada</label>
-                    <TextField
-                        disabled    = {this.state.viewOnly}
-                        hidden      = {!this.state.viewOnly && this.state.currentPage!==2}
-                        style       = {{paddingBottom:24, paddingRight: 24, paddingLeft: 24}}
-                        id          = "denouncedDescription"
-                        placeholder = "De no contar con el nombre o cargo puede proceder a describir a la persona o personas denunciadas"
-                        margin      = "normal"
-                        onChange    = {this.handleChange}
-                        className   = "form-control"
-                        type        = "text"
-                        name        = "denouncedDescription"
-                        value       = {this.state.form.denouncedDescription}
-                        />
-                </div>
-                
-                {/* <div align="center" style={{paddingLeft: 24, paddingRigth: 24}}>
-                    {this.state.isUploading && <div className="alert alert-primary"> Progress: {this.state.progress} </div>}
-                </div> */}
-                <div align="center" style={{paddingLeft: 24, paddingRigth: 24}}  hidden={!this.state.viewOnly && this.state.currentPage!==3}>
-                    {this.state.isUploading && <CircularProgress variant="determinate" value={this.state.progress} />}
-                </div>
-                <div className = "form-group" align="center" hidden={this.state.viewOnly || this.state.currentPage!==3}>
-                    <label style={{paddingRight: 24, paddingLeft: 24}}> Si desea adjuntar evidencia puede realizarlo a continuación:</label>
-                    <br/>
-                    <div style={{paddingTop: 24, paddingRight: 24, paddingLeft: 24}}>
-                        <label style={{backgroundColor: 'steelblue', color: 'white', padding: 10, borderRadius: 4, cursor: 'pointer'}}>
-                            Seleccione un archivo 
-                            <FileUploader
-                                hidden
-                                accept          = "image/video/audio"
-                                storageRef      = {firebase.storage().ref('images')}
-                                onUploadStart   = {this.handleUploadStart}
-                                onUploadError   = {this.handleUploadError}
-                                onUploadSuccess = {this.handleUploadSuccess}
-                                onProgress      = {this.handleProgress}
-                            />
-                        </label>
+                    <div className="flex-container" hidden={!this.state.viewOnly && this.state.currentPage!==3}>
+                        {this.state.form.imagePath.map(currentUrl=>{
+                            // Not working: onClick={() => {this._removeImage(currentUrl)}} 
+                            return(<div onClick={() => {this._removeImage(currentUrl)}} className="flex-item" key={currentUrl}>
+                                {currentUrl && <img src={currentUrl} style={{padding: 24}} width="320px"/>}
+                                {false && currentUrl && <p className="legend">currentUrl</p>}
+                                
+                            </div>);
+                        })}
                     </div>
-                </div>
-                <div className="flex-container" hidden={!this.state.viewOnly && this.state.currentPage!==3}>
-                    {this.state.form.imagePath.map(currentUrl=>{
-                        // Not working: onClick={() => {this._removeImage(currentUrl)}} 
-                        return(<div onClick={() => {this._removeImage(currentUrl)}} className="flex-item" key={currentUrl}>
-                            {currentUrl && <img src={currentUrl} style={{padding: 24}} width="320px"/>}
-                            {false && currentUrl && <p className="legend">currentUrl</p>}
-                            
-                        </div>);
-                    })}
-                </div>
-                <div className="flex-container" hidden={!this.state.viewOnly && this.state.currentPage!==3}>
-                    {this.state.form.videoPath.map(currentUrl=>{
-                        // Not working: onClick={() => {this._removeVideo(currentUrl)}} 
-                        return(<div onClick={() => {this._removeVideo(currentUrl)}}  className="flex-item" key={currentUrl}>
-                            {currentUrl && <img src={videoPlaceholder} style={{padding: 24}} width="320px"/>}
-                            {false && currentUrl && <p className="legend">currentUrl</p>}
-                        </div>);
-                    })}
-                </div>
-                <div className="flex-container" hidden={!this.state.viewOnly && this.state.currentPage!==3}>
-                    {this.state.form.audioPath.map(currentUrl=>{
-                        // Not working: onClick={() => {this._removeAudio(currentUrl)}} 
-                        return(<div onClick={() => {this._removeAudio(currentUrl)}}  className="flex-item" key={currentUrl}>
-                            {currentUrl &&  <audio controls>
-                                    <source src={currentUrl} type="audio/mpeg"/>
-                                    {"Archivo de audio: "+currentUrl}
-                                </audio> }
-                            {false && currentUrl && <p className="legend">currentUrl</p>}
-                        </div>);
-                    })}
-                </div>
-                <div className = "form-group">
-                    <label style={{paddingRight: 24, paddingLeft: 24}} hidden={(!this.state.viewOnly && this.state.currentPage!==4) || this.state.userId}>Teléfono de contacto</label>
-                    <TextField
-                        disabled    = {this.state.viewOnly}
-                        hidden      = {(!this.state.viewOnly && this.state.currentPage!==4) || this.state.userId}
-                        style       = {{paddingBottom:24, paddingRight: 24, paddingLeft: 24}}
-                        id          = "anonymousPhone"
-                        placeholder = "Introduzca un telefono para contactarlo"
-                        margin      = "normal"
-                        onChange    = {this.handleChange}
-                        className   = "form-control"
-                        type        = "text"
-                        name        = "anonymousPhone"
-                        value       = {this.state.form.anonymousPhone}
-                        />
-                </div>
-                <div className = "form-group">
-                    <label style={{paddingRight: 24, paddingLeft: 24}} hidden={(!this.state.viewOnly && this.state.currentPage!==4) || this.state.userId}>Correo de contacto</label>
-                    <TextField
-                        disabled    = {this.state.viewOnly}
-                        hidden      = {(!this.state.viewOnly && this.state.currentPage!==4) || this.state.userId}
-                        style       = {{paddingBottom:24, paddingRight: 24, paddingLeft: 24}}
-                        id          = "anonymousEmail"
-                        placeholder = "Introduzca un correo electrónico para contactarlo"
-                        margin      = "normal"
-                        onChange    = {this.handleChange}
-                        className   = "form-control"
-                        type        = "text"
-                        name        = "anonymousEmail"
-                        value       = {this.state.form.anonymousEmail}
-                        />
-                </div>
-                <p className="init-item" hidden={this.state.viewOnly || this.state.currentPage!==4}> Al utilizar el sistema usted acepta las condiciones de uso del mismo. <br/> Su información será utilizada de forma estrictamente confidencial.</p>
+                    <div className="flex-container" hidden={!this.state.viewOnly && this.state.currentPage!==3}>
+                        {this.state.form.videoPath.map(currentUrl=>{
+                            // Not working: onClick={() => {this._removeVideo(currentUrl)}} 
+                            return(<div onClick={() => {this._removeVideo(currentUrl)}}  className="flex-item" key={currentUrl}>
+                                {currentUrl && <img src={videoPlaceholder} style={{padding: 24}} width="320px"/>}
+                                {false && currentUrl && <p className="legend">currentUrl</p>}
+                            </div>);
+                        })}
+                    </div>
+                    <div className="flex-container" hidden={!this.state.viewOnly && this.state.currentPage!==3}>
+                        {this.state.form.audioPath.map(currentUrl=>{
+                            // Not working: onClick={() => {this._removeAudio(currentUrl)}} 
+                            return(<div onClick={() => {this._removeAudio(currentUrl)}}  className="flex-item" key={currentUrl}>
+                                {currentUrl &&  <audio controls>
+                                        <source src={currentUrl} type="audio/mpeg"/>
+                                        {"Archivo de audio: "+currentUrl}
+                                    </audio> }
+                                {false && currentUrl && <p className="legend">currentUrl</p>}
+                            </div>);
+                        })}
+                    </div>
+                    <Row>
+                        <Col md={6}>
+                        <FormGroup>
+                            <Label hidden={!this.state.viewOnly && this.state.currentPage!==4 || this.state.userId}>Teléfono de contacto </Label>
+                            <Input disabled    = {this.state.viewOnly}
+                                    hidden      = {(!this.state.viewOnly && this.state.currentPage!==4) || this.state.userId}
+                                    id          = "anonymousPhone"
+                                    placeholder = "Introduzca un telefono para contactarlo"
+                                    margin      = "normal"
+                                    onChange    = {this.handleChange}
+                                    className   = "form-control"
+                                    type        = "text"
+                                    name        = "anonymousPhone"
+                                    value       = {this.state.form.anonymousPhone}
+                                    />
+                        </FormGroup>
+                        </Col>
+                        <Col md={6}>
+                        <FormGroup>
+                            <Label hidden={!this.state.viewOnly && this.state.currentPage!==4 || this.state.userId}>Correo de contacto</Label>
+                            <Input disabled    = {this.state.viewOnly}
+                                    hidden      = {(!this.state.viewOnly && this.state.currentPage!==4) || this.state.userId}
+                                    id          = "anonymousEmail"
+                                    placeholder = "Introduzca un correo electrónico para contactarlo"
+                                    margin      = "normal"
+                                    onChange    = {this.handleChange}
+                                    className   = "form-control"
+                                    type        = "text"
+                                    name        = "anonymousEmail"
+                                    value       = {this.state.form.anonymousEmail}
+                                    />
+                        </FormGroup>
+                        </Col>
+                    </Row>
+                    <p className="init-item" hidden={this.state.viewOnly || this.state.currentPage!==4}> Al utilizar el sistema usted acepta las condiciones de uso del mismo. <br/> Su información será utilizada de forma estrictamente confidencial.</p>
                 <div align="center" hidden={this.state.viewOnly || this.state.currentPage!==3}>
-                    {!this.state.noMedia && <Button style={{padding: 12}} type="button" onClick={this.deleteAll} size="small" color="secondary" target="_blank">
+                    {!this.state.noMedia && <Button color="danger" type="button" onClick={this.deleteAll} size="small" target="_blank">
                         Eliminar todo
                     </Button>}
                 </div>
@@ -636,7 +647,7 @@ class CreateForm extends React.Component{
                     {this.state.error && <div className="alert alert-danger"> Ocurrio un error, por favor inténtelo más tarde </div>}
                 </div>
                 <div align="center" hidden={this.state.viewOnly || this.state.currentPage!==4}>
-                    <Button style={{padding: 48}} type="button" onClick={this.handleClick} size="medium" color="primary" target="_blank">
+                    <Button color="success" type="button" onClick={this.handleClick} size="medium" target="_blank">
                         Enviar Denuncia
                     </Button>
                 </div>
@@ -644,6 +655,8 @@ class CreateForm extends React.Component{
                     <Typography className="centered-component">{getStepContent(this.state.currentPage)}</Typography>
                     <div className="centered-component">
                     <Button
+                        className="btn-round"
+                        color="secondary"
                         disabled  = {this.state.currentPage === 0}
                         onClick   = {this.handleBack}
                         // className = {this.classes.backButton}
@@ -651,18 +664,17 @@ class CreateForm extends React.Component{
                         Anterior
                     </Button>
                     <Button
-                        variant   = "contained"
-                        color     = "primary"
+                        className="btn-round"
+                        color="primary"
                         disabled  = {this.state.currentPage === this.steps.length-1}
                         onClick   = {this.handleNext}>
                         Siguiente
                     </Button>
                     </div>
                 </div>
-                
-                {/* type="button" */}
-                {/* <button  className="btn btn-primary" style={{backgroundColor: 'steelblue', color: 'white', padding: 10, borderRadius: 4, cursor: 'pointer'}}></button> */}
-            </form>
+            </Form>
+            </div>
+        </div>
         </React.Fragment>);
     }
 }
