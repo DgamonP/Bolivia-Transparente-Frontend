@@ -7,7 +7,14 @@
 .flexitem {
     flex-grow: 1; /* default 0 */
     text-align: center;
-    
-  }
+}
+
+.centered-component{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+}
 
 

@@ -1,0 +1,109 @@
+.init-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 120px;
+    /* background-color: black; */
+     background-image: url("../../../assets/img/backgroundForm.png");
+     width: 100%;
+     height: 100vh;
+    /* background-image: linear-gradient(rgb(46, 67, 103), white, white); */
+}
+
+.init-container-form{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    padding-top: 120px;
+    /* background-color: black; */
+    /* background-image: url("../../../assets/img/backgroundForm.png"); */
+    background-image: linear-gradient(rgb(46, 67, 103), white, white);
+}
+
+.centered-container{
+    justify-self: center;
+    width: 50%;
+    padding: 24px;
+}
+
+.init-item{
+    width: 50%;
+    min-width: 500px;
+    text-align: justify;
+    /* padding: 24px; */
+}
+
+.center-item{
+    width: 50%;
+    min-width: 500px;
+    text-align: center;
+    /* padding: 24px; */
+}
+
+.init-item-background{
+    display: flex;
+    background: url('../../../images/gobiernoDigital.jpeg') center no-repeat;
+    background-size: 180%;
+    width: 50%;
+    min-height: 400px;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 24px;
+}
+
+.init-item-background-2{
+    display: flex;
+    background: url('../../../images/noViolencia.jpeg') center no-repeat;
+    background-size: 180%;
+    width: 50%;
+    min-height: 400px;
+    /* Below items just worked when display: flex enabled above */
+    align-items: flex-end;
+    justify-content: center;
+    padding: 24px;
+}
+
+.button{
+    align-self: end;
+    align-items: end;
+    align-content: end;
+}
+
+.init-item-background-3{
+    display: flex;
+    background: url('../../../images/denuncia.jpeg') center no-repeat;
+    background-size: 180%;
+    width: 50%;
+    min-height: 400px;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 24px;
+}
+
+.centered-init-item{
+    width: 50%;
+    padding: 24px;
+    /* For centering react components */
+    text-align: center;
+    text-justify: end;
+    height: 500px;
+}
+
+@media screen and (max-width:700px){
+    .init-item{
+        width: 100%;
+    }
+    .centered-init-item{
+        width: 100%;
+    }
+    .init-item-background{
+        width: 100%;
+    }
+    .init-item-background-2{
+        width: 100%;
+    }
+    .init-item-background-3{
+        width: 100%;
+    }
+}

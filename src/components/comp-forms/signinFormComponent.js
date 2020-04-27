@@ -4,15 +4,11 @@ import {signIn} from '../../api/graphql';
 import SigninForm from './signinForm';
 
 class SigninFormComponent extends React.Component{
-    // constructor(props, context) {
-    //     super(props, context);
-    //     //do something...
-    // }
-    
     state = {
-        warning : false,
-        errorLogin : false,
-        network : false,
+        warning         : false,
+        errorLogin      : false,
+        network         : false,
+        passwordError   : false,
         data : {
             email : "",
             password : ""
@@ -25,9 +21,10 @@ class SigninFormComponent extends React.Component{
                 ...this.state.data,
                 [e.target.name]: e.target.value,
             },
-            warning : false,
-            errorLogin : false,
-            network : false,
+            warning         : false,
+            errorLogin      : false,
+            network         : false,
+            passwordError   : false
         });
     }
 
@@ -42,23 +39,34 @@ class SigninFormComponent extends React.Component{
                     console.log("Signin results:");
                     console.log(results);
 
-                    var token = results.data.data.login.token
+                    var token = results.token
                     if(token){
                         state.token = token;
-                        window.localStorage.setItem('token',token)
+                        window.localStorage.setItem('token',token);
+                        console.log("Saving user Id:",results.userId);
+                        window.localStorage.setItem('id', results.userId);
                         console.log("Login successful, new token is:");
                         console.log(token);
-                        this.setState({warning:false, error:null});
-                        this.props.redirect();
+                        this.setState({warning:false, error: null});
+                        window.location.href='/';
                     }
                 }).catch(error=>{
-                    console.log(error);
-                    if(error === "Network Error"){          //TODO not working by now
+                    console.log("Message: ", error.message);
+                    if(error.message === "NetworkError when attempting to fetch resource."){
                         console.log("Problema de comunicación");
-                        this.setState({network:error, warning:false});
-                    }else{                          // by now: Request failed with status code 500
-                        console.log("Login error");
-                        this.setState({errorLogin:true, warning:false});
+                        this.setState({network: error, warning: false});
+                    }
+                    else{                         // by now: Request failed with status code 500
+                        if(error.message==="The provided EMAIL does not exist!"){
+                            console.log("Login error");
+                            this.setState({errorLogin: true, warning: false});
+                        }
+                        else{
+                            if(error.message==="Incorrect Password!"){
+                                console.log("Passowrd error");
+                                this.setState({passwordError: true, warning: false});
+                            }
+                        }
                     }
                 });
         }
@@ -70,6 +78,7 @@ class SigninFormComponent extends React.Component{
                     warning     = {this.state.warning}
                     errorLogin  = {this.state.errorLogin}
                     network     = {this.state.network}
+                    password    = {this.state.passwordError}
                     login       = {this.login}
                     onChange    = {this.handleChange}
                 />);
