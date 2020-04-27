@@ -17,18 +17,17 @@ import img1 from "../../assets/img/card.png";
 //import { Button } from "@material-ui/core";
 //react-strap
 import {
-    Button,
-    Label,
-    FormGroup,
-    Input,
-    InputGroupAddon,
-    InputGroupText,
-    InputGroup,
-    Container,
-    Row,
-    Col
-  } from "reactstrap";
-  
+  Button,
+  Label,
+  FormGroup,
+  Input,
+  InputGroupAddon,
+  InputGroupText,
+  InputGroup,
+  Container,
+  Row,
+  Col,
+} from "reactstrap";
 
 class SearchPage extends React.Component {
   userId = null;
@@ -137,68 +136,58 @@ class SearchPage extends React.Component {
       <React.Fragment>
         <IndexNavbar />
         <div
-        className="page-header"
-        style={{
-          backgroundImage:
-            "url(" + require("assets/img/backgroundForm.png") + ")",
-        }}
+          className="page-header"
+          style={{
+            backgroundImage:
+              "url(" + require("assets/img/backgroundForm.png") + ")",
+          }}
         >
- 
- 
- 
- {/*        <div className="init-container">
-          <div className="centered-container">
-            <h1 className="init-item"> Buscar Denuncia</h1>
-            {this.userId ? (
-              <p className="init-item">
-                {" "}
-                Puede realizar la búsqueda de denuncias personales o indicar
-                abajo si busca una denuncia anónima.
-              </p>
-            ) : (
-              <p className="init-item">
-                {" "}
-                Sólo puede realizar búsqueda de denuncias anónimas, ingrese al
-                sistem para ver denuncias personales.
-              </p>
-            )}
-
-            <form>
-              <TextField
-                id="folio_input"
-                name="folio"
-                placeholder="Introduzca el código de folio de la denuncia que busca"
-                margin="normal"
-                className="form-control"
-                type="text"
-                value={this.state.form.folio}
-                onChange={this.handleChange}
-              />
+            
+          <div class="card mb-3">
+            <img class="card-img-top" src={img1} alt="Card image cap" />
+            <div class="card-body">
+              <h4 class="card-title">Buscar Folio de Denuncia</h4>
+              {this.userId ? (
+                <p className="init-item">
+                  {" "}
+                  Puede realizar la búsqueda de denuncias personales o indicar
+                  abajo si busca una denuncia anónima.
+                </p>
+              ) : (
+                <p className="init-item">
+                  {" "}
+                  Sólo puede realizar búsqueda de denuncias anónimas, ingrese al
+                  sistem para ver denuncias personales.
+                </p>
+              )}
+              <div class="input-group">
+                <input
+                  type="text"
+                  placeholder="Group Addon"
+                  class="form-control"
+                />
+                <div class="input-group-append">
+                  <span class="input-group-text">
+                    <i class="fa fa-group"></i>
+                  </span>
+                </div>
+              </div>
               {this.state.showCheckbox ? (
                 <div>
-                  <label>Es una denuncia Anónima</label>
+                  <label align="center">Es una denuncia Anónima</label>
                   <Checkbox
                     color="default"
                     name="anonymous"
                     value={this.state.showCheckbox}
                     onChange={this.handleCheckbox}
-                    inputProps={{ "aria-label": "checkbox with default color" }}
+                    inputProps={{
+                      "aria-label": "checkbox with default color",
+                    }}
                   />
                 </div>
               ) : (
                 <div></div>
               )}
-              <div className="center-item">
-                <Button
-                  type="button"
-                  onClick={this.search}
-                  size="large"
-                  color="primary"
-                  target="_blank"
-                >
-                  Buscar
-                </Button>
-              </div>
               <div align="center">
                 {this.state.emptyField && (
                   <div
@@ -232,53 +221,14 @@ class SearchPage extends React.Component {
                   </div>
                 )}
               </div>
-            </form>
-          </div>
-        </div> */}
- {/*        <Container> */}
-          <div class="card mb-3">
-            <img class="card-img-top" src={ img1 } alt="Card image cap" />
-            <div class="card-body">
-              <h4 class="card-title">Buscar Folio de Denuncia</h4>
-              <p class="card-text">
-                    Puede realizar la búsqueda de denuncias personales o indicar
-                    abajo si busca una denuncia anónima.
-                    <br/>
-                    Sólo puede realizar búsqueda de denuncias anónimas, ingrese al
-                    sistema para ver denuncias personales.
-              </p>
-{/*               <p class="card-text">
-                <small class="text-muted"> 
-                Sólo puede realizar búsqueda de denuncias anónimas, ingrese al
-                sistema para ver denuncias personales.
-                </small>
-              </p>
- */}              
-              <div class="input-group">
-                <input type="text" placeholder="Group Addon" class="form-control"/>
-                    <div class="input-group-append">
-                        <span class="input-group-text"><i class="fa fa-group"></i></span>
-                    </div>
-               </div>
-                <Row>
-                <div id="switches">
-                <label>
-                <p>Esta Registrado en el Sistema Bolivia Transparente</p>
-                <Switch defaultValue={false} onColor="primary" offColor="primary" />
-                </label>
-                </div>
-                <div className="text-center">
+              <div className="text-center">
                 <Button className="btn-round ml-1" color="info" type="button">
                   Buscar
                 </Button>
-                </div>
-                </Row>
-
-                
+              </div>
             </div>
           </div>
-{/*           </Container> */}
-          </div>  
+        </div>
       </React.Fragment>
     );
   }
