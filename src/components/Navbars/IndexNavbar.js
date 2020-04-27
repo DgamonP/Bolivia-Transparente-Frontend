@@ -1,6 +1,13 @@
 import React from "react";
 // nodejs library that concatenates strings
+//import { logo } from '..'
+//import logo from './'
+import './logo.css'
+import logo from './logoHomeEB.png'
+import { Link } from "react-router-dom";
 import classnames from "classnames";
+import AuthContext from '../../context/auth-context';
+
 // reactstrap components
 import {
   Button,
@@ -43,112 +50,150 @@ function IndexNavbar() {
       window.removeEventListener("scroll", updateNavbarColor);
     };
   });
-  return (
-    <Navbar className={classnames("fixed-top", navbarColor)} expand="lg">
-      <Container>
-        <div className="navbar-translate">
-          <NavbarBrand
-            data-placement="bottom"
-            href="/index"
-            target="_blank"
-            title="Coded by Creative Tim"
-          >
-            Ministerio de Gobierno
-          </NavbarBrand>
-          <button
-            aria-expanded={navbarCollapse}
-            className={classnames("navbar-toggler navbar-toggler", {
-              toggled: navbarCollapse
-            })}
-            onClick={toggleNavbarCollapse}
-          >
-            <span className="navbar-toggler-bar bar1" />
-            <span className="navbar-toggler-bar bar2" />
-            <span className="navbar-toggler-bar bar3" />
-          </button>
-        </div>
-        <Collapse
-          className="justify-content-end"
-          navbar
-          isOpen={navbarCollapse}
-        >
-          <Nav navbar>
-            <NavItem>
-              <NavLink
-                data-placement="bottom"
-                href="https://twitter.com/CreativeTim?ref=creativetim"
-                target="_blank"
-                title="Follow us on Twitter"
+  return(
+    <AuthContext.Consumer>{
+      (context) => {
+        return (
+          <Navbar className={classnames("fixed-top", navbarColor)} expand="lg"> 
+            <Container>
+              <div className="logo">
+              <a href = "/">
+                  <img className="logo" src={logo} alt="Ministerio de Gobierno" height="60"/>
+              </a>
+              <div/>
+                <button
+                  aria-expanded={navbarCollapse}
+                  className={classnames("navbar-toggler navbar-toggler", {
+                    toggled: navbarCollapse
+                  })}
+                  onClick={toggleNavbarCollapse}
+                >
+                  <span className="navbar-toggler-bar bar1" />
+                  <span className="navbar-toggler-bar bar2" />
+                  <span className="navbar-toggler-bar bar3" />
+                  button
+                </button>
+              </div>
+              <Collapse
+                className="justify-content-end"
+                navbar
+                isOpen={navbarCollapse}
               >
-                <i className="fa fa-twitter" />
-                <p className="d-lg-none">Twitter</p>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                data-placement="bottom"
-                href="https://www.facebook.com/CreativeTim?ref=creativetim"
-                target="_blank"
-                title="Like us on Facebook"
-              >
-                <i className="fa fa-facebook-square" />
-                <p className="d-lg-none">Facebook</p>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                data-placement="bottom"
-                href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
-                target="_blank"
-                title="Follow us on Instagram"
-              >
-                <i className="fa fa-instagram" />
-                <p className="d-lg-none">Instagram</p>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                data-placement="bottom"
-                href="https://www.github.com/CreativeTimOfficial/paper-kit-react?ref=creativetim"
-                target="_blank"
-                title="Star on GitHub"
-              >
-                <i className="fa fa-github" />
-                <p className="d-lg-none">GitHub</p>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                href="https://demos.creative-tim.com/paper-kit-react/#/documentation?ref=pkr-index-navbar"
-                target="_blank"
-              >
-                <i className="nc-icon nc-book-bookmark" /> Registrate
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                href="https://www.google.com"
-                target="_blank"
-              >
-                <i className="nc-icon nc-book-bookmark" /> Login
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <Button
-                className="btn-round"
-                color="danger"
-                href="#pablo"
-                target="_blank"
-                disabled
-              >
-                Denuncia
-              </Button>
-            </NavItem>
-          </Nav>
-        </Collapse>
-      </Container>
-    </Navbar>
+                <Nav navbar>
+                  <NavItem>
+                    <NavLink
+                      data-placement="bottom"
+                      href="https://twitter.com/CreativeTim?ref=creativetim"
+                      target="_blank"
+                      title="Follow us on Twitter"
+                    >
+                      <i className="fa fa-twitter" />
+                      <p className="d-lg-none">Twitter</p>
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                      data-placement="bottom"
+                      href="https://www.facebook.com/CreativeTim?ref=creativetim"
+                      target="_blank"
+                      title="Like us on Facebook"
+                    >
+                      <i className="fa fa-facebook-square" />
+                      <p className="d-lg-none">Facebook</p>
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                      data-placement="bottom"
+                      href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
+                      target="_blank"
+                      title="Follow us on Instagram"
+                    >
+                      <i className="fa fa-instagram" />
+                      <p className="d-lg-none">Instagram</p>
+                    </NavLink>
+                  </NavItem>                
+                  <NavItem>
+                      <NavLink to="/" tag={Link}>
+                        <i className="nc-icon nc-layout-11" /> Inicio
+                      </NavLink>
+                    </NavItem>                               
+                 {context.token === 'null' &&
+                    <NavItem>
+                      <NavLink to="/viewDenuncias" tag={Link}>
+                        <i className="nc-icon nc-book-bookmark" /> Ver Denuncias
+                      </NavLink>
+                    </NavItem>                  
+                 }
+                 {context.token !== 'null' &&
+                    <NavItem>
+                      <NavLink to="/myDenuncias" tag={Link}>
+                        <i className="nc-icon nc-book-bookmark" /> Mis Denuncias
+                      </NavLink>
+                    </NavItem>                  
+                 }
+                 {context.token === 'null' &&
+                    <NavItem>
+                      <NavLink to="/signin" tag={Link}>
+                        <i className="nc-icon nc-layout-11" /> Iniciar Sesión
+                      </NavLink>
+                    </NavItem>                  
+                 }
+                 {context.token !== 'null' &&
+                    <NavItem>
+                      <NavLink data-placement="bottom"
+                              to="/"                              
+                              onClick={ () => {
+                                context.logout()
+                                window.location.href='/'}
+                              }
+                              tag={Link}>
+                        <i className="nc-icon nc-layout-11" /> Cerrar Sesión
+                      </NavLink>
+                    </NavItem>                  
+                 }          
+                  <NavItem>                    
+                    {
+                    context.token === 'null' &&
+                    <a href="/anonymousDenuncia">
+                    <Button                      
+                      className="btn-round"
+                      color="warning"
+                      href=" "                      
+                      disabled
+                    > Denuncia Anonima
+                    </Button>
+                    </a>}  
+                  </NavItem>
+                  <NavItem>                    
+                    {
+                    context.token !== 'null' &&                  
+                    <a href="/officialDenuncia">
+                    <Button
+                      className="btn-round"
+                      color="success"
+                      href=" /"                      
+                      disabled                      
+                    > 
+                      Denuncia Oficial 
+                    </Button>
+                    </a>  }
+                  </NavItem>
+                  {/* <NavItem>
+                  <Button type="button" class="btn btn-outline-success and-all-other-classes"> 
+                    <a href="signin" style="color:inherit"> Button  </a>
+                  </Button>
+                  </NavItem> */}
+                </Nav>
+              </Collapse>
+            </Container>
+          </Navbar>
+          );
+        }
+      }
+    </AuthContext.Consumer>
   );
 }
+
 
 export default IndexNavbar;

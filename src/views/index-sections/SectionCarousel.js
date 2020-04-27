@@ -17,19 +17,19 @@ import {
 
 const items = [
   {
-    src: require("assets/img/soroush-karimi.jpg"),
+    src: require("assets/img/pasosWeb.png"),
     altText: "Somewhere",
-    caption: "Somewhere"
+    caption: ""
   },
   {
-    src: require("assets/img/federico-beccari.jpg"),
-    altText: "Somewhere else",
-    caption: "Somewhere else"
+    src: require("assets/img/transparencia.png"),
+    altText: " ",
+    caption: " "
   },
   {
-    src: require("assets/img/joshua-stannard.jpg"),
+    src: require("assets/img/pasosApp.png"),
     altText: "Here it is",
-    caption: "Here it is"
+    caption: ""
   }
 ];
 
@@ -60,6 +60,7 @@ function SectionCarousel() {
     <>
       <div className="section pt-o" id="carousel">
         <Container>
+        <h3 className="title">Como Crear una Denuncia</h3>
           <Row>
             <Col className="ml-auto mr-auto" md="8">
               <Card className="page-carousel">
@@ -91,7 +92,7 @@ function SectionCarousel() {
                   <a
                     className="left carousel-control carousel-control-prev"
                     data-slide="prev"
-                    href="#pablo"
+                    href="#david"
                     onClick={e => {
                       e.preventDefault();
                       previous();
@@ -104,7 +105,7 @@ function SectionCarousel() {
                   <a
                     className="right carousel-control carousel-control-next"
                     data-slide="next"
-                    href="#pablo"
+                    href="#david"
                     onClick={e => {
                       e.preventDefault();
                       next();

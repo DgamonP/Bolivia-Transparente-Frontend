@@ -1,3 +1,4 @@
+//NavBar de landing page
 import React from "react";
 import { Link } from "react-router-dom";
 // nodejs library that concatenates strings
@@ -59,7 +60,7 @@ function ExamplesNavbar() {
             title="Coded by Creative Tim"
             tag={Link}
           >
-            Paper Kit 2
+            Inicio
           </NavbarBrand>
           <button
             aria-expanded={navbarCollapse}

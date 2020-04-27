@@ -1,21 +1,3 @@
-/*!
-
-=========================================================
-* Paper Kit React - v1.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-kit-react
-
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/paper-kit-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
 
 // reactstrap components
@@ -30,13 +12,15 @@ function SectionNucleoIcons() {
         <Container>
           <Row>
             <Col lg="6" md="12">
-              <h2 className="title">Nucleo Icons</h2>
+              <h2 className="title">Bolivia Transparente</h2>
+              <h4 className="title">Canal de Interaccion Ciudadano-Policia</h4>
               <br />
               <p className="description">
-                Paper Kit comes with 100 custom icons made by our friends from
-                NucleoApp. The official package contains over 2.100 thin icons
-                which are looking great in combination with Paper Kit Make sure
-                you check all of them and use those that you like the most.
+                Bolivia Transparente es un sistema integrado que nos 
+                permite efectuar denuncias de corrupcion en cualquier
+                estamento publico o privado, con la virtud que enlaza 
+                una comunicacion directa con la entidad que permita 
+                tomar accion para solucion del problema.
               </p>
               <br />
               <Button
@@ -45,7 +29,7 @@ function SectionNucleoIcons() {
                 href="/nucleo-icons"
                 target="_blank"
               >
-                View Demo Icons
+                Ver Video Demostrativo
               </Button>
               <Button
                 className="btn-round ml-1"
@@ -54,7 +38,7 @@ function SectionNucleoIcons() {
                 outline
                 target="_blank"
               >
-                View All Icons
+                Terminos y Condiciones
               </Button>
             </Col>
             <Col lg="6" md="12">
