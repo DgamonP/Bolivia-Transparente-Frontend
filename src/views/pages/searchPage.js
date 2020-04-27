@@ -222,6 +222,7 @@ class SearchPage extends React.Component {
                 )}
               </div>
               <div className="text-center">
+                <br/>
                 <Button className="btn-round ml-1" color="info" type="button">
                   Buscar
                 </Button>
