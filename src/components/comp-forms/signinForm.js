@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-
+import { Link } from 'react-router-dom'
 // reactstrap components
 import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
 
@@ -65,6 +65,8 @@ function SigninForm(props) {
                       Login
                     </Button>
                     <Button
+                      /* component={Link} to="/registro" */
+                      href="/registro"
                       className="btn-round mr-1 btn-sm btn-block"
                       color="success"
                       outline
