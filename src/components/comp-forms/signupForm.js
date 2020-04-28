@@ -1,10 +1,12 @@
 import React from 'react';
 import state from '../../model/state'
-import Button from '@material-ui/core/Button';
+//import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import {signIn, createUser} from '../../api/graphql';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+
+import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
 
 class SignupForm extends React.Component{
     state = {
@@ -106,118 +108,70 @@ class SignupForm extends React.Component{
     render(){
         return(
         <React.Fragment>
-            <h1 style={{padding:24}}> Nuevo Denunciante</h1>
-            <form onSubmit = {this.handleSubmit}>
-                <div className = "form-group">
-                    <label style    ={{paddingRight: 24, paddingLeft: 24}}>Nombres</label>
-                    <TextField
-                        style       ={{paddingBottom:24, paddingRight: 24, paddingLeft: 24}}
-                        id          = "firstName_signup_input"
-                        placeholder = "Ingrese su nombre como figura en su cédula"
-                        margin      = "normal"
-                        onChange    = {this.handleChange}
-                        className   = "form-control"
-                        type        = "text"
-                        name        = "firstName"
-                        value       = {this.state.form.firstName}
-                        />
-                </div>
-                <div className = "form-group">
-                    <label style    ={{paddingRight: 24, paddingLeft: 24}}>Apellido Paterno</label>
-                    <TextField
-                        style       ={{paddingBottom:24, paddingRight: 24, paddingLeft: 24}}
-                        id          = "lastName1_signup_input"
-                        placeholder = "Ingrese su apellido paterno como figura en su cédula"
-                        margin      = "normal"
-                        onChange    = {this.handleChange}
-                        className   = "form-control"
-                        type        = "text"
-                        name        = "lastName1"
-                        value       = {this.state.form.lastName1}
-                        />
-                </div>
-                <div className = "form-group">
-                    <label style    ={{paddingRight: 24, paddingLeft: 24}}>Apellido Materno</label>
-                    <TextField
-                        style       ={{paddingBottom:24, paddingRight: 24, paddingLeft: 24}}
-                        id          = "lastName2_signup_input"
-                        placeholder = "Ingrese su apellido materno como figura en su cédula"
-                        margin      = "normal"
-                        onChange    = {this.handleChange}
-                        className   = "form-control"
-                        type        = "text"
-                        name        = "lastName2"
-                        value       = {this.state.form.lastName2}
-                        />
-                </div>
-                <div>
-                    <div className="row">
-                        <div className="col-7   ">
-                            <div className = "form-group">
-                                <label style        ={{paddingRight: 24, paddingLeft: 24}}>Email</label>
-                                <TextField
-                                        style       ={{paddingBottom:24, paddingRight: 24, paddingLeft: 24}}
-                                        id          = "email_signup_input"
-                                        placeholder = "Correo electrónico de contacto"
-                                        margin      = "normal"
-                                        onChange    = {this.handleChange}
-                                        className   = "form-control"
-                                        type        = "email"
-                                        name        = "email"
-                                        value       = {this.state.form.email}
-                                    />
-                            </div>
-                        </div>
-                        <div className="col-2">
-                            <div className = "form-group">
-                                <label style    ={{paddingRight: 24, paddingLeft: 24}}>Edad</label>
-                                <TextField
-                                    id          = "age_signup_input"
+            <div
+                className="page-header"
+                style={{
+                backgroundImage:
+                    "url(" + require("assets/img/backgroundForm.png") + ")",
+                }}
+            >
+            <Container>
+            <br/><br/>
+                <Row>
+                    <Col className="ml-auto mr-auto" lg="12">
+                    <Card id="singup" className="card-signup ml-auto mr-auto" 
+                            style={{ 
+                            backgroundImage:"url(" + require("assets/img/login-image.jpg") + ")",
+                            }}>
+                        <h3 className="title mx-auto">Crear Nuevo Usuario</h3>
+                        <Form className="register-form">
+                        <Row >
+                            <Col md={12}>
+                            <label>Nombre(s)</label>
+                            <Input
+                                id          = "firstName_signup_input"
+                                placeholder = "Ingrese su nombre como figura en su cédula"
+                                margin      = "normal"
+                                onChange    = {this.handleChange}
+                                className   = "form-control"
+                                type        = "text"
+                                name        = "firstName"
+                                value       = {this.state.form.firstName}
+                                />
+                            </Col>
+                        </Row>
+                        <Row>
+                        <Col md={6}>
+                            <label>Apellido Paterno</label>
+                                <Input
+                                    id          = "lastName1_signup_input"
+                                    placeholder = "Apellido paterno igual a la cedula"
                                     margin      = "normal"
                                     onChange    = {this.handleChange}
                                     className   = "form-control"
-                                    type        = "number"
-                                    name        = "age"
-                                    value       = {this.state.form.age}
-                                    />
-                            </div>
-                        </div>
-                        <div className="col-3">
-                            <div className          = "form-group">
-                                <label style        ={{paddingRight: 24, paddingLeft: 24}}>Género</label>
-                                <Select style       ={{paddingBottom:16, paddingRight: 16, paddingLeft: 16}}
-                                        value       = {this.state.form.gender}
-                                        name        = "gender"
-                                        onChange    = {this.handleChange}>
-                                    <MenuItem value="Woman">Mujer</MenuItem>
-                                    <MenuItem value="Man">Hombre</MenuItem>
-                                    <MenuItem value="Other">Otro</MenuItem>
-                                </Select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className = "form-group">
-                    <label style={{paddingRight: 24, paddingLeft: 24}}>Número de teléfono</label>
-                    <TextField
-                        style       = {{paddingBottom:24, paddingRight: 24, paddingLeft: 24}}
-                        id          = "phone_signup_input"
-                        placeholder = "Por favor introduzca su número telefónico para que le contactemos"
-                        margin      = "normal"
-                        onChange    = {this.handleChange}
-                        className   = "form-control"
-                        type        = "text"
-                        name        = "phone"
-                        value       = {this.state.form.phone}
-                        />
-                </div>
-                <div>
-                    <div className="row">
-                        <div className="col-9">
-                            <div className = "form-group">
-                                <label style={{paddingRight: 24, paddingLeft: 24}}>Carnét de Identidad</label>
-                                <TextField
-                                    style       ={{paddingBottom:24, paddingRight: 24, paddingLeft: 24}}
+                                    type        = "text"
+                                    name        = "lastName1"
+                                    value       = {this.state.form.lastName1}
+                                />
+                        </Col>
+                        <Col md={6}>
+                            <label>Apellido Materno</label>
+                            <Input
+                                id          = "lastName2_signup_input"
+                                placeholder = "Apellido materno igual a la cedula"
+                                margin      = "normal"
+                                onChange    = {this.handleChange}
+                                className   = "form-control"
+                                type        = "text"
+                                name        = "lastName2"
+                                value       = {this.state.form.lastName2}
+                                />
+                        </Col>
+                        </Row>
+                        <Row>
+                        <Col md={5}>
+                            <label>Cedula</label>
+                                <Input
                                     id          = "ci_signup_input"
                                     placeholder = "Carnét de identidad tal y como está en su cédula"
                                     margin      = "normal"
@@ -226,38 +180,83 @@ class SignupForm extends React.Component{
                                     type        = "text"
                                     name        = "identityCard"
                                     value       = {this.state.form.identityCard}
-                                    />
-                            </div>
-                        </div>
-                        <div className="col-3">
-                            <div className = "form-group">
-                                <label style={{paddingRight: 24, paddingLeft: 24}}>Extensión</label>
-                                <Select style       ={{paddingBottom:16, paddingRight: 16, paddingLeft: 16}}
-                                        value       = {this.state.form.ext}
-                                        name        = "ext"
-                                        onChange    = {this.handleChange}>
-                                    <MenuItem value="LP">LP</MenuItem>
-                                    <MenuItem value="CB">CB</MenuItem>
-                                    <MenuItem value="SC">SC</MenuItem>
-                                    <MenuItem value="OR">OR</MenuItem>
-                                    <MenuItem value="PT">PT</MenuItem>
-                                    <MenuItem value="TJ">TJ</MenuItem>
-                                    <MenuItem value="CH">CH</MenuItem>
-                                    <MenuItem value="BE">BE</MenuItem>
-                                    <MenuItem value="PD">PD</MenuItem>
-                                    <MenuItem value="Other">Otro</MenuItem>
-                                </Select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div className="row">
-                        <div className="col-6">
-                            <div className = "form-group">
-                                <label style={{paddingRight: 24, paddingLeft: 24}}>Contraseña</label>
-                                <TextField
-                                    style={{paddingBottom:24, paddingRight: 24, paddingLeft: 24}}
+                                />
+                        </Col>
+                        <Col md={2}>
+                            <label>Ext.</label>
+                            <Input type="select" 
+                                    value       = {this.state.form.ext}
+                                    name        = "ext"
+                                    onChange    = {this.handleChange}>
+                                    <option value="Other">Otro</option>
+                                    <option value="LP">LP</option>
+                                    <option value="CB">CB</option>
+                                    <option value="SC">SC</option>
+                                    <option value="OR">OR</option>
+                                    <option value="PT">PT</option>
+                                    <option value="TJ">TJ</option>
+                                    <option value="CH">CH</option>
+                                    <option value="BE">BE</option>
+                                    <option value="PD">PD</option>
+                            </Input>
+                        </Col>
+                        <Col md={2}>
+                            <label>Edad</label>
+                            <Input
+                                id          = "age_signup_input"
+                                placeholder = "Edad"
+                                margin      = "normal"
+                                onChange    = {this.handleChange}
+                                className   = "form-control"
+                                type        = "number"
+                                name        = "age"
+                                value       = {this.state.form.age}
+                                />
+                        </Col>
+                        <Col md={3}>
+                            <label>Genero</label>
+                            <Input  type="select" 
+                                    value       = {this.state.form.gender}
+                                    name        = "gender"
+                                    onChange    = {this.handleChange}>
+                                <option value="Woman">Mujer</option>
+                                <option value="Man">Hombre</option>
+                                <option value="Other">Otro</option>
+                            </Input>
+                        </Col>
+                        </Row>
+                        <Row>
+                        <Col md={6}>
+                            <label>Correo Electronico</label>
+                                <Input
+                                    id          = "email_signup_input"
+                                    placeholder = "Correo electrónico de contacto"
+                                    margin      = "normal"
+                                    onChange    = {this.handleChange}
+                                    className   = "form-control"
+                                    type        = "email"
+                                    name        = "email"
+                                    value       = {this.state.form.email}
+                                />
+                        </Col>
+                        <Col md={6}>
+                            <label>Numero de Celular</label>
+                            <Input
+                                id          = "phone_signup_input"
+                                placeholder = "Introduzca su número telefónico"
+                                margin      = "normal"
+                                onChange    = {this.handleChange}
+                                className   = "form-control"
+                                type        = "text"
+                                name        = "phone"
+                                value       = {this.state.form.phone}
+                                />
+                        </Col>
+                        </Row>
+                        <Row>
+                        <Col md={6}>
+                            <label>Contraseña</label>
+                                <Input
                                     id          = "password_signup_input"
                                     placeholder = "Por favor ingrese su contraseña"
                                     margin      = "normal"
@@ -266,15 +265,11 @@ class SignupForm extends React.Component{
                                     type        = "password"
                                     name        = "password"
                                     value       = {this.state.form.password}
-                                    />
-                            </div> 
-                        </div>
-
-                        <div className="col-6">
-                        <div className = "form-group">
-                            <label style={{paddingRight: 24, paddingLeft: 24}}>Repita su contraseña</label>
-                            <TextField
-                                style={{paddingBottom:24, paddingRight: 24, paddingLeft: 24}}
+                                />
+                        </Col>
+                        <Col md={6}>
+                            <label>Repita su Contraseña</label>
+                            <Input
                                 id          = "password_repeat_signup_input"
                                 placeholder = "Por favor repita su contraseña"
                                 margin      = "normal"
@@ -284,40 +279,55 @@ class SignupForm extends React.Component{
                                 name        = "repeatPassword"
                                 value       = {this.state.form.repeatPassword}
                                 />
+                        </Col>
+                        </Row>
+                        <Row className="justify-content-md-center">
+                            <Col md={6}>
+                            <Button
+                            className="btn-round mr-1 btn-sm btn-block"
+                            color="info"
+                            type    = "button"
+                            onClick = {this.signupAndLogin}
+                            size    = "small"
+                            color   = "primary"
+                            target  = "_blank">
+                            Registrarse
+                            </Button>
+                            </Col>
+                        </Row>
+                    </Form>
+
+                        <div align="center" style = {{paddingLeft: 24, paddingRigth: 24}}>
+                            {this.state.emptyFields && <div className="alert alert-warning"> Por favor complete todos los campos </div>}
                         </div>
+                        <div align="center" style = {{paddingLeft: 24, paddingRigth: 24}}>
+                            {this.state.couldNotConnect && <div className="alert alert-danger"> No se pudo establecer la conexión, inténtelo más tarde </div>}
                         </div>
-                    </div>
-                </div>
-                <div align="center" style = {{paddingLeft: 24, paddingRigth: 24}}>
-                    {this.state.emptyFields && <div className="alert alert-warning"> Por favor complete todos los campos </div>}
-                </div>
-                <div align="center" style = {{paddingLeft: 24, paddingRigth: 24}}>
-                    {this.state.couldNotConnect && <div className="alert alert-danger"> No se pudo establecer la conexión, inténtelo más tarde </div>}
-                </div>
-                <div align="center" style = {{paddingLeft: 24, paddingRigth: 24}}>
-                    {this.state.passwordDoNotMatch && <div className="alert alert-danger"> Las contraseñas no coinciden </div>}
-                </div>
-                <div align="center" style = {{paddingLeft: 24, paddingRigth: 24}}>
-                    {this.state.emailAlreadyExists && <div className="alert alert-warning"> El correo introducido ya está registrado </div>}
-                </div>
-                <div align="center" style = {{paddingLeft: 24, paddingRigth: 24}}>
-                    {this.state.CIAlreadyExists && <div className="alert alert-warning"> El carnet de identidad ya está registrado </div>}
-                </div>
-                <div align="center" width="100%">
-                    <Button
-                        style   = {{padding: 24}}
-                        type    = "button"
-                        onClick = {this.signupAndLogin}
-                        size    = "small"
-                        color   = "primary"
-                        target  = "_blank">
-                        Registrarse
-                    </Button>
-                    {/* <Button style={{padding: 24}} type="button" onClick={this.signupAndLogin} size="small" color="primary" target="_blank">
-                        Registrarse
-                    </Button> */}
-                </div>
-            </form>
+                        <div align="center" style = {{paddingLeft: 24, paddingRigth: 24}}>
+                            {this.state.passwordDoNotMatch && <div className="alert alert-danger"> Las contraseñas no coinciden </div>}
+                        </div>
+                        <div align="center" style = {{paddingLeft: 24, paddingRigth: 24}}>
+                            {this.state.emailAlreadyExists && <div className="alert alert-warning"> El correo introducido ya está registrado </div>}
+                        </div>
+                        <div align="center" style = {{paddingLeft: 24, paddingRigth: 24}}>
+                            {this.state.CIAlreadyExists && <div className="alert alert-warning"> El carnet de identidad ya está registrado </div>}
+                        </div>
+
+                        <div className="forgot">
+                        <Button
+                        className="btn btn-link btn-sm"
+                        color="light" 
+                        href="#pablo"
+                        onClick={(e) => e.preventDefault()}
+                        >
+                        © {new Date().getFullYear()}, Ministerio de Gobierno      .
+                        </Button>
+                        </div>
+                    </Card>
+                    </Col>
+                </Row>
+            </Container> 
+            </div>
         </React.Fragment>);
     }
 }

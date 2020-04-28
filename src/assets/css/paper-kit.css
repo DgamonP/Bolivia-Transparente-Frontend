@@ -5323,6 +5323,35 @@ License - nucleoapp.com/license/
   border: 1px solid #FFFFFF;
 }
 
+/* modificado aqui */
+.card-signup {
+  position: relative;
+  background: url(https://cdn.pixabay.com/photo/2016/03/31/08/49/abstract-1292269_960_720.jpg) no-repeat local;
+  background-color: #50e281;
+  border-radius: 8px;
+  color: #e60001;
+  max-width: 900px;
+  margin: 90px 0 70px;
+  min-height: 400px;
+  padding: 30px;
+}
+.card-signup label {
+  margin-top: 15px;
+}
+.card-signup .card-title {
+  color: #B33C12;
+  text-align: center;
+}
+.card-signup .btn {
+  margin-top: 30px;
+}
+.card-signup .forgot {
+  text-align: center;
+}
+.card-signup .input-group-text {
+  border: 1px solid #FFFFFF;
+}
+
 .card-profile {
   margin-top: 30px;
   text-align: center;
