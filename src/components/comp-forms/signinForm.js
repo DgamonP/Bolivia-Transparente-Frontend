@@ -88,7 +88,7 @@ function SigninForm(props) {
               </div>
                 <div
                   align="center"
-                  style={{ paddingLeft: 24, paddingRigth: 24 }}
+                  // style={{ paddingLeft: 24, paddingRigth: 24 }}
                 >
                   {props.warning && (
                     <div className="alert alert-warning">
@@ -99,7 +99,7 @@ function SigninForm(props) {
                 </div>
                 <div
                   align="center"
-                  style={{ paddingLeft: 24, paddingRigth: 24 }}
+                  // style={{ paddingLeft: 24, paddingRigth: 24 }}
                 >
                   {props.errorLogin && (
                     <div className="alert alert-warning">
@@ -110,7 +110,7 @@ function SigninForm(props) {
                 </div>
                 <div
                   align="center"
-                  style={{ paddingLeft: 24, paddingRigth: 24 }}
+                  // style={{ paddingLeft: 24, paddingRigth: 24 }}
                 >
                   {props.network && (
                     <div className="alert alert-danger">
@@ -121,7 +121,7 @@ function SigninForm(props) {
                 </div>
                 <div
                   align="center"
-                  style={{ paddingLeft: 24, paddingRigth: 24 }}
+                  // style={{ paddingLeft: 24, paddingRigth: 24 }}
                 >
                   {props.password && (
                     <div className="alert alert-danger">

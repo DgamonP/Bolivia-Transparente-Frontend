@@ -124,15 +124,18 @@ class CreateForm extends React.Component{
         else{
             // If not, we set the parameters to the default values
             var myDate = new Date();
-            let month = myDate.getMonth();
-            let day = myDate.getDate();
-            month = month + "";
-            if(month.length===1) month = "0" + month;
-            if(day.length===1)   day   = "0" + day;
-            var currentDate = myDate.getFullYear() + "-" + month + "-" + day;
-            var currentTime = myDate.getHours() + ":" + myDate.getMinutes();
-            // console.log("Old date time to:", this.state.form.date, this.state.form.time);
-            // console.log("Setting date time to:", currentDate, currentTime);
+            let isoString = myDate.toISOString();
+            let minute = myDate.getMinutes();
+            let hour = myDate.getHours();
+            minute = "" + minute;
+            hour = "" + hour;
+            if(minute.length===1) minute = "" + "0" + minute;
+            if(hour.length===1)   hour   = "" + "0" + hour;
+            
+            var currentDate = isoString.slice(0,10);
+            var currentTime = hour + ":" + minute;
+            console.log("Old date time to:", this.state.form.date, this.state.form.time);
+            console.log("Setting date time to:", currentDate, currentTime);
             this.setState({
                 form:{
                     ...this.state.form,
@@ -177,8 +180,12 @@ class CreateForm extends React.Component{
             if(!this.state.userId){
                 isAnonymous = "true";
             }
+            let dummyProofTime = this.state.form.time;
+            if (this.state.form.time.length != 5){
+                dummyProofTime = "00:00";
+            }
             createReport(this.state.form.date,
-                        this.state.form.time,
+                        dummyProofTime,
                         this.state.form.title,
                         this.state.form.description,
                         this.state.form.category,

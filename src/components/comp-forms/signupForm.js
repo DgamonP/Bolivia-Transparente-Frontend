@@ -297,19 +297,19 @@ class SignupForm extends React.Component{
                         </Row>
                     </Form>
 
-                        <div align="center" style = {{paddingLeft: 24, paddingRigth: 24}}>
+                        <div align="center" style = {{paddingTop: 24}}>
                             {this.state.emptyFields && <div className="alert alert-warning"> Por favor complete todos los campos </div>}
                         </div>
-                        <div align="center" style = {{paddingLeft: 24, paddingRigth: 24}}>
+                        <div align="center" style = {{paddingTop: 24}}>
                             {this.state.couldNotConnect && <div className="alert alert-danger"> No se pudo establecer la conexión, inténtelo más tarde </div>}
                         </div>
-                        <div align="center" style = {{paddingLeft: 24, paddingRigth: 24}}>
+                        <div align="center" style = {{paddingTop: 24}}>
                             {this.state.passwordDoNotMatch && <div className="alert alert-danger"> Las contraseñas no coinciden </div>}
                         </div>
-                        <div align="center" style = {{paddingLeft: 24, paddingRigth: 24}}>
+                        <div align="center" style = {{paddingTop: 24}}>
                             {this.state.emailAlreadyExists && <div className="alert alert-warning"> El correo introducido ya está registrado </div>}
                         </div>
-                        <div align="center" style = {{paddingLeft: 24, paddingRigth: 24}}>
+                        <div align="center" style = {{paddingTop: 24}}>
                             {this.state.CIAlreadyExists && <div className="alert alert-warning"> El carnet de identidad ya está registrado </div>}
                         </div>
 
