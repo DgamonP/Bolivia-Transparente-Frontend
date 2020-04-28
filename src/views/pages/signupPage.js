@@ -37,11 +37,11 @@ class SignUpPage extends React.Component{
                     <img className="Navbar__brand-logo" src={logo} alt="Ministerio de Gobierno" height="160"/>
                 </div> */}
                 <div className="init-container">
-                    <div className="init-item-background-3">
+                    {/* <div className="init-item-background-3">
                         <Button style={{padding: 24}} type="button" onClick={this.redirectToSignin} size="small" variant="contained" target="_blank">
                             Ingresar
                         </Button>
-                    </div>
+                    </div> */}
                     <div className="init-item">
                         <SignupForm
                             onChange = {this.handleChange}

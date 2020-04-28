@@ -21,7 +21,7 @@ class SuccessPage extends React.Component{
                 <div className ="init-container">
                     <div className="centered-container">
                         <h1 className="init-item"> Denuncia registrada con éxito</h1>
-                        <p className="init-item"> El código de su denuncia es {this.state.incomeFolio}, recuerde este código para hacer futuras consultas</p>
+                        <h5 className="init-item"> El código de su denuncia es {this.state.incomeFolio}, recuerde este código para hacer futuras consultas</h5>
                     </div>
                 </div>);
         }

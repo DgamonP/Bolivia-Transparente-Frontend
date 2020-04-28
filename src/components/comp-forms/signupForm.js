@@ -1,10 +1,11 @@
 import React from 'react';
-import state from '../../model/state'
+import state from '../../model/state';
+import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
-import {signIn, createUser} from '../../api/graphql';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import {signIn, createUser} from '../../api/graphql';
 
 class SignupForm extends React.Component{
     state = {
@@ -272,7 +273,7 @@ class SignupForm extends React.Component{
 
                         <div className="col-6">
                         <div className = "form-group">
-                            <label style={{paddingRight: 24, paddingLeft: 24}}>Repita su contraseña</label>
+                            <label style={{paddingRight: 24, paddingLeft: 24}}>Repita contraseña</label>
                             <TextField
                                 style={{paddingBottom:24, paddingRight: 24, paddingLeft: 24}}
                                 id          = "password_repeat_signup_input"
@@ -313,10 +314,27 @@ class SignupForm extends React.Component{
                         target  = "_blank">
                         Registrarse
                     </Button>
+
                     {/* <Button style={{padding: 24}} type="button" onClick={this.signupAndLogin} size="small" color="primary" target="_blank">
                         Registrarse
                     </Button> */}
                 </div>
+                <div align="center" width="100%">
+                    <Link to="/ingreso">
+                        <Button
+                            style   = {{padding: 24}}
+                            type    = "button"
+                            // href    = "/ingreso"
+                            size    = "small"
+                            variant = "contained"
+                            target  = "_blank"
+                            >
+                            
+                            Ingresar
+                        </Button>
+                    </Link>
+                </div>
+                
             </form>
         </React.Fragment>);
     }

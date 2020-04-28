@@ -23,6 +23,7 @@
 
 .centered-container{
     justify-self: center;
+    align-self: center;
     width: 50%;
     padding: 24px;
 }
@@ -38,6 +39,7 @@
     width: 50%;
     min-width: 500px;
     text-align: center;
+    margin: 12px 12px 12px 12px;
     /* padding: 24px; */
 }
 

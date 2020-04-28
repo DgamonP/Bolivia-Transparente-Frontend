@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles/pages.css";
 import "assets/demo/demo.css";
 import "assets/scss/paper-kit.scss";
 import "assets/css/bootstrap.min.css";
@@ -144,9 +145,7 @@ class SearchPage extends React.Component {
         }}
         >
  
- 
- 
- {/*        <div className="init-container">
+        {/* <div className="init-container">
           <div className="centered-container">
             <h1 className="init-item"> Buscar Denuncia</h1>
             {this.userId ? (
@@ -235,11 +234,13 @@ class SearchPage extends React.Component {
             </form>
           </div>
         </div> */}
- {/*        <Container> */}
+        {/* <Container> */}
           <div class="card mb-3">
             <img class="card-img-top" src={ img1 } alt="Card image cap" />
-            <div class="card-body">
-              <h4 class="card-title">Buscar Folio de Denuncia</h4>
+            
+            <div class="centered-container">      
+            {/* card-body */}
+              <h4 class="card-title">Buscar Denuncia por Folio</h4>
               <p class="card-text">
                     Puede realizar la búsqueda de denuncias personales o indicar
                     abajo si busca una denuncia anónima.
@@ -247,37 +248,80 @@ class SearchPage extends React.Component {
                     Sólo puede realizar búsqueda de denuncias anónimas, ingrese al
                     sistema para ver denuncias personales.
               </p>
-{/*               <p class="card-text">
+            {/* <p class="card-text">
                 <small class="text-muted"> 
                 Sólo puede realizar búsqueda de denuncias anónimas, ingrese al
                 sistema para ver denuncias personales.
                 </small>
               </p>
- */}              
+            */}              
               <div class="input-group">
-                <input type="text" placeholder="Group Addon" class="form-control"/>
-                    <div class="input-group-append">
-                        <span class="input-group-text"><i class="fa fa-group"></i></span>
-                    </div>
-               </div>
-                <Row>
-                <div id="switches">
-                <label>
-                <p>Esta Registrado en el Sistema Bolivia Transparente</p>
-                <Switch defaultValue={false} onColor="primary" offColor="primary" />
-                </label>
-                </div>
-                <div className="text-center">
-                <Button className="btn-round ml-1" color="info" type="button">
+                <TextField
+                    id          = "folio_input"
+                    name        = "folio"
+                    placeholder = "Introduzca el código de folio de la denuncia que busca"
+                    margin      = "normal"
+                    className   = "form-control"
+                    type        = "text"
+                    value       = {this.state.form.folio}
+                    onChange    = {this.handleChange}
+                />
+              </div>
+              {this.state.showCheckbox
+                ? <div>
+                    <label class="card-text">Es una denuncia Anónima</label>
+                    <Checkbox
+                        color       = "default"
+                        name        = "anonymous"
+                        value       = {this.state.showCheckbox}
+                        onChange    = {this.handleCheckbox}
+                        inputProps  = {{ 'aria-label': 'checkbox with default color' }}
+                    />
+                  </div>
+                : <div></div>
+              }
+              <div className        = "center-item">
+                <Button type        = "button"
+                        onClick     = {this.search}
+                        size        = "large"
+                        color       = "primary"
+                        target      = "_blank">
                   Buscar
                 </Button>
-                </div>
-                </Row>
-
-                
+              </div>   
+              <div>
+                {this.state.emptyField && (
+                  <div
+                    style={{ paddingLeft: 24, paddingRigth: 24 }}
+                    className="alert alert-warning"
+                  >
+                    Por favor ingrese el código de folio
+                  </div>
+                )}
+              </div>
+              <div align="center">
+                {this.state.networkError && (
+                  <div
+                    style={{ paddingLeft: 24, paddingRigth: 24 }}
+                    className="alert alert-danger"
+                  >
+                    Problema de comunicación, inténtelo más tarde
+                  </div>
+                )}
+              </div>
+              <div align="center">
+                {this.state.folioNotFound && (
+                  <div
+                    style={{ paddingLeft: 24, paddingRigth: 24 }}
+                    className="alert alert-warning"
+                  >
+                    No se encontró el código de folio introducido
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-{/*           </Container> */}
+        {/* </Container> */}
           </div>  
       </React.Fragment>
     );
