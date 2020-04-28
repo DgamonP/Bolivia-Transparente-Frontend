@@ -119,11 +119,11 @@ class SignupForm extends React.Component{
             <br/><br/>
                 <Row>
                     <Col className="ml-auto mr-auto" lg="12">
-                    <Card id="singup" className="card-signup ml-auto mr-auto" 
+                    <Card id="singup" className="card-signup ml-auto mr-auto text-dark" 
                             style={{ 
-                            backgroundImage:"url(" + require("assets/img/login-image.jpg") + ")",
+                            backgroundImage:"url(" + require("assets/img/3.png") + ")",
                             }}>
-                        <h3 className="title mx-auto">Crear Nuevo Usuario</h3>
+                        <h3 className="title mx-auto text-dark">Crear Nuevo Usuario</h3>
                         <Form className="register-form">
                         <Row >
                             <Col md={12}>
@@ -169,7 +169,7 @@ class SignupForm extends React.Component{
                         </Col>
                         </Row>
                         <Row>
-                        <Col md={5}>
+                        <Col md={4}>
                             <label>Cedula</label>
                                 <Input
                                     id          = "ci_signup_input"
@@ -200,7 +200,7 @@ class SignupForm extends React.Component{
                                     <option value="PD">PD</option>
                             </Input>
                         </Col>
-                        <Col md={2}>
+                        <Col md={3}>
                             <label>Edad</label>
                             <Input
                                 id          = "age_signup_input"
@@ -322,6 +322,7 @@ class SignupForm extends React.Component{
                         >
                         © {new Date().getFullYear()}, Ministerio de Gobierno      .
                         </Button>
+                        <br/><br/><br/>
                         </div>
                     </Card>
                     </Col>
