@@ -14,7 +14,7 @@ import Index from "views/Index.js";
 // import InitPage from './views/pages/init';
 import Create from './views/pages/create';
 import NotFound from './views/pages/notFound';
-import SuccessPage from './views/pages/success';
+import SuccessPage from './views/pages/successPage';
 import AuthContext from './context/auth-context';
 import Footer from './components/Footers/footer';
 import SearchPage from './views/pages/searchPage';
