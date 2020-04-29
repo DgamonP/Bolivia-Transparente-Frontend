@@ -5,13 +5,13 @@ export class DirectionMap extends Component {
   render(){
     return(
       <Map google={this.props.google} 
-           style={{width:'180px', height:'150px'}}
-           initialCenter={{
-             lat:-16.508460,
-             lng:-68.125174
-           }} 
-           zoom={15}
-           onClick={this.onMapClicked}
+          style={{width:'180px', height:'150px'}}
+          initialCenter={{
+            lat:-16.508460,
+            lng:-68.125174
+          }} 
+          zoom={15}
+          onClick={this.onMapClicked}
         >
         <Marker onClick={this.onMarkerClick}
               name={'current location'}/>

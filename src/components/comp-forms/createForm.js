@@ -125,8 +125,9 @@ class CreateForm extends React.Component{
             let hour = myDate.getHours();
             minute = "" + minute;
             hour = "" + hour;
-            if(minute.length===1) minute = "" + "0" + minute;
-            if(hour.length===1)   hour   = "" + "0" + hour;
+            
+            if(minute.length===1) minute = `0${minute}`;
+            if(hour.length===1)   hour   = `0${hour}`
             
             var currentDate = isoString.slice(0,10);
             var currentTime = hour + ":" + minute;
@@ -337,7 +338,10 @@ class CreateForm extends React.Component{
             >
             <div>
                 <br/><br/><br/><br/>
-            <h1 className="d-flex text-center text-light" style={{padding:8}}> Nueva Denuncia</h1>
+            <h1 className="text-center text-light"  hidden={this.state.viewOnly}> Nueva Denuncia</h1>
+            <h1 className="text-center text-light" style={{padding:8}} hidden={!this.state.viewOnly}> Formulario de Denuncia</h1>
+            {/* <h3 className="text-center text-light" style={{padding:8}} hidden={this.state.viewOnly}> view Denuncia</h3>
+             */}
             <Stepper hidden={this.state.viewOnly} activeStep={this.state.currentPage} alternativeLabel style={{backgroundColor:"transparent"}}>
                 {this.steps.map((label) => (
                 <Step key={label}>
