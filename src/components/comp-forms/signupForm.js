@@ -118,7 +118,7 @@ class SignupForm extends React.Component{
                     <Col className="ml-auto mr-auto" lg="12">
                     <Card id="singup" className="card-signup ml-auto mr-auto text-dark" 
                             style={{ 
-                            backgroundImage:"url(" + require("assets/img/3.png") + ")",
+                            backgroundImage:"url(" + require("assets/img/backgrounSignup.png") + ")",
                             }}>
                         <h3 className="title mx-auto text-dark">Crear Nuevo Usuario</h3>
                         <Form className="register-form">
@@ -278,6 +278,21 @@ class SignupForm extends React.Component{
                                 />
                         </Col>
                         </Row>
+                        <div align="center" style = {{paddingTop: 3}}>
+                            {this.state.emptyFields && <div className="alert alert-warning"> Por favor complete todos los campos </div>}
+                        </div>
+                        <div align="center" >
+                            {this.state.couldNotConnect && <div className="alert alert-danger"> No se pudo establecer la conexión, inténtelo más tarde </div>}
+                        </div>
+                        <div align="center" >
+                            {this.state.passwordDoNotMatch && <div className="alert alert-danger"> Las contraseñas no coinciden </div>}
+                        </div>
+                        <div align="center" >
+                            {this.state.emailAlreadyExists && <div className="alert alert-warning"> El correo introducido ya está registrado </div>}
+                        </div>
+                        <div align="center" >
+                            {this.state.CIAlreadyExists && <div className="alert alert-warning"> El carnet de identidad ya está registrado </div>}
+                        </div>
                         <Row className="justify-content-md-center">
                             <Col md={6}>
                             <Button
@@ -292,24 +307,8 @@ class SignupForm extends React.Component{
                             </Col>
                         </Row>
                     </Form>
-
-                        <div align="center" style = {{paddingTop: 24}}>
-                            {this.state.emptyFields && <div className="alert alert-warning"> Por favor complete todos los campos </div>}
-                        </div>
-                        <div align="center" style = {{paddingTop: 24}}>
-                            {this.state.couldNotConnect && <div className="alert alert-danger"> No se pudo establecer la conexión, inténtelo más tarde </div>}
-                        </div>
-                        <div align="center" style = {{paddingTop: 24}}>
-                            {this.state.passwordDoNotMatch && <div className="alert alert-danger"> Las contraseñas no coinciden </div>}
-                        </div>
-                        <div align="center" style = {{paddingTop: 24}}>
-                            {this.state.emailAlreadyExists && <div className="alert alert-warning"> El correo introducido ya está registrado </div>}
-                        </div>
-                        <div align="center" style = {{paddingTop: 24}}>
-                            {this.state.CIAlreadyExists && <div className="alert alert-warning"> El carnet de identidad ya está registrado </div>}
-                        </div>
-
-                        <div className="forgot">
+                    
+                    <div className="forgot">
                         <Button
                         className="btn btn-link btn-sm"
                         color="light" 
@@ -317,12 +316,15 @@ class SignupForm extends React.Component{
                         onClick={(e) => e.preventDefault()}
                         >
                         © {new Date().getFullYear()}, Ministerio de Gobierno      .
-                        </Button>
-                        <br/><br/><br/>
-                        </div>
+                        </Button>                       
+                    </div>   
+                    <br/><br/> 
                     </Card>
-                    </Col>
-                </Row>
+                    
+                
+                
+                        </Col>
+                    </Row>
             </Container> 
             </div>
         </React.Fragment>);
