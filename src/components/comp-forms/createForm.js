@@ -332,16 +332,16 @@ class CreateForm extends React.Component{
         // console.log("Building for page", this.state.currentPage);
         return(
         <React.Fragment>
-            <div className="text-center"
-                className="page-header"
+            <div className="page"
+                 /* className="page-header"  */
                 style={{
                 backgroundImage:
-                    "url(" + require("assets/img/backgroundForm.png") + ")",
+                    "url(" + require("assets/img/backre.png") + ")",
                 }}
             >
             <div>
                 <br/><br/><br/><br/>
-            <h1 className="text-center text-light" style={{padding:8}}> Nueva Denuncia</h1>
+            <h1 className="d-flex text-center text-light" style={{padding:8}}> Nueva Denuncia</h1>
             <Stepper hidden={this.state.viewOnly} activeStep={this.state.currentPage} alternativeLabel style={{backgroundColor:"transparent"}}>
                 {this.steps.map((label) => (
                 <Step key={label}>
@@ -351,8 +351,8 @@ class CreateForm extends React.Component{
             </Stepper>
             
             {/* <form >
-                <div > 
-                <Container >*/}
+                <div > */}
+                <Container>
                 <Form className ="text-white" onSubmit = {this.handleSubmit}> 
                     <Row>   
                         <Col md={6}>
@@ -576,29 +576,29 @@ class CreateForm extends React.Component{
                             </label>
                         </div>
                     </div>
-                    <div className="flex-container" hidden={!this.state.viewOnly && this.state.currentPage!==3}>
+                    <div className="d-flex justify-content-center" hidden={!this.state.viewOnly && this.state.currentPage!==3}>
                         {this.state.form.imagePath.map(currentUrl=>{
                             // Not working: onClick={() => {this._removeImage(currentUrl)}} 
-                            return(<div onClick={() => {this._removeImage(currentUrl)}} className="flex-item" key={currentUrl}>
-                                {currentUrl && <img src={currentUrl} style={{padding: 24}} width="320px"/>}
+                            return(<div onClick={() => {this._removeImage(currentUrl)}} className="d-flex justify-content-center" key={currentUrl}>
+                                {currentUrl && <img src={currentUrl} style={{padding: 10}} width="250px" height="250"/>}
                                 {false && currentUrl && <p className="legend">currentUrl</p>}
                                 
                             </div>);
                         })}
                     </div>
-                    <div className="flex-container" hidden={!this.state.viewOnly && this.state.currentPage!==3}>
+                    <div className="d-flex justify-content-center" hidden={!this.state.viewOnly && this.state.currentPage!==3}>
                         {this.state.form.videoPath.map(currentUrl=>{
                             // Not working: onClick={() => {this._removeVideo(currentUrl)}} 
-                            return(<div onClick={() => {this._removeVideo(currentUrl)}}  className="flex-item" key={currentUrl}>
+                            return(<div onClick={() => {this._removeVideo(currentUrl)}}  className="d-flex justify-content-center" key={currentUrl}>
                                 {currentUrl && <img src={videoPlaceholder} style={{padding: 24}} width="320px"/>}
                                 {false && currentUrl && <p className="legend">currentUrl</p>}
                             </div>);
                         })}
                     </div>
-                    <div className="flex-container" hidden={!this.state.viewOnly && this.state.currentPage!==3}>
+                    <div className="d-flex justify-content-center" hidden={!this.state.viewOnly && this.state.currentPage!==3}>
                         {this.state.form.audioPath.map(currentUrl=>{
                             // Not working: onClick={() => {this._removeAudio(currentUrl)}} 
-                            return(<div onClick={() => {this._removeAudio(currentUrl)}}  className="flex-item" key={currentUrl}>
+                            return(<div onClick={() => {this._removeAudio(currentUrl)}}  className="d-flex justify-content-center" key={currentUrl}>
                                 {currentUrl &&  <audio controls>
                                         <source src={currentUrl} type="audio/mpeg"/>
                                         {"Archivo de audio: "+currentUrl}
@@ -641,8 +641,8 @@ class CreateForm extends React.Component{
                         </FormGroup>
                         </Col>
                     </Row>
-                    <p className="init-item" hidden={this.state.viewOnly || this.state.currentPage!==4}> Al utilizar el sistema usted acepta las condiciones de uso del mismo. <br/> Su información será utilizada de forma estrictamente confidencial.</p>
-                <div align="center" hidden={this.state.viewOnly || this.state.currentPage!==4}>
+                    <p className="text" align="center" hidden={this.state.viewOnly || this.state.currentPage!==4}> Al utilizar el sistema usted acepta las condiciones de uso del mismo. <br/> Su información será utilizada de forma estrictamente confidencial.</p>
+                <div align="center" hidden={this.state.viewOnly || this.state.currentPage!==3}>
                     {!this.state.noMedia && <Button color="danger" type="button" onClick={this.deleteAll} size="small" target="_blank">
                         Eliminar todo
                     </Button>}
@@ -680,7 +680,9 @@ class CreateForm extends React.Component{
                     </div>
                 </div>
             </Form>
+            </Container>
             </div>
+            
         </div>
         </React.Fragment>);
     }
