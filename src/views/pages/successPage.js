@@ -1,11 +1,10 @@
 import React from 'react';
-//import { Success } from './assets/img/success.png';
 import success from "../../assets/img/success.png";
 import error from "../../assets/img/error.png";
 
 import "./styles/pages.css";
 import {
-    Card, CardImg, CardText, CardBody, CardLink,
+    Card, CardText, CardBody,
     CardTitle, CardSubtitle
     } from 'reactstrap';
 
@@ -45,7 +44,7 @@ class SuccessPage extends React.Component{
                         </CardSubtitle>
                         </CardBody>
                             <div className="text-center">
-                                <img width="200px" src={success} alt="Card image cap" />
+                                <img width="200px" src={success} alt="Okcard" />
                             </div>
                         <CardBody>
                         <CardText>El código de su denuncia es .    
@@ -75,7 +74,7 @@ class SuccessPage extends React.Component{
                             </CardTitle>
                         </CardBody>
                         <div className="text-center">
-                        <img  width="250 px" src={error} alt="Card image cap" />
+                        <img  width="250 px" src={error} alt="ErrorCard" />
                         </div>
                     </Card>
                     </div>

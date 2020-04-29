@@ -606,7 +606,7 @@ class CreateForm extends React.Component{
                     <Row>
                         <Col md={6}>
                         <FormGroup>
-                            <Label hidden={!this.state.viewOnly && this.state.currentPage!==4 || this.state.userId}>Teléfono de contacto </Label>
+                            <Label hidden={(!this.state.viewOnly && this.state.currentPage!==4) || this.state.userId}>Teléfono de contacto </Label>
                             <Input disabled    = {this.state.viewOnly}
                                     hidden      = {(!this.state.viewOnly && this.state.currentPage!==4) || this.state.userId}
                                     id          = "anonymousPhone"
@@ -622,7 +622,7 @@ class CreateForm extends React.Component{
                         </Col>
                         <Col md={6}>
                         <FormGroup>
-                            <Label hidden={!this.state.viewOnly && this.state.currentPage!==4 || this.state.userId}>Correo de contacto</Label>
+                            <Label hidden={(!this.state.viewOnly && this.state.currentPage!==4) || this.state.userId}>Correo de contacto</Label>
                             <Input disabled    = {this.state.viewOnly}
                                     hidden      = {(!this.state.viewOnly && this.state.currentPage!==4) || this.state.userId}
                                     id          = "anonymousEmail"
