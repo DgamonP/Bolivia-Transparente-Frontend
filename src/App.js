@@ -1,4 +1,4 @@
-import React,  {useState, useEffect} from "react";
+import React from "react";
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
 // styles
@@ -7,11 +7,7 @@ import "assets/scss/paper-kit.scss";
 import "assets/css/bootstrap.min.css";
 
 // pages
-// import LandingPage from "views/pages/LandingPage.js";
-// import LandingPage from "views/pages/LandingPage";
-// import LoginPage from "views/pages/LoginPage.js";
 import Index from "views/Index.js";
-// import InitPage from './views/pages/init';
 import Create from './views/pages/create';
 import NotFound from './views/pages/notFound';
 import SuccessPage from './views/pages/successPage';
@@ -21,17 +17,17 @@ import SearchPage from './views/pages/searchPage';
 import SignUpPage from './views/pages/signupPage';
 import SignInPage from './views/pages/signinPage';
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
-//import AnonymousDenuncia from './views/pages/anonymousDenuncia';
 
 const App = () => { 
-  
-  const [token, setToken] = useState(window.localStorage.getItem('token'))
+  const token = window.localStorage.getItem('token')
+
+  /* const [token, setToken] = useState(window.localStorage.getItem('token'))
 
   useEffect(()=> {
     console.log("TOKEN BEFORE", token);
     setToken(window.localStorage.getItem('token'));
     console.log("TOKEN AFTER", token);
-  },)
+  },) */
 
   const logout = () => {
     window.localStorage.removeItem("token");
@@ -57,7 +53,7 @@ const App = () => {
               <Route exact path = "/exito"      component = {SuccessPage}/> 
               <Route exact path = "*"           component = {NotFound}/>
         </Switch>
-        {/* <Footer/> */}
+        <Footer/>
       </React.Fragment>
     </AuthContext.Provider>
   </BrowserRouter>);

@@ -71,7 +71,7 @@ function NotFound() {
                 >
                     <div className="text-center">
                         <Media center href="/">
-                            <Image width="350" className="rounded mx-auto d-block" src={errorImg} />
+                            <Image width="300" className="rounded mx-auto d-block" src={errorImg} />
                         </Media>
                         <p className="display-1 text-light" color="with">404</p>
                         <h1 className="text-danger">Pagina no Encontrada</h1>
