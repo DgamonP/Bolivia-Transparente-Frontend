@@ -1,10 +1,7 @@
 import React from 'react';
 import state from '../../model/state'
 //import Button from '@material-ui/core/Button';
-import Select from '@material-ui/core/Select';
 import {signIn, createUser} from '../../api/graphql';
-import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField';
 
 import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
 
@@ -285,7 +282,6 @@ class SignupForm extends React.Component{
                             <Col md={6}>
                             <Button
                             className="btn-round mr-1 btn-sm btn-block"
-                            color="info"
                             type    = "button"
                             onClick = {this.signupAndLogin}
                             size    = "small"

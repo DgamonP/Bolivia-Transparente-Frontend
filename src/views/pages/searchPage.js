@@ -2,31 +2,12 @@ import React from "react";
 import "assets/demo/demo.css";
 import "assets/scss/paper-kit.scss";
 import "assets/css/bootstrap.min.css";
-import Switch from "react-bootstrap-switch";
-
-//import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
-
 import "./styles/pages.css";
 import { getEvent } from "../../api/graphql";
-//import Button from '@material-ui/core/Button';
 import Checkbox from "@material-ui/core/Checkbox";
-import TextField from "@material-ui/core/TextField";
-import IndexNavbar from "../../components/Navbars/IndexNavbar.js";
-import PageHeader from "../../components/Headers/pageHeader";
-import img1 from "../../assets/img/card.png";
-//import { Button } from "@material-ui/core";
-//react-strap
+import Figura from "../../assets/img/card.png";
 import {
   Button,
-  Label,
-  FormGroup,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Container,
-  Row,
-  Col,
 } from "reactstrap";
 
 class SearchPage extends React.Component {
@@ -115,7 +96,7 @@ class SearchPage extends React.Component {
         })
         .catch((error) => {
           console.log("Handling error: ", error.message);
-          if (error.message == "No event found with that folio") {
+          if (error.message === "No event found with that folio") {
             this.setState({
               folioNotFound: true,
               anonymous: !Boolean(this.userId),
@@ -144,7 +125,7 @@ class SearchPage extends React.Component {
         >
             
           <div className="card mb-3">
-            <img className="card-img-top" src={img1} alt="Card image cap" />
+            <img className="card-img-top" src={Figura} alt="" />
             <div className="card-body">
               <h4 className="init-item">Buscar Folio de Denuncia</h4>
               {this.userId ? (
@@ -153,7 +134,7 @@ class SearchPage extends React.Component {
                   Puede realizar la búsqueda de denuncias personales o indicar
                   abajo si busca una denuncia anónima.
                 </p>
-              ) : (
+                ) : (
                 <p className="init-item">
                   {" "}
                   Sólo puede realizar búsqueda de denuncias anónimas, ingrese al
@@ -237,7 +218,6 @@ class SearchPage extends React.Component {
                   </div>
                 )}
               </div>
-              
             </div>
           </div>
         </div>

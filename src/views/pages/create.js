@@ -1,7 +1,7 @@
 import React from 'react';
 // import state from '../model/state'
 import CreateForm from '../../components/comp-forms/createForm'
-import IndexNavbar from "../../components/Navbars/IndexNavbar.js";
+//import IndexNavbar from "../../components/Navbars/IndexNavbar.js";
 
 
 class Create extends React.Component{

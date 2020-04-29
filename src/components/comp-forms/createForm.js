@@ -3,16 +3,12 @@ import firebase from "firebase";
 import 'react-dates/initialize';
 import Step from '@material-ui/core/Step';
 import 'react-dates/lib/css/_datepicker.css';
-//import Button from '@material-ui/core/Button';
-import Select from '@material-ui/core/Select';
 import Stepper from '@material-ui/core/Stepper';
 import '../../views/pages/styles/createForm.css';
-import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField';
 import StepLabel from '@material-ui/core/StepLabel';
 import Typography from '@material-ui/core/Typography';
 import FileUploader from "react-firebase-file-uploader";
-import {createReport, getEvent} from '../../api/graphql';
+import {createReport} from '../../api/graphql';
 import videoPlaceholder from '../../images/videoPlaceholder.jpeg';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Container, Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
@@ -24,20 +20,20 @@ function getSteps() {
 
 function getStepContent(stepIndex) {
     switch (stepIndex) {
-      case 0:
+    case 0:
         return 'Por favor cuéntenos que sucedió';
-      case 1:
+    case 1:
         return 'Opcionalmente indique donde sucedió el incidente';
-      case 2:
+    case 2:
         return 'Opcionalmente indique que ministerio y/o personal estuvo involucrado';
-      case 3:
-          return 'Si fuese el caso, adjunte evidencia, imágenes, videos y audios son formatos válidos';
-      case 4:
-          return 'Condiciones de uso';
-      default:
+    case 3:
+        return 'Si fuese el caso, adjunte evidencia, imágenes, videos y audios son formatos válidos';
+    case 4:
+        return 'Condiciones de uso';
+    default:
         return 'Índice desconocido';
     }
-  }
+}
 
 const config = {
     apiKey: "AIzaSyCb2RE1ifVk5Atyy48Jgs0LIZx6H3wLBWs",
@@ -129,8 +125,9 @@ class CreateForm extends React.Component{
             let hour = myDate.getHours();
             minute = "" + minute;
             hour = "" + hour;
-            if(minute.length===1) minute = "" + "0" + minute;
-            if(hour.length===1)   hour   = "" + "0" + hour;
+            
+            if(minute.length===1) minute = `0${minute}`;
+            if(hour.length===1)   hour   = `0${hour}`
             
             var currentDate = isoString.slice(0,10);
             var currentTime = hour + ":" + minute;
@@ -181,7 +178,7 @@ class CreateForm extends React.Component{
                 isAnonymous = "true";
             }
             let dummyProofTime = this.state.form.time;
-            if (this.state.form.time.length != 5){
+            if (this.state.form.time.length !== 5){
                 dummyProofTime = "00:00";
             }
             createReport(this.state.form.date,
@@ -341,7 +338,10 @@ class CreateForm extends React.Component{
             >
             <div>
                 <br/><br/><br/><br/>
-            <h1 className="d-flex text-center text-light" style={{padding:8}}> Nueva Denuncia</h1>
+            <h1 className="text-center text-light"  hidden={this.state.viewOnly}> Nueva Denuncia</h1>
+            <h1 className="text-center text-light" style={{padding:8}} hidden={!this.state.viewOnly}> Formulario de Denuncia</h1>
+            {/* <h3 className="text-center text-light" style={{padding:8}} hidden={this.state.viewOnly}> view Denuncia</h3>
+             */}
             <Stepper hidden={this.state.viewOnly} activeStep={this.state.currentPage} alternativeLabel style={{backgroundColor:"transparent"}}>
                 {this.steps.map((label) => (
                 <Step key={label}>
@@ -580,7 +580,7 @@ class CreateForm extends React.Component{
                         {this.state.form.imagePath.map(currentUrl=>{
                             // Not working: onClick={() => {this._removeImage(currentUrl)}} 
                             return(<div onClick={() => {this._removeImage(currentUrl)}} className="d-flex justify-content-center" key={currentUrl}>
-                                {currentUrl && <img src={currentUrl} style={{padding: 10}} width="250px" height="250"/>}
+                                {currentUrl && <img src={currentUrl} width="200px" height="200px" alt="upImage"/>}
                                 {false && currentUrl && <p className="legend">currentUrl</p>}
                                 
                             </div>);
@@ -590,7 +590,7 @@ class CreateForm extends React.Component{
                         {this.state.form.videoPath.map(currentUrl=>{
                             // Not working: onClick={() => {this._removeVideo(currentUrl)}} 
                             return(<div onClick={() => {this._removeVideo(currentUrl)}}  className="d-flex justify-content-center" key={currentUrl}>
-                                {currentUrl && <img src={videoPlaceholder} style={{padding: 24}} width="320px"/>}
+                                {currentUrl && <img src={videoPlaceholder} width="200px" alt="upVideo"/>}
                                 {false && currentUrl && <p className="legend">currentUrl</p>}
                             </div>);
                         })}
@@ -610,7 +610,7 @@ class CreateForm extends React.Component{
                     <Row>
                         <Col md={6}>
                         <FormGroup>
-                            <Label hidden={!this.state.viewOnly && this.state.currentPage!==4 || this.state.userId}>Teléfono de contacto </Label>
+                            <Label hidden={(!this.state.viewOnly && this.state.currentPage!==4) || this.state.userId}>Teléfono de contacto </Label>
                             <Input disabled    = {this.state.viewOnly}
                                     hidden      = {(!this.state.viewOnly && this.state.currentPage!==4) || this.state.userId}
                                     id          = "anonymousPhone"
@@ -626,7 +626,7 @@ class CreateForm extends React.Component{
                         </Col>
                         <Col md={6}>
                         <FormGroup>
-                            <Label hidden={!this.state.viewOnly && this.state.currentPage!==4 || this.state.userId}>Correo de contacto</Label>
+                            <Label hidden={(!this.state.viewOnly && this.state.currentPage!==4) || this.state.userId}>Correo de contacto</Label>
                             <Input disabled    = {this.state.viewOnly}
                                     hidden      = {(!this.state.viewOnly && this.state.currentPage!==4) || this.state.userId}
                                     id          = "anonymousEmail"
